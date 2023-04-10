@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: CurrencyName
+is_enum: true

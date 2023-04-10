@@ -1,0 +1,51 @@
+.body {
+  max-width: 750px;
+}
+
+.button {
+  display: block;
+  margin: auto;
+  margin-top: 36px;
+  width: 340px;
+}
+
+.checkboxRow {
+  column-gap: 12px;
+  display: flex;
+}
+
+.description {
+  margin-top: 16px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 36px;
+  max-width: 640px;
+  row-gap: 36px;
+}
+
+.presetEmailInput:hover {
+  cursor: default;
+}
+
+.presetEmailInput:focus {
+  border-color: var(--color-tertiary);
+}
+
+.usernameInput {
+  padding-left: var(--padding-left-username);
+}
+
+@media only screen and (max-width: 640px) {
+  .button {
+    margin-top: 32px;
+    width: 300px;
+  }
+
+  .inputs {
+    margin-top: 32px;
+  }
+}

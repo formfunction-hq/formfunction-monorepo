@@ -1,0 +1,16 @@
+table:
+  schema: public
+  name: Whitelist
+event_triggers:
+  - name: whitelistSync
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+      delete:
+        columns: '*'
+    retry_conf:
+      num_retries: 1
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/whitelistWebhook'

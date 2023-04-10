@@ -1,0 +1,30 @@
+.body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
+.button {
+  display: block;
+  margin: 32px auto 0px;
+  width: 260px;
+}
+
+.loading {
+  margin-top: 24px;
+}
+
+.modal {
+  max-width: 760px;
+  text-align: center;
+}
+
+.subtext {
+  margin-top: 4px;
+}
+
+.textButton {
+  margin: 32px auto 0px;
+}

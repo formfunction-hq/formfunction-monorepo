@@ -1,0 +1,16 @@
+.containerInner {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.containerOuter {
+  position: relative;
+  width: 100%;
+}
+
+.containerSquare {
+  height: 0;
+  padding-bottom: 100%;
+  width: 100%;
+}

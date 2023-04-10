@@ -1,0 +1,18 @@
+.container {
+  align-items: center;
+  background-color: var(--color-floatingElement);
+  border: 3px solid var(--color-floatingElement);
+  border-radius: 50%;
+  box-shadow: var(--box-shadow-button);
+  display: flex;
+  height: 48px;
+  justify-content: center;
+  position: relative;
+  width: 48px;
+}
+
+.indicator {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+}

@@ -1,0 +1,27 @@
+.button {
+  text-align: left;
+  white-space: nowrap;
+}
+
+.comment {
+  margin-top: 48px;
+  text-align: left;
+}
+
+.commentInput {
+  margin-top: 8px;
+}
+
+.commentTextArea {
+  margin-top: 16px;
+}
+
+@media only screen and (max-width: 640px) {
+  .button {
+    white-space: normal;
+  }
+
+  .comment {
+    margin-top: 32px;
+  }
+}

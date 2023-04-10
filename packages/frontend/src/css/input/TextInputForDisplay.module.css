@@ -1,0 +1,11 @@
+.input {
+  background-color: var(--color-floatingElement);
+  border-radius: 16px;
+  box-shadow: var(--box-shadow-button);
+  margin-top: 12px;
+  padding: 16px 24px;
+}
+
+.label {
+  margin-left: 12px;
+}

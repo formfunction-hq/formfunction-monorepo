@@ -1,0 +1,11 @@
+.body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 700px;
+}
+
+.burnButton {
+  width: 200px;
+}

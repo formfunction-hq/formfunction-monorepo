@@ -1,0 +1,8 @@
+.container {
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: var(--box-shadow-button);
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+}

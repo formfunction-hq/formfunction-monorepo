@@ -1,0 +1,25 @@
+table:
+  schema: public
+  name: DiscordAuthToDiscordRole
+object_relationships:
+  - name: DiscordAuth
+    using:
+      foreign_key_constraint_on: discordAuthId
+  - name: DiscordRole
+    using:
+      foreign_key_constraint_on: discordRoleId
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - discordRoleId
+        - discordAuthId
+        - id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - discordRoleId
+        - discordAuthId
+      filter: {}

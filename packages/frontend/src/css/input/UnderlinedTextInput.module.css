@@ -1,0 +1,34 @@
+.container {
+  margin-top: 10px;
+  position: relative;
+}
+
+.input {
+  background-color: transparent;
+  border-style: none;
+  border-bottom: 1px solid var(--color-tertiary);
+  /* Needed for mobile browsers? */
+  border-radius: 0;
+  box-sizing: border-box;
+  color: var(--color-primary);
+  outline-style: none;
+  width: 100%;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.input::placeholder {
+  color: var(--color-ghost);
+}
+
+.inputError {
+  border-bottom: 2px solid var(--color-error);
+}
+
+.permaPlaceholder {
+  color: var(--color-ghost);
+  position: absolute;
+  top: 50%;
+  /* 1px accounts for border-bottom on .input */
+  transform: translateY(calc(-50% - 1px));
+}

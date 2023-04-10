@@ -1,0 +1,10 @@
+.content {
+  margin-top: 12px;
+}
+
+.inline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 8px;
+}

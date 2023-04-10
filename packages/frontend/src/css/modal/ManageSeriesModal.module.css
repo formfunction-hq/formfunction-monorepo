@@ -1,0 +1,24 @@
+.modal {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 890px;
+  min-height: 400px;
+  row-gap: 36px;
+}
+
+.modalHeader {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 16px;
+}
+
+@media only screen and (max-width: 980px) {
+  .modalHeader {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+}

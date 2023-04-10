@@ -1,0 +1,45 @@
+.container {
+  width: 560px;
+}
+
+.row {
+  align-items: center;
+  column-gap: 64px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rowUser {
+  align-items: center;
+  column-gap: 8px;
+  display: flex;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+  row-gap: 32px;
+}
+
+.title {
+  border-bottom: 1px solid var(--color-tertiary);
+  column-gap: 12px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 16px;
+}
+
+@media only screen and (max-width: 640px) {
+  .container {
+    width: auto;
+  }
+
+  .invisibleRow {
+    height: 50px;
+  }
+
+  .row {
+    column-gap: 24px;
+  }
+}

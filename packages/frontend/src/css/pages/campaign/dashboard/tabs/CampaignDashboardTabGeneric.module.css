@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+  align-items: flex-start;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}

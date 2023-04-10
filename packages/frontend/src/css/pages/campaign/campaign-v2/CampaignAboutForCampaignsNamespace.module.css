@@ -1,0 +1,16 @@
+.aboutDescription {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.aboutDescription h2 {
+  color: var(--color-primary);
+  margin-bottom: 0px;
+}
+
+.aboutSection {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}

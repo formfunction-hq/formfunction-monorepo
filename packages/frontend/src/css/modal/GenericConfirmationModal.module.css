@@ -1,0 +1,14 @@
+.body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.confirmButton {
+  width: 260px;
+}
+
+.modal {
+  max-width: 860px;
+}

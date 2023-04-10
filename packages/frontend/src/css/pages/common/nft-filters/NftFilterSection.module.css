@@ -1,0 +1,19 @@
+.content {
+  margin-top: 26px;
+}
+
+.subtitle {
+  margin-top: 8px;
+}
+
+@media only screen and (max-width: 980px) {
+  .content {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .content {
+    margin-top: 16px;
+  }
+}

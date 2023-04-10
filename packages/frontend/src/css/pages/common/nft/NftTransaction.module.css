@@ -1,0 +1,59 @@
+.comment {
+  background-color: var(--color-shader);
+  border-radius: 16px;
+  margin-top: 16px;
+  padding: 16px 24px;
+}
+
+.container {
+  padding: 16px 0px;
+}
+
+.description {
+  align-items: center;
+  column-gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+
+.descriptionInline {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.price {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  row-gap: 10px;
+}
+
+.priceTooltip {
+  max-width: 250px;
+}
+
+.profileLink {
+  align-items: center;
+  column-gap: 8px;
+  display: flex;
+}
+
+.timeAndSource {
+  align-items: center;
+  display: flex;
+}
+
+.transactionMain {
+  column-gap: 16px;
+  display: flex;
+  justify-content: space-between;
+}

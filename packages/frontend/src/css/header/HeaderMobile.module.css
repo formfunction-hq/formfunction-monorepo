@@ -1,0 +1,55 @@
+.containerInner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.containerResponsive {
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
+
+.containerOuter {
+  box-sizing: border-box;
+  padding-bottom: 16px;
+  padding-top: 16px;
+}
+
+.header {
+  color: var(--color-yellowLight);
+  margin: 0;
+  text-transform: uppercase;
+
+  font-family: "TanNimbus", serif;
+  font-size: 32px;
+}
+
+.logo {
+  align-items: center;
+  column-gap: 18px;
+  display: flex;
+  text-decoration: none;
+}
+
+.logoImage {
+  height: 36px;
+  width: 36px;
+}
+
+.logoText {
+  font-family: "TanNimbus", serif;
+  font-size: 28px;
+  margin: 0px;
+}
+
+@media only screen and (max-width: 640px) {
+  .header {
+    font-size: 26px;
+  }
+
+  .logoText {
+    display: none;
+  }
+}

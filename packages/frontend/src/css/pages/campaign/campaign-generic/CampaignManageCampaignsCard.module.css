@@ -1,0 +1,18 @@
+.boxShadow {
+  box-shadow: var(--box-shadow-button);
+}
+
+.container {
+  background-color: var(--color-cardBackground);
+  border-radius: 12px;
+  box-sizing: border-box;
+  min-height: 280px;
+  min-width: 320px;
+  padding: 32px;
+}
+
+@media only screen and (max-width: 640px) {
+  .container {
+    min-width: 250px;
+  }
+}

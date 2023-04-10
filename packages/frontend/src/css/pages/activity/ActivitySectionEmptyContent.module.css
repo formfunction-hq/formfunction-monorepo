@@ -1,0 +1,18 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.cta {
+  margin-top: 32px;
+}
+
+.image {
+  max-width: 438px;
+  width: 100%;
+}
+
+.text {
+  margin-top: 60px;
+}

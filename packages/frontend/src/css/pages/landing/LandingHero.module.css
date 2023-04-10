@@ -1,0 +1,117 @@
+@keyframes shimmer {
+  from {
+    background-color: var(--color-white);
+  }
+
+  to {
+    background-color: var(--color-lightPurple);
+  }
+}
+
+
+.container {
+  align-items: center;
+  column-gap: 60px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1500px;
+  padding-bottom: 78px;
+  padding-top: 54px;
+}
+
+.image {
+  border-radius: 32px;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.imageContainer {
+  border-radius: 32px;
+  background-color: var(--color-white);
+
+  animation-delay: 0.5s;
+  animation-duration: 1s;
+  animation-name: shimmer;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+.imageContainer, .slideshowContainer {
+  width: 620px;
+}
+
+.left {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  row-gap: 24px;
+}
+
+@media only screen and (max-width: 1640px) {
+  .imageContainer, .slideshowContainer {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .imageContainer, .slideshowContainer {
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .container {
+    column-gap: 48px;
+  }
+
+  .imageContainer, .slideshowContainer {
+    width: 470px;
+  }
+}
+
+@media only screen and (max-width: 1124px) {
+  .imageContainer, .slideshowContainer {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .imageContainer, .slideshowContainer {
+    width: 350px;
+  }
+}
+
+@media only screen and (max-width: 868px) {
+  .container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 64px;
+    padding-top: 40px;
+    text-align: center;
+  }
+
+  .imageContainer {
+    margin: auto;
+    margin-top: 36px;
+    width: 500px;
+  }
+
+  .slideshowContainer {
+    width: 500px;
+  }
+
+  .left {
+    align-items: center
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .imageContainer, .slideshowContainer {
+    max-width: 500px;
+    width: 100%;
+  }
+}

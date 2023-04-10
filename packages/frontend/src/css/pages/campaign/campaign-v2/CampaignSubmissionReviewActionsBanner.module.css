@@ -1,0 +1,9 @@
+.actions {
+  column-gap: 16px;
+  display: flex;
+}
+
+.container {
+  background-color: var(--color-floatingElement);
+  padding: 16px;
+}

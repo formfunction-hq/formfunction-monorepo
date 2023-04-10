@@ -1,0 +1,17 @@
+.label {
+  align-items: center;
+  column-gap: 8px;
+  display: flex;
+}
+
+.pnftLabel {
+  margin: auto 8px;
+}
+
+.pnftLabelRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  text-decoration: none;
+}

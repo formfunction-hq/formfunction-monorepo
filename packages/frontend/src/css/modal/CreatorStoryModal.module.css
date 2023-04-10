@@ -1,0 +1,17 @@
+.body {
+  border-radius: 24px;
+  max-width: 1240px;
+  padding: 24px;
+}
+
+.modal {
+  padding: 0px;
+}
+
+/* Header breakpoint */
+@media only screen and (max-width: 980px) {
+  .body {
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+}

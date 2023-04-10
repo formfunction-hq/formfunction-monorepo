@@ -1,0 +1,7 @@
+.desktopContainer {
+  display: var(--display-onlyDesktop);
+}
+
+.mobileContainer {
+  display: var(--display-onlyMobile);
+}

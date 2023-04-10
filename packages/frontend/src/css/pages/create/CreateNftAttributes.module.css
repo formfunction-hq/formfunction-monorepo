@@ -1,0 +1,16 @@
+.attributeInput {
+  flex: 1;
+}
+
+.attributesInputContainer {
+  align-items: center;
+  gap: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}

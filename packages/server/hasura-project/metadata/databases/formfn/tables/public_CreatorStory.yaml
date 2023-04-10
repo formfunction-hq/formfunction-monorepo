@@ -1,0 +1,53 @@
+table:
+  schema: public
+  name: CreatorStory
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      columns:
+        - colorScheme
+        - goals
+        - headline
+        - id
+        - inspiration
+        - process
+        - userId
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - colorScheme
+        - goals
+        - headline
+        - inspiration
+        - process
+        - userId
+        - id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - colorScheme
+        - goals
+        - headline
+        - inspiration
+        - process
+        - userId
+        - id
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - colorScheme
+        - goals
+        - headline
+        - inspiration
+        - process
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      check: null

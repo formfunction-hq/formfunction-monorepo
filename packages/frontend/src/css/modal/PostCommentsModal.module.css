@@ -1,0 +1,15 @@
+.commentsContainer {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.modal {
+  max-width: 1000px;
+  min-width: 800px;
+}
+
+@media only screen and (max-height: 1300px) {
+  .commentsContainer {
+    max-height: 50vh;
+  }
+}

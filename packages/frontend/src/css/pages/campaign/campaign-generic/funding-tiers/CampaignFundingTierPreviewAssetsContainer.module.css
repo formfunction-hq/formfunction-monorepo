@@ -1,0 +1,7 @@
+.assets {
+  column-gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  height: auto;
+  width: 100%;
+}

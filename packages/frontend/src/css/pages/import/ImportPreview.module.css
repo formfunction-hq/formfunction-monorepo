@@ -1,0 +1,41 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 48px;
+}
+
+.description {
+  max-width: 820px;
+}
+
+.errors {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  row-gap: 8px;
+  text-align: left;
+}
+
+.grid {
+  width: 100%;
+}
+
+.gridAndErrors {
+  width: 100%;
+}
+
+.importButton {
+  display: block;
+  margin: auto;
+  margin-top: 36px;
+  width: 300px;
+}
+
+@media only screen and (max-width: 640px) {
+  .importButton {
+    margin-top: 32px;
+    width: 100%;
+  }
+}

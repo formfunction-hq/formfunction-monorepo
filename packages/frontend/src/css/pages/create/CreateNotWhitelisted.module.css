@@ -1,0 +1,44 @@
+.body {
+  align-items: center;
+  display: flex;  
+  flex-direction: column;
+  text-align: center;
+}
+
+.description {
+  margin-top: 24px;
+  max-width: 900px;
+}
+
+.image {
+  height: 449px;
+  width: 601px;
+}
+
+.submitButton {
+  margin-top: 48px;
+}
+
+.title {
+  margin-top: 12px;
+}
+
+@media only screen and (max-width: 640px) {
+  .description {
+    margin-top: 16px;
+  }
+
+  .image {
+    height: auto;
+    min-height: 200px;
+    width: 100%;
+  }
+
+  .submitButton {
+    margin-top: 32px;
+  }
+
+  .title {
+    margin-top: 4px;
+  }
+}

@@ -1,0 +1,24 @@
+.buttonContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+}
+
+.categoryPill {
+  text-align: center;
+  background-color: var(--color-floatingElement);
+  border-radius: 24px;
+  box-shadow: var(--box-shadow-button);
+  padding: 12px 20px
+}
+
+.categoryPillsGrid {
+  row-gap: 16px;
+}
+
+@media only screen and (max-width: 640px) {
+  .buttonContainer {
+    margin-top: 48px;
+  }
+}

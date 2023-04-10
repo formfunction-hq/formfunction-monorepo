@@ -1,0 +1,22 @@
+.buttonInner {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.container {
+  position: relative;
+}
+.inputContainer {
+  align-items: center;
+  column-gap: 16px;
+  display: flex;
+}
+
+.permaPlaceholder {
+  /* Keep consistent with .textInput horizontal padding */
+  left: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

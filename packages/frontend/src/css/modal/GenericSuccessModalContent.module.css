@@ -1,0 +1,20 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  row-gap: 36px;
+}
+
+.image {
+  display: block;
+  margin-top: 48px;
+  margin: auto;
+  width: 586px;
+}
+
+@media only screen and (max-width: 640px) {
+  .image {
+    width: 100%;
+  }
+}

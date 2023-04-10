@@ -1,0 +1,85 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  row-gap: 36px;
+}
+
+.photoInput {
+  align-items: flex-start;
+  column-gap: 48px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.saveButton {
+  align-self: center;
+  width: 212px;
+}
+
+.saveButtonContainer {
+  display: flex;
+  margin: auto;
+}
+
+.url {
+  margin-top: -32px;
+}
+
+.waitingForTransaction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+}
+
+.waitingForTransactionModal {
+  padding: 64px 94px;
+  max-width: 640px;
+}
+
+.waitingForTransactionLoadingSpinner {
+  margin-top: 6px;
+}
+
+@media only screen and (max-width: 980px) {
+  .modal {
+    row-gap: 32px;
+    padding-bottom: 104px;
+  }
+
+  .saveButtonDivider {
+    border-top: 1px solid var(--color-tertiary);
+    margin-left: -48px;
+    width: calc(100% + 96px);
+    margin-bottom: 16px;
+  }
+
+  .saveButtonContainer {
+    display: unset;
+    margin: unset;
+    background-color: var(--color-floatingElement);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0 48px 38px 48px;
+  }
+
+  .saveButton {
+    height: 56px;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .saveButtonContainer {
+    padding: 0 16px 38px 16px;
+  }
+
+  .saveButtonDivider {
+    margin-left: -16px;
+    width: calc(100% + 32px);
+  }
+}

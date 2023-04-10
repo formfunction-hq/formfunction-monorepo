@@ -1,0 +1,15 @@
+.divider {
+  border-bottom: 1px solid
+}
+
+.dividerVertical {
+  border-left: 1px solid
+}
+
+.colorSecondary {
+  border-color: var(--color-secondary)
+}
+
+.colorTertiary {
+  border-color: var(--color-tertiary)
+}

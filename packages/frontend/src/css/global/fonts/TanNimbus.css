@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "TanNimbus";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../../../static/fonts/tan-nimbus/tan-nimbus.otf) format("opentype");
+}

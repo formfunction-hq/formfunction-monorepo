@@ -1,0 +1,22 @@
+.bar {
+  width: 100%;
+}
+
+.biddingInfoContainer {
+  min-width: 300px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 48px;
+}
+
+.biddingInfoFillerContent {
+  row-gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.biddingInfoHeader {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,26 @@
+.left {
+  align-items: flex-end;
+  column-gap: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 24px;
+}
+
+@media only screen and (max-width: 868px) {
+  .left {
+    column-gap: 24px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .left {
+    column-gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .left {
+    column-gap: 10px;
+    width: 100%;
+  }
+}

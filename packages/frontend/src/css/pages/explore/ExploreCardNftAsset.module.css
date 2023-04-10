@@ -1,0 +1,17 @@
+.imageBlurred {
+  filter: var(--sensitive-image-blur);
+}
+
+.nftImage {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.squareContainer {
+  border-radius: 16px;
+  overflow: hidden;
+}

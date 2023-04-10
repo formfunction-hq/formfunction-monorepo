@@ -1,0 +1,6 @@
+.comment {
+  background-color: var(--color-shader);
+  border-radius: 16px;
+  margin-top: 16px;
+  padding: 16px 24px;
+}

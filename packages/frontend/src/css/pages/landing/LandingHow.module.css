@@ -1,0 +1,9 @@
+.containerOuter {
+  margin-top: 100px;
+}
+
+@media only screen and (max-width: 768px) {
+  .containerOuter {
+    margin-top: 64px;
+  }
+}

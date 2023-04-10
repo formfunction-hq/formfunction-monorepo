@@ -1,0 +1,49 @@
+.image {
+  border-radius: 16px;
+  height: 100%;
+  left: 0px;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.imageBlurred {
+  filter: var(--sensitive-image-blur);
+}
+
+.imageContainer {
+  position: relative;
+}
+
+.container {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.loadingSpinner {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.overlayContent {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  z-index: var(--z-index-listingCardImageOverlay);
+}
+
+.pills {
+  column-gap: 12px;
+  display: flex;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  z-index: 1;
+}

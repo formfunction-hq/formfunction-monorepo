@@ -1,0 +1,33 @@
+.grid {
+  column-gap: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  row-gap: 56px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .grid {
+    column-gap: 36px;
+    row-gap: 36px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    column-gap: 32px;
+    row-gap: 32px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .grid {
+    row-gap: 28px;
+  }
+}

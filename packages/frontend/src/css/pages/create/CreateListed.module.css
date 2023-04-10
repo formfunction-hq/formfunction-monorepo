@@ -1,0 +1,32 @@
+.anotherTimeButton {
+  margin-top: 20px;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  margin-top: 48px;
+  max-width: 700px;
+}
+
+.listButton {
+  margin-top: 36px;
+}
+
+.preview {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+  width: 100%;
+}
+
+/* Header breakpoint */
+@media only screen and (max-width: 980px) {
+  .container {
+    margin-top: 32px;
+  }
+}

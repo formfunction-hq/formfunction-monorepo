@@ -1,0 +1,23 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 48px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  row-gap: 32px;
+}
+
+.inputWrapper {
+  width: 100%;
+}
+
+.submitButton {
+  align-self: center;
+}

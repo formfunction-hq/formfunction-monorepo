@@ -1,0 +1,6 @@
+- name: express-schema
+  definition:
+    url_from_env: REMOTE_SCHEMA
+    timeout_seconds: 180
+    forward_client_headers: true
+  comment: ""

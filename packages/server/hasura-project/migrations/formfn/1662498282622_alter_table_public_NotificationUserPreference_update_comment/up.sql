@@ -1,0 +1,1 @@
+comment on table "public"."NotificationUserPreference" is E'If a row does not exist for a specific userId/notificationType/notificationChannel combo, it means that the notification is enabled for that user and channel.';

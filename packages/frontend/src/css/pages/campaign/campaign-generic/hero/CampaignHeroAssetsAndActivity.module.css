@@ -1,0 +1,37 @@
+.assets {
+  flex-grow: 1;
+  /* See https://stackoverflow.com/questions/43809612/prevent-a-child-element-from-overflowing-its-parent-in-flexbox */
+  min-width: 0px;
+}
+
+.assetsSection {
+  column-gap: 68px;
+  display: flex;
+  margin-top: 56px;
+  width: 100%;
+}
+
+.assetsSectionRight {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 351px;
+  row-gap: 36px;
+}
+
+@media only screen and (max-width: 980px) {
+  .assetsSection {
+    flex-direction: column;
+    row-gap: 54px;
+  }
+
+  .assetsSectionRight {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .assetsSection {
+    margin-top: 36px;
+  }
+}

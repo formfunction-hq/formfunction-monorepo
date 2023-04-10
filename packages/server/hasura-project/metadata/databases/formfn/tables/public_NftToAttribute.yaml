@@ -1,0 +1,30 @@
+table:
+  schema: public
+  name: NftToAttribute
+object_relationships:
+  - name: Attribute
+    using:
+      foreign_key_constraint_on: attributeId
+  - name: Nft
+    using:
+      foreign_key_constraint_on: nftId
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - attributeId
+        - nftId
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - attributeId
+        - nftId
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - attributeId
+        - nftId
+      filter: {}

@@ -1,0 +1,8 @@
+{
+  "name": "workflows",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "airplane": "^0.2.15"
+  }
+}

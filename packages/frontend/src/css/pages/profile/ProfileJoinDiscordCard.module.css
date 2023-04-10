@@ -1,0 +1,33 @@
+.buttons {
+  align-items: center;
+  column-gap: 24px;
+  display: flex;
+}
+
+.container {
+  background-color: var(--color-floatingElement);
+  border-radius: 24px;
+  box-shadow: var(--box-shadow-button);
+  box-sizing: border-box;
+  column-gap: 24px;
+  display: flex;
+  flex-direction: row;
+  padding: 32px;
+}
+
+.textButton {
+  white-space: nowrap;
+}
+
+@media only screen and (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    row-gap: 24px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+  }
+}

@@ -1,0 +1,42 @@
+.image {
+  max-height: 95vh;
+  max-width: 90vw;
+  object-fit: contain;
+  position: relative;
+  width: auto;
+}
+
+.loadingSpinner {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal {
+  background-color: var(--color-backgroundOverlay);
+  min-height: 200px;
+  min-width: 200px;
+  padding: 0px;
+  position: relative;
+}
+
+.modal:hover .overlay {
+  display: flex;
+}
+
+
+/* Header breakpoint */
+@media only screen and (max-width: 980px) {
+  .container {
+    display: flex;
+    justify-content: center; 
+    min-height: 40px;
+  }
+
+  .loadingSpinner {
+    position: absolute;
+    top: auto;
+    transform: translateX(-50%);
+  }
+}

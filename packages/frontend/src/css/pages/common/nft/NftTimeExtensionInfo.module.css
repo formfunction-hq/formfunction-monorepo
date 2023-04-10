@@ -1,0 +1,5 @@
+.notMuchTime {
+  align-items: flex-start;
+  column-gap: 8px;
+  display: flex;
+}

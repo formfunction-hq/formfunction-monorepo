@@ -1,0 +1,11 @@
+.aboutDescription {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.aboutSection {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}

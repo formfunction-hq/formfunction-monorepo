@@ -1,0 +1,19 @@
+.description {
+  margin-top: 24px;
+}
+
+.header {
+  margin-bottom: 48px;
+}
+
+@media only screen and (max-width: 768px) {
+  .header {
+    margin-bottom: 32px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .header {
+    margin-bottom: 24px;
+  }
+}

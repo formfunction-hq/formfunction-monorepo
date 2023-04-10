@@ -1,0 +1,13 @@
+.image {
+  align-items: center;
+  background-color: var(--color-lightPurple);
+  border-radius: 50%;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  object-fit: cover;
+}
+
+.squared {
+  border-radius: 8px;
+}

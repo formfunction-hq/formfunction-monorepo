@@ -1,0 +1,14 @@
+.imageContainer {
+  position: relative;
+}
+
+.imageContainer:hover .imageOverlay {
+  display: flex;
+}
+
+.title {
+  margin-bottom: 29px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

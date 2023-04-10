@@ -1,0 +1,15 @@
+.container {
+  height: 0;
+  width: 100%;
+}
+
+.containerInner {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.containerOuter {
+  position: relative;
+  width: 100%;
+}

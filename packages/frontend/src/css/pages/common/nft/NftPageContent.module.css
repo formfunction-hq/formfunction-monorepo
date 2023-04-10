@@ -1,0 +1,128 @@
+.body {
+  column-gap: 64px;
+  display: flex;
+}
+
+.bottomContentContainer {
+  margin-top: 80px;
+}
+
+.image {
+  filter: var(--drop-shadow-button);
+  height: 100%;
+  width: 100%;
+}
+
+.imageBlur {
+  filter: var(--sensitive-image-blur);
+}
+
+.imageContainer {
+  margin: auto;
+  position: relative;
+}
+
+.imageContainer:hover .overlay {
+  display: flex;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* See https://stackoverflow.com/questions/43809612/prevent-a-child-element-from-overflowing-its-parent-in-flexbox */
+  min-width: 0px;
+  row-gap: 36px;
+}
+
+.left {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  row-gap: 48px;
+  /* Keep in sync with getNftAssetDimensions */
+  width: 700px;
+}
+
+.loadingSpinner {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wideAssetContainer {
+  margin-bottom: 80px;
+}
+
+@media only screen and (max-width: 1640px) {
+  .left {
+    /* Keep in sync with getNftAssetDimensions */
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 1536px) {
+  .left {
+    /* Keep in sync with getNftAssetDimensions */
+    width: 543px;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .image {
+    min-height: 100px;
+  }
+
+  .left {
+    /* Keep in sync with getNftAssetDimensions */
+    width: 440px;
+  }
+
+  .wideAssetContainer {
+    margin-bottom: 60px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .image {
+    min-height: 100px;
+  }
+
+  .left {
+    /* Keep in sync with getNftAssetDimensions */
+    width: 400px;
+  }
+}
+
+/* Keep in sync with NftInfo */
+@media only screen and (max-width: 980px) {
+  .body {
+    align-items: stretch;
+    flex-direction: column;
+    row-gap: 32px;
+  }
+
+  .image {
+    min-height: auto;
+    width: 100%;
+  }
+
+  .left {
+    /* Keep in sync with getNftAssetDimensions */
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .bottomContentContainer {
+    margin-top: 60px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .bottomContentContainer {
+    margin-top: 48px;
+  }
+}

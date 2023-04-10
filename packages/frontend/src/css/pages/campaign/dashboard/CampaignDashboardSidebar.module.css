@@ -1,0 +1,23 @@
+.sidebar {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  min-width: 254px;
+  overflow-y: auto;
+  row-gap: 16px;
+}
+
+.sidebarOption {
+  border-radius: 8px;
+  column-gap: 12px;
+  display: flex;
+  padding: 12px;
+  width: 254px;
+}
+
+.sidebarOptionSelected {
+  background: var(--color-lightPurpleGradient);
+}
+

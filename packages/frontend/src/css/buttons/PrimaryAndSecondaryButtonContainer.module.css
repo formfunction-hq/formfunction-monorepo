@@ -1,0 +1,12 @@
+.buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
+@media only screen and (max-width: 640px) {
+  .buttons {
+    row-gap: 24px;
+  }
+}

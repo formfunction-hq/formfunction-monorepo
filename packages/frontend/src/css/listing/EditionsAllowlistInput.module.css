@@ -1,0 +1,17 @@
+.audienceSelectInputContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 12px 0;
+  row-gap: 24px;
+}
+
+.enabledContent {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  row-gap: 24px;
+}
+
+.toggle {
+  flex-shrink: 0;
+}

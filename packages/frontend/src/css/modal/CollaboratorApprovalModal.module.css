@@ -1,0 +1,39 @@
+.body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 700px;
+  row-gap: 48px;
+}
+
+.button {
+  width: 200px;
+}
+
+.buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
+.declineButtons {
+  column-gap: 24px;
+  display: flex;
+}
+
+@media only screen and (max-width: 640px) {
+  .body {
+    row-gap: 32px;
+  }
+
+  .buttons {
+    row-gap: 24px;
+  }
+
+  .declineButtons {
+    flex-direction: column-reverse;
+    row-gap: 16px;
+  }
+}

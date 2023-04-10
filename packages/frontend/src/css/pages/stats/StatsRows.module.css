@@ -1,0 +1,25 @@
+.doubleColumn {
+  column-gap: 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  row-gap: 24px;
+}
+
+.singleColumn {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .doubleColumn {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .singleColumn {
+    row-gap: 24px;
+  }
+}

@@ -1,0 +1,11 @@
+.swiper-pagination-bullet {
+  /* Couldn't figure out how to do this with Swiper's props, so just doing it globally */
+  background-color: var(--color-white) !important;
+  opacity: 0.7 !important;
+}
+
+.swiper-pagination-bullet-active-main {
+  /* Couldn't figure out how to do this with Swiper's props, so just doing it globally */
+  background-color: var(--color-white) !important;
+  opacity: 1.0 !important;
+}

@@ -1,0 +1,13 @@
+.listButton {
+  display: block;
+  margin: auto;
+  margin-top: 36px;
+  width: 260px;
+}
+
+@media only screen and (max-width: 640px) {
+  .listButton {
+    margin-top: 24px;
+  }
+}
+

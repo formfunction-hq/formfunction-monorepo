@@ -1,0 +1,15 @@
+.currencySelect {
+  margin-bottom: 12px;
+}
+
+.priceInputs {
+  align-items: center;
+  column-gap: 16px;
+  display: flex;
+}
+
+.setPriceButton {
+  border-radius: 16px;
+  margin-top: 16px;
+  width: 100%;
+}

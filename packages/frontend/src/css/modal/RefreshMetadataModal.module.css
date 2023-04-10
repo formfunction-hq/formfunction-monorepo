@@ -1,0 +1,22 @@
+.body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottomDrawer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal {
+  max-width: 600px;
+}
+
+.submitButton {
+  display: block;
+  margin: auto;
+  margin-top: 48px;
+  width: 260px;
+}

@@ -1,0 +1,1 @@
+INSERT INTO "public"."Currency"("id", "name", "decimals", "symbol", "shortSymbol", "iconSrc", "mint", "usdRate", "solRate") VALUES (E'8c079dcf-e1dd-40a5-8226-a38f9cea89cf', E'Bonk', 5, E'BONK', null, E'https://formfunction.imgix.net/currency/bonk/logo.jpg', E'DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263', null, null);

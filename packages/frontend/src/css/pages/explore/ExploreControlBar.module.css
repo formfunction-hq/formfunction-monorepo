@@ -1,0 +1,67 @@
+.buttons {
+  column-gap: 24px;
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.container {
+  border-bottom: 1px solid var(--color-tertiary);
+  column-gap: 36px;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  row-gap: 24px;
+  width: 100%;
+}
+
+.mobileButtons {
+  align-items: flex-start;
+  column-gap: 16px;
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.mobileContainer {
+  flex-direction: column;
+}
+
+.mobileSearchBarLink {
+  width: 100%;
+}
+
+.tabs {
+  align-self: stretch;
+  column-gap: 24px;
+  display: flex;
+  height: 100%;
+}
+
+.mobileTabs {
+  width: 100%;
+}
+
+@media only screen and (max-width: 1100px) {
+  .tabs {
+    column-gap: 14px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .tabs {
+    column-gap: 12px;
+  }
+
+  .mobileTabs > button {
+    flex-shrink: 0;
+  }
+
+  .mobileTabs {
+    overflow-x: scroll;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .tabs {
+    column-gap: 10px;
+  }
+}

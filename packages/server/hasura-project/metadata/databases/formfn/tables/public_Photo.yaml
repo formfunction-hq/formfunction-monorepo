@@ -1,0 +1,52 @@
+table:
+  schema: public
+  name: Photo
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      columns:
+        - description
+        - id
+        - photoUrl
+        - storagePath
+        - title
+        - userId
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - description
+        - id
+        - photoUrl
+        - storagePath
+        - timeCreated
+        - title
+        - userId
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - description
+        - id
+        - photoUrl
+        - storagePath
+        - timeCreated
+        - title
+        - userId
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - description
+        - photoUrl
+        - storagePath
+        - title
+        - userId
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      check: null

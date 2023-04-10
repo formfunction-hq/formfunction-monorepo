@@ -1,0 +1,76 @@
+.disablePermaPlaceholderGap {
+  margin-left: -16px;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.textArea {
+  background-color: transparent;
+  border: none;
+  border-radius: 16px;
+  box-sizing: border-box;
+  color: var(--color-primary);
+  outline: none;
+  overflow: auto;
+  padding: 12px 16px;
+  width: 100%;
+  /* See https://stackoverflow.com/questions/3062968/remove-textarea-inner-shadow-on-mobile-safari-iphone */
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.textArea::placeholder {
+  color: var(--color-ghost);
+}
+
+.textArea:focus {
+  border-color: var(--color-ghost);
+}
+
+.textAreaContainer {
+  /* Put border on container so border-radius cuts off scrollbar */
+  border: 1px solid var(--color-tertiary);
+  border-radius: 16px;
+  /* Gets rid of extra space on bottom of container */
+  display: flex;
+  overflow: hidden;
+}
+
+.textAreaContainerError, .textAreaContainerError:focus  {
+  border: 1px solid var(--color-red);
+}
+
+.textInput {
+  background-color: transparent;
+  border: 1px solid var(--color-tertiary);
+  border-radius: 16px;
+  box-sizing: border-box;
+  color: var(--color-primary);
+  outline: none;
+  padding: 16px 20px;
+  width: 100%;
+  /* See https://stackoverflow.com/questions/3062968/remove-textarea-inner-shadow-on-mobile-safari-iphone */
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.textInput::placeholder {
+  color: var(--color-ghost);
+}
+
+.textInput:focus {
+  border-color: var(--color-ghost);
+}
+
+.textInputError, .textInputError:focus {
+  border: 1px solid var(--color-red);
+}
+
+@media only screen and (max-width: 768px) {
+  .textArea, .textInput {
+    padding: 12px 16px;
+  }
+}

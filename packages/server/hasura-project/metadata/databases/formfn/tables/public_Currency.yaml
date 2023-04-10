@@ -1,0 +1,28 @@
+table:
+  schema: public
+  name: Currency
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - decimals
+        - iconSrc
+        - mint
+        - name
+        - shortSymbol
+        - solRate
+        - symbol
+        - usdRate
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - decimals
+        - iconSrc
+        - mint
+        - name
+        - shortSymbol
+        - solRate
+        - symbol
+        - usdRate
+      filter: {}

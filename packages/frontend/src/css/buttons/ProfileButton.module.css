@@ -1,0 +1,16 @@
+.container {
+  align-items: center;
+  background-color: var(--color-lightPurple);
+  border: 3px solid var(--color-floatingElement);
+  border-radius: 50%;
+  box-shadow: var(--box-shadow-button);
+  display: flex;
+  height: 48px;
+  justify-content: center;
+  object-fit: cover;
+  width: 48px;
+}
+
+.container:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,42 @@
+.body {
+  align-items: stretch;
+  column-gap: 56px;
+  display: flex;
+}
+
+.image {
+  border-radius: 12px;
+  filter: var(--drop-shadow-button);
+  height: auto;
+  max-width: 500px;
+  object-fit: cover;
+  width: 50%;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  pointer-events: none;
+  row-gap: 32px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .body {
+    align-items: stretch;
+    flex-direction: column;
+    row-gap: 24px;
+  }
+
+  .image {
+    margin: auto;
+    max-width: 400px;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .inputs {
+    row-gap: 20px;
+  }
+}

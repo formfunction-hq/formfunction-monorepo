@@ -1,0 +1,24 @@
+.submitButton {
+  margin-top: 32px;
+  width: 350px;
+}
+
+.submitContainer {
+  align-items: center;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 48px;
+  width: 100%;
+}
+
+.submitSubtitle {
+  margin-top: 16px;
+  max-width: 1200px;
+}
+
+@media only screen and (max-width: 640px) {
+  .submitButton {
+    width: 200px;
+  }
+}

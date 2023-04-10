@@ -1,0 +1,113 @@
+/* Keep in sync with BackgroundOverlay.module.css */
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.modal::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.closeRow {
+  background-color: transparent;
+  display: flex;
+  justify-content: flex-start;
+  position: absolute;
+  top: -36px;
+  left: 0px;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.containerInner {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  max-height: 95%;
+  max-width: 90%;
+  position: relative;
+  overflow: visible;
+  z-index: var(--z-index-modal);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.modal {
+  background-color: var(--color-floatingElement);
+  border-radius: 12px;
+  box-sizing: border-box;
+  margin: auto;
+  max-width: 100%;
+  overflow: auto;
+  padding: 64px 80px;
+}
+
+.outsideClick {
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+
+  /* opacity: 0; */
+  /* animation-name: fadein; */
+  /* animation-duration: 0.1s; */
+  /* animation-fill-mode: forwards; */
+}
+
+.title {
+  align-items: center;
+  column-gap: 60px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  padding: 0px 40px;
+  row-gap: 24px;
+}
+
+@media only screen and (max-width: 1800px) {
+  .modal {
+    padding-bottom: 48px;
+    padding-top: 48px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .modal {
+    padding-bottom: 40px;
+    padding-top: 40px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .footer {
+    margin-bottom: 30px;
+  }
+
+  .modal {
+    padding: 30px 24px 30px;
+  }
+
+  .titleAndClose {
+    column-gap: 20px;
+    padding: 0px 16px;
+  }
+}

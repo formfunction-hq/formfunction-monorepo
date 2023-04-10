@@ -1,0 +1,12 @@
+.loading {
+  color: var(--color-secondary);
+}
+
+.noBorder {
+  border: none;
+  padding: 12px 0;
+}
+
+.submitButton {
+  height: 24px;
+}

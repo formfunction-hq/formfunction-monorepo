@@ -1,0 +1,24 @@
+table:
+  schema: public
+  name: top_creator_stats
+object_relationships:
+  - name: Creator
+    using:
+      foreign_key_constraint_on: creatorId
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - collectorCount
+        - nftCount
+        - totalSales
+        - creatorId
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - collectorCount
+        - nftCount
+        - totalSales
+        - creatorId
+      filter: {}

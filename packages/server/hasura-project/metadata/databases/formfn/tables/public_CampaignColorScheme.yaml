@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: CampaignColorScheme
+is_enum: true

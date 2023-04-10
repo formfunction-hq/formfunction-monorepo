@@ -1,0 +1,10 @@
+.previews {
+  display: grid;
+  column-gap: 36px;
+  /* Keep in sync with CampaignSectionPreviewForCampaignSectionWithNfts.module.css and FundingTierSection.module.css */
+  grid-template-columns: repeat(auto-fit, 376px);
+  justify-content: center;
+  margin: auto;
+  margin-top: 32px;
+  row-gap: 36px;
+}

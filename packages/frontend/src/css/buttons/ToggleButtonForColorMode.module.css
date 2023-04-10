@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.label {
+  margin-left: 12px;
+}
+
+/*
+ * Slider
+ */
+.slider {
+  border: 1px solid var(--color-tertiary);
+  border-radius: 34px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-white);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  background-color: #FF974B;
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/formfn-ed6b4.appspot.com/o/icons%2Fsun.svg?alt=media&token=9024c268-3a08-4ffc-a8c4-c1d5313ec0d0);
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 50%;
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 3px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switchInput {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switchInput:checked + .slider {
+  background: var(--color-floatingElement);
+}
+
+.switchInput:checked + .slider:before {
+  background-color: var(--color-brightPurple) !important;
+  background-image: url(https://firebasestorage.googleapis.com/v0/b/formfn-ed6b4.appspot.com/o/icons%2Fmoon.svg?alt=media&token=542dc1bb-157b-47d1-9914-44d643a1701f);
+  background-position: center;
+  background-repeat: no-repeat;
+
+  -webkit-transform: translateX(14px);
+  -ms-transform: translateX(14px);
+  transform: translateX(14px);
+}
+
+.switchInput:checked + .slider:before {
+  background-color: var(--color-white);
+}

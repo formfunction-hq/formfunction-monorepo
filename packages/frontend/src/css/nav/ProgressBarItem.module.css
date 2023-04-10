@@ -1,0 +1,19 @@
+.circle {
+  border-radius: 50%;
+  height: 12px;
+  width: 12px;
+}
+
+.item {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  row-gap: 12px;
+  width: 140px;
+  z-index: 1;
+}
+
+.item:hover {
+  cursor: pointer;
+}

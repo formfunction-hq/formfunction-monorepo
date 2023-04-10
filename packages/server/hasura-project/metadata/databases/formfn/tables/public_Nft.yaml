@@ -1,0 +1,151 @@
+table:
+  schema: public
+  name: Nft
+object_relationships:
+  - name: Creator
+    using:
+      foreign_key_constraint_on: creatorId
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        _and:
+          - creatorId:
+              _eq: X-Hasura-User-Id
+          - ownerId:
+              _eq: X-Hasura-User-Id
+      columns:
+        - creatorId
+        - hasBeenSold
+        - id
+        - isMasterEdition
+        - mint
+        - ownerId
+        - status
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - auctionCount
+        - creatorId
+        - edition
+        - hasBeenSold
+        - id
+        - isImported
+        - isMasterEdition
+        - isPnft
+        - masterEdition
+        - masterEditionMint
+        - maxSupply
+        - metadataId
+        - mint
+        - ownerId
+        - priceLastSoldForInLamports
+        - seriesId
+        - standardEdition
+        - status
+        - timeCreated
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - auctionCount
+        - creatorId
+        - edition
+        - hasBeenSold
+        - id
+        - isImported
+        - isMasterEdition
+        - isPnft
+        - masterEdition
+        - masterEditionMint
+        - maxSupply
+        - metadataId
+        - mint
+        - ownerId
+        - priceLastSoldForInLamports
+        - seriesId
+        - standardEdition
+        - status
+        - timeCreated
+      filter: {}
+      allow_aggregations: true
+update_permissions:
+  - role: user
+    permission:
+      columns: []
+      filter:
+        _and:
+          - ownerId:
+              _eq: X-Hasura-User-Id
+          - status:
+              _neq: Auction
+      check: null
+event_triggers:
+  - name: createLastBidPrice
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 30
+      interval_sec: 120
+      timeout_sec: 180
+    webhook: '{{EVENT_BASE_URL}}/hasura/createLastBidPriceWebhook'
+  - name: incrementCandyMachineTotalAmountMinted
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 10
+      interval_sec: 60
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/incrementCandyMachineTotalAmountMinted'
+  - name: nft-editions
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 20
+      interval_sec: 60
+      timeout_sec: 180
+    webhook: '{{EVENT_BASE_URL}}/hasura/nftEditionsWebhook'
+  - name: notifyNftUpdate
+    definition:
+      enable_manual: false
+      update:
+        columns:
+          - status
+    retry_conf:
+      num_retries: 0
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/notifyNftUpdate'
+  - name: soldOutEditions
+    definition:
+      enable_manual: false
+      update:
+        columns:
+          - status
+    retry_conf:
+      num_retries: 30
+      interval_sec: 60
+      timeout_sec: 240
+    webhook: '{{EVENT_BASE_URL}}/hasura/soldOutEditionsWebhook'
+  - name: updateCampaignToHolderWebhook
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+      update:
+        columns:
+          - ownerId
+          - campaignFundingTierId
+    retry_conf:
+      num_retries: 0
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/updateCampaignToHolderWebhook'

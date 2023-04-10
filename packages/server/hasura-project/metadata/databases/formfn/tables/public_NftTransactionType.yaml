@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: NftTransactionType
+is_enum: true

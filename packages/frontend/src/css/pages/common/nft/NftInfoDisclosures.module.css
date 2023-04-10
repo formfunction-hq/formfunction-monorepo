@@ -1,0 +1,5 @@
+.iconAndLabel {
+  border-radius: 12px;
+  background-color: var(--color-shader);
+  padding: 10px 16px;
+}

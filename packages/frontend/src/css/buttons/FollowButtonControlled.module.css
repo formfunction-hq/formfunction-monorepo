@@ -1,0 +1,19 @@
+.button {
+  flex-shrink: 0;
+  width: 180px;
+}
+
+.buttonHideIcons {
+  flex-shrink: 0;
+  width: 160px;
+}
+
+@media only screen and (max-width: 640px) {
+  .button {
+    width: 150px;
+  }
+
+  .buttonHideIcons {
+    width: 130px;
+  }
+}

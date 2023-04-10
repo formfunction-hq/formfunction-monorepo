@@ -1,0 +1,24 @@
+.block {
+  align-items: center;
+  background-color: var(--color-lightPurple);
+  border-radius: 12px;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  width: 80px;
+}
+
+.container:hover {
+  cursor: pointer;
+}
+
+.photo {
+  border-radius: 50%;
+  height: 80px;
+  object-fit: cover;
+  width: 80px;
+}
+
+.text {
+  margin-top: 8px;
+}

@@ -1,0 +1,26 @@
+FROM node:16 as formfn-api
+
+WORKDIR /usr/src/app
+
+# Copy top level node_modules and package.json
+COPY ../../package.json ./
+COPY ../../node_modules ./node_modules/
+
+# Copy necessary server/ files
+COPY ../../packages/server/package.json ./packages/server/package.json
+COPY ../../packages/server/node_modules ./packages/server/node_modules/
+# COPY ../../packages/server/firebase-adminsdk.json ./packages/server/firebase-adminsdk.json
+
+# Copy necessary shared/ files
+COPY ../../packages/shared/package.json ./packages/shared/package.json
+COPY ../../packages/shared/node_modules ./packages/shared/node_modules/
+
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get install -y ffmpeg
+
+WORKDIR /usr/src/app/packages/server
+
+EXPOSE 4001
+CMD [ "yarn", "nodemon", "dist/src/index.js"]
+USER node

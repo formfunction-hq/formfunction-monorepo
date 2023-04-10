@@ -1,0 +1,18 @@
+.button {
+  margin-top: 24px;
+}
+
+.description {
+  margin-top: 16px;
+}
+
+.image {
+  flex-shrink: 0;
+  max-width: 400px;
+}
+
+@media only screen and (max-width: 640px) {
+  .image {
+    display: none;
+  }
+}

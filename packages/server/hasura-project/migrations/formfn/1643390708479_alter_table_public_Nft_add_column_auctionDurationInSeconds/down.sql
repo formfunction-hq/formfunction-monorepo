@@ -1,0 +1,4 @@
+-- Could not auto-generate a down migration.
+-- Please write an appropriate down migration for the SQL below:
+-- alter table "public"."Nft" add column "auctionDurationInSeconds" integer
+--  not null default '86400';

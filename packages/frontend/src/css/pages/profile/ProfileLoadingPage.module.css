@@ -1,0 +1,23 @@
+.nftGrid {
+  margin-top: 48px;
+}
+
+.row1Skeleton {
+  height: 48px;
+  width: 250px;
+  border-radius: 12px;
+}
+
+@media only screen and (max-width: 768px) {
+  .row1Skeleton {
+    height: 35px;
+    width: 200px;
+  }
+}
+
+.row2Skeleton {
+  margin-top: 8px;
+  height: 36px;
+  width: 138px;
+  border-radius: 100px;
+}

@@ -1,0 +1,42 @@
+.container {
+  width: 100%;
+}
+
+.values {
+  display: flex;
+  flex-direction: column;
+  width: 440px;
+  row-gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.valuesContainer {
+  display: flex;
+  column-gap: 64px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.valuesContainerOuter {
+  display: flex;
+  flex-direction: column;
+  row-gap: 64px;
+}
+
+@media only screen and (max-width: 768px) {
+  .values {
+    width: auto;
+  }
+
+  .valuesContainer {
+    flex-direction: column;
+    row-gap: 36px;
+  }
+
+  .valuesContainerOuter {
+    row-gap: 36px;
+  }
+}

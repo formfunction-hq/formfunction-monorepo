@@ -1,0 +1,1 @@
+CREATE TABLE "public"."BonkClaim" ("userId" text NOT NULL, "claimed" boolean DEFAULT false, "timeClaimed" timestamptz, PRIMARY KEY ("userId") , FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON UPDATE cascade ON DELETE cascade, UNIQUE ("userId"));

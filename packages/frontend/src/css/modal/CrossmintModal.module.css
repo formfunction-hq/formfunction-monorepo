@@ -1,0 +1,11 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  row-gap: 12px;
+  text-align: left;
+}
+
+.text {
+  max-width: 720px;
+}

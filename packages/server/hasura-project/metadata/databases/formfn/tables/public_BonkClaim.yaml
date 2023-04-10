@@ -1,0 +1,26 @@
+table:
+  schema: public
+  name: BonkClaim
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - claimed
+        - id
+        - timeClaimed
+        - userId
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+event_triggers:
+  - name: transferBonk
+    definition:
+      enable_manual: false
+      update:
+        columns:
+          - claimed
+    retry_conf:
+      num_retries: 1
+      interval_sec: 60
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/transferBonkWebhook'

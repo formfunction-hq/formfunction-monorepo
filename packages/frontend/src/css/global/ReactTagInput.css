@@ -1,0 +1,42 @@
+/* Wrapper */
+.react-tag-input {
+  background-color: transparent;
+  border: 1px solid var(--color-tertiary);
+  border-radius: 16px;
+  color: var(--color-primary);
+  outline: none;
+  padding: 12px 16px;
+
+  font-family: var(--font-family-body1);
+  font-size: var(--font-size-body1);
+  font-weight: var(--font-weight-body1);
+  letter-spacing: var(--letter-spacing-body1);
+  line-height: var(--line-height-body1);
+} 
+
+/* Inner input */
+.react-tag-input__input {
+  color: var(--color-primary);
+} 
+.react-tag-input__input::placeholder {
+  color: var(--color-ghost);
+}
+
+/* Tag wrapper */
+.react-tag-input__tag {
+  background: var(--color-lightPurple);
+} 
+
+/* The text content within the tag */
+.react-tag-input__tag__content {
+  font-family: var(--font-family-body1);
+  font-size: var(--font-size-body1);
+  font-weight: var(--font-weight-body1);
+  letter-spacing: var(--letter-spacing-body1);
+  line-height: var(--line-height-body1);
+} 
+
+/* The remove button & icon for a tag */
+.react-tag-input__tag__remove {
+  background-color: var(--color-lightPurple);
+} 

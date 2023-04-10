@@ -1,0 +1,37 @@
+
+.confettiButton {
+  flex-shrink: 0;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.64);
+  border-radius: 50%;
+  display: flex;
+  height: 64px;
+  justify-content: center;
+  width: 64px;
+}
+
+.confettiEmoji {
+  font-size: 30px;
+}
+
+.container {
+  width: 301px;
+}
+
+.fullyFundedRight {
+  flex-grow: 1;
+}
+
+.goalAmount {
+  margin-top: 12px;
+}
+
+.progressBar {
+  margin-top: 24px;
+}
+
+@media only screen and (max-width: 980px) {
+  .container {
+    width: 100%;
+  }
+}

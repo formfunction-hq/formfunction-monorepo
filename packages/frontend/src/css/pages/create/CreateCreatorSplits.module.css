@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.inputAddressContainer {
+  flex-grow: 1;
+}
+
+.inputPercentContainer {
+  flex-basis: 80px;
+}
+
+.inputsContainer {
+  align-items: center;
+  gap: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.viewerWalletAddress {
+  color: var(--color-secondary);
+  pointer-events: none;
+}

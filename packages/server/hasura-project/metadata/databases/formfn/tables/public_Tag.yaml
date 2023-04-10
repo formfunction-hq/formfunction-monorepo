@@ -1,0 +1,40 @@
+table:
+  schema: public
+  name: Tag
+computed_fields:
+  - name: valueLength
+    definition:
+      function:
+        schema: public
+        name: tag_length_fn
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - value
+        - id
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - value
+        - id
+      computed_fields:
+        - valueLength
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - value
+      computed_fields:
+        - valueLength
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - value
+      filter: {}
+      check: null

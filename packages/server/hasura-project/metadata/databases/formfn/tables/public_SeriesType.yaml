@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: SeriesType
+is_enum: true

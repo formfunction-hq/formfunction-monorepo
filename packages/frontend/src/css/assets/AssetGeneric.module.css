@@ -1,0 +1,11 @@
+.container {
+  position: relative;
+}
+
+.container:hover .overlay {
+  display: flex;
+}
+
+.dropShadow {
+  filter: var(--drop-shadow-button);
+}

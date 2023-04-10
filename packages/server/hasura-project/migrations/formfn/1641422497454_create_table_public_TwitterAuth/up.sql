@@ -1,0 +1,2 @@
+CREATE TABLE "public"."TwitterAuth" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "userId" text NOT NULL, "timeCreated" timestamptz NOT NULL DEFAULT now(), "requestToken" text, "requestTokenSecret" text, "accessToken" text, "accessTokenSecret" text, PRIMARY KEY ("id") , FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON UPDATE restrict ON DELETE cascade, UNIQUE ("id"));COMMENT ON TABLE "public"."TwitterAuth" IS E'Auth credentials for linked Twitter accounts';
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

@@ -1,0 +1,43 @@
+.container {
+  margin-top: 48px;
+}
+
+.headerAndDescription {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.image {
+  border-radius: 24px;
+  bottom: -50px;
+  display: block;
+  /* Explicitly specify height to reduce layout shift */
+  /* height: 625px; */
+  margin: auto;
+  margin-top: 10px;
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.info {
+  column-gap: 120px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media only screen and (max-width: 1024px) {
+  .info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 36px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .image {
+    bottom: -40px;
+    margin-top: 0px;
+  }
+}

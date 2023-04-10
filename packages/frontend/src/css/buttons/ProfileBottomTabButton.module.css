@@ -1,0 +1,62 @@
+.profileActiveIcon {
+  background-color: var(--color-lightPurple);
+  border: 2px solid var(--color-brightPurple);
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: 26px;
+  object-fit: cover;
+  width: 26px;
+}
+
+.profileInactiveIcon {
+  background-color: var(--color-lightPurple);
+  border: 2px solid var(--color-white);
+  border-radius: 50%;
+  box-shadow: var(--box-shadow-button);
+  box-sizing: border-box;
+  height: 26px;
+  object-fit: cover;
+  width: 26px;
+}
+
+.tabButton {
+  align-items: center;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 16px 16px 24px;
+  row-gap: 6px;
+}
+
+.tabButtonActive .tabButtonText {
+  color: var(--color-brightPurple);
+}
+
+.tabButtonActive path {
+  stroke: var(--color-brightPurple);
+}
+
+@media (hover: hover) {
+  .tabButton:hover .profileInactiveIcon {
+    border: 2px solid var(--color-brightPurple);
+    box-shadow: none;
+  }
+
+
+  .tabButton:hover .tabButtonText {
+    color: var(--color-brightPurple);
+  }
+
+  .tabButton:hover path {
+    stroke: var(--color-brightPurple);
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .tabButton {
+    border-radius: 12px;
+    flex-grow: 1;
+    padding: 12px 12px 20px;
+  }
+}

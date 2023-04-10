@@ -1,0 +1,160 @@
+table:
+  schema: public
+  name: NftTransaction
+object_relationships:
+  - name: Creator
+    using:
+      foreign_key_constraint_on: creatorId
+  - name: From
+    using:
+      foreign_key_constraint_on: fromUserId
+  - name: Nft
+    using:
+      foreign_key_constraint_on: mint
+  - name: To
+    using:
+      foreign_key_constraint_on: toUserId
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        fromUserId:
+          _eq: X-Hasura-User-Id
+      columns:
+        - creatorId
+        - fromUserId
+        - id
+        - mint
+        - price
+        - toUserId
+        - txid
+        - type
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - auctionCount
+        - comment
+        - creatorId
+        - fromUserId
+        - id
+        - mint
+        - price
+        - timeCreated
+        - toUserId
+        - txid
+        - type
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - auctionCount
+        - comment
+        - creatorId
+        - fromUserId
+        - id
+        - mint
+        - price
+        - timeCreated
+        - toUserId
+        - txid
+        - type
+      filter: {}
+event_triggers:
+  - name: auctionWonUpdatePnftDrop
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 30
+      interval_sec: 120
+      timeout_sec: 180
+    webhook: '{{EVENT_BASE_URL}}/hasura/auctionWonUpdatePnftDrop'
+  - name: auctionWonUpdateUnlockableWinner
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 2
+      interval_sec: 30
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/auctionWonUpdateUnlockableWinner'
+  - name: email-notifs
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 0
+      interval_sec: 10
+      timeout_sec: 600
+    webhook: '{{EVENT_BASE_URL}}/hasura/emailNotifsWebhook'
+  - name: failedTransactionCheck
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 10
+      interval_sec: 120
+      timeout_sec: 180
+    webhook: '{{EVENT_BASE_URL}}/hasura/failedTransactionCheckWebhook'
+  - name: nftTransactionSendEventToMixpanel
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 0
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/nftTransactionSendEventToMixpanel'
+  - name: notifyNewTransaction
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 1
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/notifyNewTransaction'
+  - name: populateNftTransactionUsdPrice
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+      update:
+        columns:
+          - price
+          - currencyId
+    retry_conf:
+      num_retries: 3
+      interval_sec: 60
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/populateNftTransactionUsdPrice'
+  - name: updateIsCollectorForTransaction
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 0
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/updateIsCollectorForTransaction'
+  - name: updateNftTransactionOnchainFields
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+      update:
+        columns:
+          - txid
+    retry_conf:
+      num_retries: 3
+      interval_sec: 60
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/updateNftTransactionOnchainFields'

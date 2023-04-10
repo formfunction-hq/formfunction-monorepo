@@ -1,0 +1,81 @@
+.left {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  gap: 20px;
+  margin-right: -10%;
+}
+
+.overlayContainer {
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.profilePhoto {
+  height: 500px;
+  width: 500px;
+  margin-top: 180px;
+}
+
+.subheader {
+  font-size: 26px;
+}
+
+.year {
+  font-size: 250px;
+  line-height: normal;
+}
+
+@media only screen and (max-width: 1280px) {
+  .year {
+    font-size: 14vw;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .year {
+    font-size: 100px;
+  }
+
+  .profilePhoto {
+    height: 360px;
+    width: 360px;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .year {
+    font-size: 80px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .year {
+    font-size: 60px;
+  }
+}
+
+@media only screen and (max-width: 610px) {
+  .overlayContainer {
+    display: grid;
+  }
+
+  .left {
+    grid-area: 1/1/2/2;
+    margin-top: 40%;
+    padding-left: 20px;
+    width: 100%;
+  }
+
+  .profilePhoto {
+    grid-area: 1/1/2/2;
+    margin-top: -50%;
+    margin-left: 20%;
+  }
+}

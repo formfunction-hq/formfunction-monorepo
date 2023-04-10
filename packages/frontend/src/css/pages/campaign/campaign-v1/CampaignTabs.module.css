@@ -1,0 +1,15 @@
+.container {
+  border-bottom: 1px solid var(--color-tertiary);
+  column-gap: 24px;
+  display: flex;
+}
+
+@media only screen and (max-width: 640px) {
+  .container {
+    overflow-x: scroll;
+  }
+
+  .container > button {
+    flex-shrink: 0;
+  }
+}

@@ -1,0 +1,36 @@
+.sections {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.separator {
+  align-self: stretch;
+  background-color: var(--color-tertiary);
+  height: 1px;
+}
+
+.singleTrait {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.singleTraitName {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.singleTraitValues {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.traitValueLabel {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}

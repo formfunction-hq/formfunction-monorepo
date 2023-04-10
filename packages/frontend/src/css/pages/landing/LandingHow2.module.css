@@ -1,0 +1,24 @@
+.bids {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  width: 50%;
+}
+
+.body {
+  column-gap: 56px;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 1230px) {
+  .bids {
+    width: auto;
+  }
+
+  .body {
+    align-items: center;
+    flex-direction: column;
+    row-gap: 32px;
+  }
+}

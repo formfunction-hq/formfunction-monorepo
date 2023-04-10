@@ -1,0 +1,4 @@
+.listingOptions {
+  display: flex;
+  flex-direction: column;
+}

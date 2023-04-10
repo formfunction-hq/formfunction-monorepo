@@ -1,0 +1,256 @@
+.about {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-bottom: 48px;
+  width: 100%;
+}
+
+.body {
+  margin-top: 48px;
+}
+
+.bodyContainer {
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+  border-radius: 50px;
+  top: -50px;
+  padding-bottom: 50px;
+  background: var(--color-websiteBackground);
+  padding-top: 40px;
+}
+
+.bodyNullStateButton {
+  margin-bottom: 52px;
+}
+
+.bodyNullStateText {
+  margin-bottom: 32px;
+}
+
+.container {
+  display: flex;
+  position: relative;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.coverPhoto {
+  height: 600px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.coverPhotoEmpty {
+  background-color: var(--color-lightPurple);
+}
+
+.header {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.headerContainer {
+  /* Should match coverPhoto height */
+  height: 600px;
+  position: relative;
+}
+
+.illustration {
+  max-width: 500px;
+  width: 100%;
+}
+
+.left {
+  align-items: center;
+  column-gap: 82px;
+  display: flex;
+}
+
+.right {
+  align-items: center;
+  column-gap: 48px;
+  display: flex;
+}
+
+.seriesActions {
+  display: flex;
+  column-gap: 4px;
+}
+
+.seriesArtistPill {
+  margin-bottom: 32px;
+}
+
+.seriesDescription {
+  margin-bottom: 32px;
+}
+
+.seriesInfo {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  column-gap: 56px;
+}
+
+.seriesInfoRight {
+  align-items: flex-start;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+.seriesName {
+  font-size: 40px;
+  margin-bottom: 20px;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.seriesPreviewPhoto {
+  width: 280px;
+  height: 280px;
+  border: 8px solid var(--color-floatingElement);
+  box-sizing: border-box;
+  /* Button shadow */
+  filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.12));
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.seriesStats {
+  margin-bottom: 24px;
+}
+
+.tabsContainer {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tabsContainerDivider {
+  width: 100%;
+  border-bottom: 1px solid var(--color-tertiary);
+  margin-top: -1px;
+  position: relative;
+  z-index: -1;
+}
+
+@media only screen and (max-width: 980px) {
+  .coverPhoto {
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .header {
+    margin-bottom: 0;
+  }
+
+  .headerContainer {
+    padding-top: 120px;
+    top: 0;
+  }
+
+  .headerContainer.withMobileHeader {
+    padding-top: 0;
+  }
+
+  .seriesInfo.withMobileHeader {
+    padding-top: 72px;
+  }
+}
+
+/* Keep in sync with Breakpoints.ts */
+@media only screen and (max-width: 900px) {
+  .bodyContainer {
+    border-radius: 25px;
+    top: -25px;
+  }
+
+  .coverPhoto,
+  .headerContainer {
+    height: 540px;
+  }
+
+  .coverPhoto.withMobileHeader,
+  .headerContainer.withMobileHeader {
+    height: 580px;
+  }
+
+  .headerContainer {
+    padding-top: 36px;
+  }
+
+  .seriesArtistPill {
+    margin-bottom: 20px;
+  }
+
+  .seriesCount {
+    margin-bottom: 8px;
+  }
+
+  .seriesInfo {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 24px;
+  }
+
+  .seriesInfo.withMobileHeader {
+    padding-top: 24px;
+  }
+
+  .seriesInfoRight {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .seriesName {
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 36px;
+  }
+
+  .seriesPreviewPhoto {
+    width: 100px;
+    height: 100px;
+    border: 4px solid var(--color-white);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .body {
+    margin-top: 32px;
+  }
+
+  .coverPhoto,
+  .headerContainer {
+    height: 520px;
+  }
+
+  .coverPhoto.withMobileHeader,
+  .headerContainer.withMobileHeader {
+    height: 540px;
+  }
+
+  .seriesName {
+    font-size: 28px;
+  }
+
+  .bodyContainer {
+    padding-top: 24px;
+  }
+}

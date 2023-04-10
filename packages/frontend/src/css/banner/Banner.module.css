@@ -1,0 +1,22 @@
+@keyframes slideIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.container {
+  align-items: center;
+  column-gap: 8px;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  padding: 12px 12px;
+
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-name: slideIn;
+}

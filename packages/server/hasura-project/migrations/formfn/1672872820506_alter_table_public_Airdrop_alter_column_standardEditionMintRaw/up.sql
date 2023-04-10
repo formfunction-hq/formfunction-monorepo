@@ -1,0 +1,1 @@
+comment on column "public"."Airdrop"."standardEditionMintRaw" is E'Used to store the standard edition mint immediately after minting but possibly before the NFT is inserted into our DB for easier retry logic and better reliability.';

@@ -1,0 +1,35 @@
+/* KEEP BREAKPOINTS IN SYNC WITH Breakpoints.ts */
+
+.grid {
+  column-gap: 44px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  row-gap: 44px;
+}
+
+@media only screen and (max-width: 1520px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Breakpoint determined via trial and error, to ensure that text in NftOtherInfo does not wrap */
+@media only screen and (max-width: 1130px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .grid {
+    column-gap: 32px;
+    row-gap: 32px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    row-gap: 28px;
+  }
+}

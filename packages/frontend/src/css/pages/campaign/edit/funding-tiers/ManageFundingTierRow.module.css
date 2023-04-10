@@ -1,0 +1,25 @@
+.rowContainer {
+  background-color: var(--color-floatingElement);
+  display: flex;
+  border: 1px solid var(--color-ghost);
+  border-radius: 16px;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 24px;
+  width: 100%;
+}
+
+.rowContainerMarginTop {
+  margin-top: 16px;
+}
+
+.rowInnerContainer {
+  align-items: center;
+  column-gap: 12px;
+  display: flex;
+  flex-direction: row;
+}
+
+.rowInnerContainer:hover {
+  cursor: grab;
+}

@@ -1,0 +1,27 @@
+.body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 640px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  text-align: center;
+}
+
+.imageContainer {
+  background-color: var(--color-floatingElement);
+  box-shadow: var(--box-shadow-button);
+  margin: 24px auto 48px;
+  padding: 8px;
+  width: 250px;
+}
+
+@media only screen and (max-width: 980px) {
+  .body {
+    width: 100%;
+  }
+}

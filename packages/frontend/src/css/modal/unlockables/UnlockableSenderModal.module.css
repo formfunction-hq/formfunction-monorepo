@@ -1,0 +1,42 @@
+.body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 640px;
+}
+
+.button {
+  display: block;
+  margin: 48px auto 12px;
+}
+
+.buyerEmail {
+  align-items: center;
+  column-gap: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.dismissButton {
+  margin: 36px auto 16px;
+}
+
+.imageContainer {
+  background-color: var(--color-floatingElement);
+  box-shadow: var(--box-shadow-button);
+  margin: 48px auto;
+  padding: 8px;
+  width: 250px;
+}
+
+@media only screen and (max-width: 980px) {
+  .body {
+    width: 100%;
+  }
+
+  .button {
+    margin-top: 24px;
+  }
+}

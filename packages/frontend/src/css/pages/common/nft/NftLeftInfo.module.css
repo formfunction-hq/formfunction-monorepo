@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 48px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+/* Header breakpoint */
+@media only screen and (max-width: 980px) {
+  .container {
+    row-gap: 36px;
+  }
+}

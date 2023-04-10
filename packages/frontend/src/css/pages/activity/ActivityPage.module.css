@@ -1,0 +1,32 @@
+.body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.tabs {
+  border-bottom: 1px solid var(--color-tertiary);
+  column-gap: 48px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48px;
+  margin-top: 48px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 980px) {
+  .tabs {
+    margin-top: 12px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .tabs {
+    column-gap: 18px;
+    margin-bottom: 32px;
+  }
+}

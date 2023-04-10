@@ -1,0 +1,22 @@
+.button {
+  align-items: center;
+  background-color: var(--color-floatingElement);
+  border-radius: 100px;
+  box-shadow: var(--box-shadow-button);
+  column-gap: 8px;
+  display: flex;
+  flex-shrink: 0;
+  padding: 12px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.buttonSmallIcon {
+  padding: 10px;
+}
+
+.buttonWithLabel {
+  padding: 12px 24px;
+}

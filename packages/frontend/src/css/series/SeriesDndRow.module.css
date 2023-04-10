@@ -1,0 +1,34 @@
+.deleteButton {
+  font-size: 17px;
+  margin-right: 8px;
+}
+
+.deletePopover {
+  font-size: 17px;
+  width: 300px;
+}
+
+.rowContainer {
+  background-color: var(--color-floatingElement);
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--color-ghost);
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.rowInnerContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  column-gap: 12px;
+}
+
+.rowInnerContainer:hover {
+  cursor: grab;
+}
+
+.rowContent {
+  flex: 1 1 auto;
+}

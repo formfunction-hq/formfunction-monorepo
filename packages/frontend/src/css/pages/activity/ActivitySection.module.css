@@ -1,0 +1,19 @@
+.bottomDivider {
+  border-top: 1px solid var(--color-tertiary);
+  margin-top: 56px;
+  width: 100%;
+}
+
+.children {
+  margin-top: 36px;
+}
+
+@media only screen and (max-width: 768px) {
+  .bottomDivider {
+    margin-top: 32px;
+  }
+
+  .children {
+    margin-top: 24px;
+  }
+}

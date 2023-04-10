@@ -1,0 +1,3335 @@
+schema {
+  query: query_root
+  mutation: mutation_root
+}
+
+enum CampaignFundingTierTypeExpress_enum {
+  Gacha
+  Standard
+}
+
+type CampaignV2 {
+  about: CampaignAbout!
+  category: CampaignCategoryExpress_enum!
+  colorScheme: CampaignColorSchemeExpress_enum!
+  creator: UserExpress!
+  endTime: timestamptz
+  fundingTierOrder: [ID!]
+  fundingTiers: [CampaignFundingTierExpress!]
+  galleryAssets: [AssetExpress!]
+  goal: CampaignGoal!
+
+  """How progress is marked on the campaign progress bar"""
+  goalProgressSymbol: String!
+  id: ID!
+  isViewerHolder: Boolean
+  logoAsset: AssetExpress
+  nftAssets(input: NftAssetsForCampaignInput!): [NftAsset!]!
+  previewAsset: AssetExpress!
+  slug: String!
+  socialLinks: CampaignSocialLinks
+  status: CampaignStatusExpress_enum!
+
+  """A short description of the campaign"""
+  tagline: String!
+  teamMembers: [CampaignTeamMemberExpress!]
+  timeCreated: timestamptz!
+  title: String!
+  youtubeVideoHref: String
+}
+
+type CampaignAbout {
+  campaign: String
+  contactInfo: String
+  creator: String
+  risksAndChallenges: String
+  timeline: String
+}
+
+enum CampaignCategoryExpress_enum {
+  Art
+  Brand
+  Comics
+  Culture
+  DanceAndTheater
+  Design
+  Education
+  Fashion
+  FilmAndVideo
+  Food
+  Games
+  Music
+  Photography
+  Podcasts
+  Product
+  Writing
+}
+
+enum CampaignColorSchemeExpress_enum {
+  AliceBlueSinopia
+  AntiFlashWhiteDarkGunmetal
+  BrightGrayMediumBlue
+  CulturedCadmiumGreen
+  GreenishGrayMidnightBlue
+  SeashellMaximumRed
+}
+
+type UserExpress {
+  CoverPhoto: PhotoExpress
+  ProfilePhoto: PhotoExpress
+  bio: String
+  coverPhotoId: uuid
+  discordHandle: String
+  displayName: String
+  email: String
+  hasCompletedSignup: Boolean!
+  hasTakenCollectorSurvey2023: Boolean
+  hasTakenCreatorSurvey2023: Boolean
+  id: ID!
+  instagramName: String
+  isCollector: Boolean!
+  isWhitelisted: Boolean!
+  profilePhotoId: uuid
+  timeCreated: timestamptz!
+  twitterName: String
+  username: String!
+  websiteUrl: String
+}
+
+scalar uuid
+
+scalar timestamptz
+
+union CampaignFundingTierExpress = CampaignFundingTierStandard
+
+type CampaignFundingTierStandard implements ICampaignFundingTier {
+  benefits: [CampaignBenefitExpress!]
+  description: String!
+  id: ID!
+  title: String!
+  metadataAccounts(after: String, first: PaginationAmount!): MetadataAccountsConnection
+  nftOrder: [String!]
+}
+
+interface ICampaignFundingTier {
+  benefits: [CampaignBenefitExpress!]
+  description: String!
+  id: ID!
+  title: String!
+}
+
+type CampaignBenefitExpress {
+  description: String!
+  id: ID!
+}
+
+type MetadataAccountsConnection {
+  edges: [MetadataAccountsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type MetadataAccountsEdge {
+  cursor: String!
+  node: MetadataAccount!
+}
+
+type MetadataAccount implements IAccount {
+  accountInfo: AccountInfo!
+  assetHeight: Int
+  assetWidth: Int
+  contentType: String!
+  data: MetadataAccountData!
+  editionNonce: Int
+  highestBidInLamports(userId: String!): bigint
+  id: ID!
+  isMutable: Boolean!
+  masterEdition: String
+  mint: PublicKey!
+  nft: NftExpress!
+  nonstandardAsset: AssetExpress
+  numberOfBidsForCurrentAuction: Int
+  offchainData: MetadataOffchain!
+  openBidStatus(userId: String!): OpenBidStatus
+  primarySaleHappened: Boolean!
+  standardEdition: PublicKey
+  tags: [String!]!
+  timeCreated: timestamptz
+  unlockable: UnlockableExpress
+  updateAuthority: PublicKey!
+  videoPlaybackId: String
+  videoPreviewPlaybackId: String
+}
+
+interface IAccount {
+  accountInfo: AccountInfo!
+}
+
+type AccountInfo {
+  executable: Boolean!
+  id: ID!
+  lamports: Int!
+  owner: PublicKey!
+  pubkey: PublicKey!
+}
+
+scalar PublicKey
+
+type MetadataAccountData {
+  attributes: [NftAttribute!]
+  creators: [MetadataCreator!]
+  name: String!
+  sellerFeeBasisPoints: Int!
+  symbol: String!
+  uri: String!
+}
+
+type NftAttribute {
+  traitType: String!
+  value: String!
+}
+
+type MetadataCreator {
+  address: PublicKey!
+  requestId: String
+  share: Int!
+  status: RequestStatusExpress_enum!
+  user: UserExpress
+}
+
+enum RequestStatusExpress_enum {
+  Approved
+  Pending
+  Rejected
+}
+
+scalar bigint
+
+type NftExpress {
+  AuctionWinner: UserExpress
+  CampaignFundingTier: ICampaignFundingTier
+  CandyMachine: CandyMachineExpress
+  Creator: UserExpress
+  Owner: UserExpress
+  Series: SeriesExpress
+  antiBotProtectionEnabled: Boolean
+  auctionCount: Int!
+  auctionDurationInSeconds: Int!
+  auctionEndTime: timestamptz
+  auctionHoldingPeriodEndTime: timestamptz
+  auctionWinnerId: String
+  creatorId: String!
+  disclosures: [NftDisclosureExpress!]
+  edition: Int
+  editionAllowlistEnabled: Boolean!
+  editionAllowlistSaleStartTime: timestamptz
+  editionBuyLimitPerAddress: Int
+  editionPriceInfo: EditionPriceInfo
+  editionPublicSaleStartTime: timestamptz
+  id: ID!
+  isAirdrop: Boolean!
+  isImported: Boolean!
+  isMasterEdition: Boolean!
+  isOffPlatform: Boolean!
+  isPnft: Boolean!
+  isPnftDropActive: Boolean
+  masterEditionMint: PublicKey
+
+  """
+  This is the value for max supply that we want to display in the UI. Put another way, it is the user-facing max supply. It may differ from maxSupplyOnchain if the user stops minting before all editions are sold.
+  """
+  maxSupply: Int
+  maxSupplyOfMasterEdition: Int
+
+  """
+  The on-chain max supply value. This may differ from maxSupply if the user stops minting before all editions are sold.
+  """
+  maxSupplyOnchain: Int
+  mint: String!
+
+  """
+  If the NFT is a master edition, returns the number of editions printed from the master edition. If the NFT is a standard edition, returns the number of editions printed from its master edition.
+  """
+  numberOfStandardEditionsMinted: Int
+  ownerId: String!
+  pnftIdForAuction: String
+  price: bigint
+  priceLastListed: bigint
+  priceLastListedV2: Price
+  priceLastSoldForInLamports: bigint
+  priceLastSoldV2: Price
+  priceV2: Price
+  scheduledAuctionTime: timestamptz
+  seriesRarityRanking: Int
+  status: NftStatusExpress_enum!
+  tickSizeInfo: TickSizeInfo!
+  timeCreated: timestamptz!
+  timeExtensionDurationInSeconds: Int!
+}
+
+"""
+Contains information necessary to display and allow minting of generative mints
+"""
+type CandyMachineExpress {
+  """Onchain Candy Machine authority"""
+  Authority: UserExpress!
+
+  """Representative authority to be the main creator of the NFTs"""
+  CreatorAuthority: UserExpress!
+  Series: SeriesExpress!
+  allowlistPrice: Price
+  allowlistSaleStartTime: timestamptz
+  antiBotProtectionEnabled: Boolean!
+  id: ID!
+  limitPerAddress: Int!
+  maxSupply: Int!
+  omniMintWallets: [PublicKey!]!
+  premintPrice: Price
+  price: Price!
+  publicKey: String!
+  publicSaleEndTime: timestamptz!
+  publicSaleStartTime: timestamptz!
+  totalAmountMinted: Int!
+}
+
+type SeriesExpress {
+  AvatarPhoto: PhotoExpress!
+  CoverPhoto: PhotoExpress
+  Creator: UserExpress!
+  description: String
+  id: ID!
+  mint: String!
+  name: String!
+  nftOrder: [String!]
+  slug: String!
+  timeCreated: timestamptz!
+  type: SeriesTypeExpress_enum!
+}
+
+enum SeriesTypeExpress_enum {
+  GenerativeMint
+  UserCurated
+}
+
+type Price {
+  amount: bigint!
+  currencyInfo: CurrencyExpress!
+}
+
+type CurrencyExpress {
+  decimals: Int!
+  iconSrc: String
+  id: ID!
+  mint: String!
+  name: CurrencyNameExpress_enum!
+  shortSymbol: String
+  symbol: String!
+}
+
+enum CurrencyNameExpress_enum {
+  Ash
+  Bonk
+  FamousFoxFederation
+  Particles
+  SkeletonCrew
+  Solana
+  UsdCoin
+}
+
+type NftDisclosureExpress {
+  details: String
+  type: NftDisclosureTypeExpress_enum!
+}
+
+enum NftDisclosureTypeExpress_enum {
+  AiArt
+  Derivative
+  Nsfw
+}
+
+type EditionPriceInfo {
+  allowlistPriceInFullDecimals: bigint
+  priceFunctionType: PriceFunctionTypeExpress_enum!
+  priceParams: [Float!]!
+  startingPriceInLamports: bigint!
+}
+
+enum PriceFunctionTypeExpress_enum {
+  Constant
+  Linear
+  Minimum
+}
+
+enum NftStatusExpress_enum {
+  AirdropCompleted
+  AirdropInProgress
+  Auction
+  Burned
+  Listed
+  ListedEditions
+  ListedInstantSale
+  ListingScheduled
+  Owned
+  OwnedStoppedMintingForEditions
+  SoldOutEditions
+}
+
+type TickSizeInfo {
+  tickSizeConstantInLamports: bigint
+}
+
+type AssetExpress {
+  contentType: String!
+  darkModeInfo: AssetDarkModeInfo
+  dimensions: AssetDimensions
+  downloadUrl: String!
+  id: ID!
+  path: String!
+  videoPlaybackId: String
+}
+
+type AssetDarkModeInfo {
+  downloadUrl: String!
+  path: String!
+}
+
+type AssetDimensions {
+  height: Int!
+  width: Int!
+}
+
+type MetadataOffchain {
+  _contentType: String!
+  _isOffPlatform: Boolean!
+  _mint: String!
+  description: String
+  image(input: MetadataOffchainImageInput): String!
+}
+
+input MetadataOffchainImageInput {
+  height: Int
+}
+
+enum OpenBidStatus {
+  HighestBid
+  Outbid
+  Refund
+  Won
+}
+
+type UnlockableExpress {
+  activationPrice: Price
+  activationPriceInLamports: bigint
+  asset: AssetExpress!
+  category: UnlockableCategory!
+  description: String
+  id: ID!
+  name: String!
+  timeCreated: timestamptz!
+  unlockableWinners: [UnlockableWinnerExpress!]
+}
+
+enum UnlockableCategory {
+  DigitalDownload
+  Merch
+  Other
+  PhysicalOriginal
+  PhysicalPrint
+}
+
+type UnlockableWinnerExpress {
+  hasBuyerDismissedShareInfoCta: Boolean!
+  hasCreatorDismissedSeeInfoCta: Boolean!
+  hasUserDismissedPromptToShareInfo: Boolean! @deprecated(reason: "Renamed the field to hasBuyerDismissedShareInfoCta.")
+  id: ID!
+  timeCreated: timestamptz!
+  user: UserExpress!
+
+  """Only the unlockable creator or winner can view this field."""
+  userEmail(input: UnlockableWinnerUserEmailInput): String
+  userId: String!
+}
+
+input UnlockableWinnerUserEmailInput {
+  viewerId: ID
+}
+
+type PageInfo {
+  endCursor: String!
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String!
+}
+
+"""Enforces a maximum number of items that can be queried for"""
+scalar PaginationAmount
+
+union CampaignGoal = CampaignMonetaryGoal | CampaignSaleCountGoal
+
+type CampaignMonetaryGoal implements ICampaignGoal {
+  currentAmount: bigint!
+  goalAmount: bigint!
+  currency: CurrencyExpress!
+}
+
+interface ICampaignGoal {
+  currentAmount: bigint!
+  goalAmount: bigint!
+}
+
+type CampaignSaleCountGoal implements ICampaignGoal {
+  currentAmount: bigint!
+  goalAmount: bigint!
+}
+
+type NftAsset {
+  asset: AssetExpress!
+  nftInfo: NftAssetNftInfo!
+}
+
+type NftAssetNftInfo {
+  mint: String!
+}
+
+input NftAssetsForCampaignInput {
+  first: PaginationAmount!
+}
+
+type CampaignSocialLinks {
+  discord: String
+  instagram: String
+  twitter: String
+  website: String
+}
+
+enum CampaignStatusExpress_enum {
+  Approved
+  Concluded
+  Draft
+  Pending
+  Published
+  Rejected
+}
+
+type CampaignTeamMemberExpress {
+  member: UserExpress!
+  role: CampaignTeamMemberRoleExpress_enum!
+  status: RequestStatusExpress_enum!
+}
+
+enum CampaignTeamMemberRoleExpress_enum {
+  Admin
+  Creator
+  Member
+}
+
+enum NotificationChannelExpress_enum {
+  ActivityFeed
+  Email
+}
+
+enum NotificationTypeExpress_enum {
+  AirdropCompleted
+  AirdropGiftReceived
+  BidderAuctionAlmostOver
+  BidderAuctionExtended
+  BidderAuctionSettled
+  BidderClaimPnft
+  BidderClaimPnftReminder
+  BidderLostAuction
+  BidderOutbid
+  BidderWonAuction
+  BonkClaim
+  BuyerOfferAccepted
+  BuyerOfferExpired
+  CampaignAddedAsTeamMember
+  CampaignApproved
+  CampaignCommunityNewUpdateShared
+  CampaignFollowersCampaignPublished
+  CampaignGoalReachedXPercent
+  CampaignRejected
+  CampaignRejectedWithFeedback
+  CollabRequest
+  CreatorSecondarySale
+  FollowerAuctionAlmostOver
+  FollowerNewEditionsListed
+  FollowerNewPieceListed
+  FollowerNewPieceListedSecondary
+  FollowerNewPieceScheduled
+  FollowerScheduledAuctionIsLive
+  InviteReceived
+  InvitesConvertedToCreator
+  InvitesInviteeAcceptedInvite
+  NewFollower
+  OwnerAuctionEnded
+  OwnerAuctionEndedNoBids
+  OwnerAuctionExtended
+  OwnerAuctionSettled
+  OwnerEditionSold
+  OwnerEditionsSoldOut
+  OwnerFirstBidReceived
+  OwnerGenerativeMintSoldOut
+  OwnerOfferReceived
+  OwnerOtherBidReceived
+  OwnerPieceSoldAsInstantSale
+  PnftDropClosed
+  UnlockableDeclinedToSharedInfo
+  UnlockableInfoShared
+  UnlockableShareInfo
+  VotingApproved
+  VotingBrokeGuidelines
+  VotingDuplicate
+  VotingRejected
+}
+
+type PhotoExpress {
+  description: String
+  id: ID!
+  photoUrl: String!
+  timeCreated: timestamptz!
+  title: String
+  userId: String!
+}
+
+type query_root {
+  """Namespace field for campaign related queries."""
+  CampaignsNamespace: CampaignsNamespaceQueryResponse!
+
+  """Query field that houses comment queries."""
+  CommentQueries: CommentQueriesResponse!
+
+  """Query field that houses Formfunction Flashback queries."""
+  FlashbackQueries: FlashbackQueriesResponse!
+
+  """
+  Query field that houses queries for fetching holders with various criteria
+  """
+  HolderQueries: HolderQueriesResponse!
+
+  """Query field that houses NFT queries."""
+  NftQueries: NftQueriesResponse!
+
+  """Namespace field for notification related queries."""
+  NotificationsNamespace: NotificationsNamespaceResponse!
+
+  """Namespace field for Post queries."""
+  PostsNamespace: PostsNamespaceQueryResponse!
+
+  """Namespace field for series queries."""
+  SeriesNamespace: SeriesNamespaceResponse!
+
+  """Namespace field for Spotlight related queries."""
+  SpotlightNamespace: SpotlightResponse!
+
+  """Namespace field for various creator/collector stats."""
+  StatsNamespace: StatsNamespaceResponse!
+
+  """Query field for User queries."""
+  UserQueries: UserQueriesQueryResponse!
+
+  """Returns all the attributes for an NFT series"""
+  attributesForSeries(input: AttributesForSeriesInput!): AttributesForSeriesResponse
+  bidToCancel(input: BidToCancelInput!): NftTransactionExpress
+  campaignActivityForSlug: CampaignActivityForSlugResponse!
+  campaignForSlug(input: CampaignForSlugInput!): CampaignForSlugResponse!
+  campaignSectionsForSlug(input: CampaignSectionsForSlugInput!): CampaignSectionsForSlugResponse!
+  campaignSectionsForSlugV2(input: CampaignSectionsForSlugV2Input!): CampaignSectionsForSlugV2Response!
+  editionBuyerInfo(input: EditionBuyerInfoInput!): EditionBuyerInfoResponse!
+  editionsForMasterEditionMint: EditionsForMasterEditionMintResponse!
+  exchangeRate(input: ExchangeRateInput!): ExchangeRateResponse!
+  isOwnerValid(input: IsOwnerValidInput!): IsOwnerValidResponse!
+  metadataAccountForMint(input: MetadataAccountForMintInput!): MetadataAccount
+  metadataAccounts(input: MetadataAccountsInput!): [MetadataAccount!]!
+  metadataAccountsAvailableToAddToCampaign: MetadataAccountsAvailableToAddToCampaignResponse!
+  metadataAccountsCollected: MetadataAccountsCollectedResponse!
+  metadataAccountsCreated: MetadataAccountsCreatedResponse!
+  metadataAccountsFeatured(input: MetadataAccountsFeaturedInput): [MetadataAccount!]!
+  metadataAccountsFeaturedEditions: MetadataAccountsFeaturedEditionsResponse
+  metadataAccountsForAddress: MetadataAccountsForAddressResponse!
+  metadataAccountsForAid(input: MetadataAccountsForAidInput): [MetadataAccount!]!
+  metadataAccountsForExplore: MetadataAccountsForExploreResponse!
+  metadataAccountsForImport(input: MetadataAccountsForImportInput!): MetadataAccountsForImportResponse
+  metadataAccountsForSeries: MetadataAccountsForSeriesResponse
+  metadataAccountsHiddenGems: MetadataAccountsHiddenGemsResponse
+  nftOffers: NftOffersResponse!
+  nftOffersForUser: NftOffersForUserResponse!
+  nftPageExtras(input: NftPageExtrasInput!): NftPageExtrasResponse!
+  nftTransactions: NftTransactionsResponse!
+
+  """
+  Fetches the list of transactions that will be associated with an NFT once it is imported. Used so we can display a preview of these transactions to users
+  """
+  nftTransactionsForImport(input: NftTransactionsForImportInput!): NftTransactionsForImportResponse!
+  openBids(input: OpenBidsInput!): [OpenBid!]!
+
+  """
+  This query returns a list of MetadataAccounts of all the NFTs which have listed the input masterEditionPnftId as a participation NFT in an auction.
+  """
+  pnftAuctionNfts(input: PnftAuctionNftsInput!): PnftAuctionNftsResponse!
+
+  """
+  This is a convenience query which lets you fetch a pNFT MetadataAccount given the original auction NFT mint.
+  """
+  pnftInfo(input: PnftInfoInput!): PnftInfoResponse!
+  refundableAmounts(input: RefundableAmountsInput!): RefundableAmountsResponse!
+  test: NftStatusExpress_enum
+  test2: String
+
+  """To help test/debug behavior of long running queries"""
+  testSleep(seconds: Int!): Int
+  usersFeatured: [UserAndMetadataAccounts!]!
+  usersForExplore: UsersForExploreResponse!
+  walletViewer(input: WalletViewerInput!): [MetadataAccount!]!
+}
+
+type CampaignsNamespaceQueryResponse {
+  campaignForNft(input: CampaignForNftInput!): CampaignForNftResponse!
+  campaignFundingTiersForSlug(input: CampaignFundingTiersForSlugInput!): CampaignFundingTiersForSlugResponse!
+  campaignHoldersForSlug: CampaignHoldersForSlugResponse!
+  campaignV2ActivityForSlug(input: CampaignV2ActivityForSlugInput!): CampaignV2ActivityForSlugReponse!
+  campaignV2ForSlug(input: CampaignV2ForSlugInput!): CampaignV2ForSlugResponse!
+  campaignsFeatured(input: CampaignsFeaturedInput!): CampaignsFeaturedResponse!
+  campaignsForExplore(input: CampaignsForExploreInput!): CampaignsForExploreResponse!
+  campaignsForHero: CampaignsForHeroResponse!
+
+  """Name is a bit misleading—these are the campaigns the user has created"""
+  campaignsForUser(input: CampaignsForUserInput!): CampaignsForUserResponse!
+
+  """
+  Campaigns the user is an active supporter of, i.e. campaigns the user is currently a part of (a user is part of a campaign if they hold one of the campaign's NFTs). A user is NOT an active supporter if they initially supported a campaign by buying an NFT, but later sold or transferred the NFT.
+  """
+  campaignsWhereUserIsActiveSupporter(input: CampaignsWhereUserIsActiveSupporterInput!): CampaignsWhereUserIsActiveSupporterResponse!
+}
+
+type CampaignForNftResponse {
+  campaign: CampaignV2
+
+  """
+  campaign may be null even if this is non-null, because exposing a campaign's goal currency has different permissions than exposing the campaign itself. For example, we want to restrict offer currencies when an NFT is part of a campaign, even if the campaign is not yet published.
+  """
+  campaignGoalCurrency: CurrencyExpress
+}
+
+input CampaignForNftInput {
+  mint: PublicKey!
+}
+
+type CampaignFundingTiersForSlugResponse {
+  campaignFundingTiers: [CampaignFundingTierExpress!]
+}
+
+input CampaignFundingTiersForSlugInput {
+  campaignSlug: String!
+  creatorId: String
+  creatorUsername: String
+}
+
+type CampaignHoldersForSlugResponse {
+  holders(after: String, first: PaginationAmount!, input: CampaignHoldersForSlugInput!): HolderConnection!
+  holdersByFundingTier(input: CampaignHoldersForSlugInput!): [CampaignFundingTierHolders!]
+}
+
+type HolderConnection {
+  edges: [HolderEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type HolderEdge {
+  cursor: String!
+  node: Holder!
+}
+
+type Holder {
+  user: UserExpress!
+}
+
+input CampaignHoldersForSlugInput {
+  campaignSlug: String!
+  creatorId: String
+  creatorUsername: String
+  fundingTierIds: [ID!] = null
+  viewerId: ID
+}
+
+type CampaignFundingTierHolders {
+  fundingTier: CampaignFundingTierExpress!
+  holders: [Holder!]!
+}
+
+type CampaignV2ActivityForSlugReponse {
+  campaignActivity(after: String, first: PaginationAmount!, input: CampaignV2ActivityForSlugInput!): NftTransactionsConnection
+}
+
+type NftTransactionsConnection {
+  edges: [NftTransactionsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type NftTransactionsEdge {
+  cursor: String!
+  node: NftTransactionExpress!
+}
+
+type NftTransactionExpress {
+  Creator: UserExpress
+  From: UserExpress
+  To: UserExpress
+  auctionCount: Int!
+  comment: String
+  creatorId: String!
+  fromAddress: String!
+  id: ID!
+  ixIndex: Int
+  ixInnerIndex: Int
+  mint: PublicKey!
+  nftInfo: NftTransactionNftInfo!
+  price: Price
+  priceInLamports: bigint
+  source: NftTransactionSourceExpress_enum
+  timeCreated: timestamptz!
+  toAddress: String!
+  txid: String
+  type: NftTransactionTypeExpress_enum!
+  usdPrice: Float
+}
+
+type NftTransactionNftInfo {
+  assetHeight: Int
+  assetWidth: Int
+  edition: Int
+  maxSupply: Int
+  maxSupplyOfMasterEdition: Int
+  mint: String!
+  name: String!
+}
+
+enum NftTransactionSourceExpress_enum {
+  ExchangeArt
+  Holaplex
+}
+
+enum NftTransactionTypeExpress_enum {
+  AuctionWon
+  Bid
+  Burned
+  ChangePriceForEditions
+  ClaimedPnft
+  HolaplexRedeemBid
+  HolaplexRedeemFullRightsTransferBid
+  HolaplexRedeemPrintingV2Bid
+  Imported
+  Listed
+  ListedEditions
+  ListedInstantSale
+  ListingCancelled
+  Minted
+  Offer
+  OfferCancelled
+  Refunded
+  Sold
+  SoldAcceptedOffer
+  SoldEditionPrimary
+  SoldGenerativeMint
+  SoldInstantSale
+  StoppedMintingForEditions
+  Transferred
+}
+
+input CampaignV2ActivityForSlugInput {
+  campaignSlug: String!
+  creatorId: String
+  creatorUsername: String
+}
+
+type CampaignV2ForSlugResponse {
+  campaign: CampaignV2
+}
+
+input CampaignV2ForSlugInput {
+  campaignSlug: String!
+  creatorId: String
+  creatorUsername: String
+}
+
+type CampaignsFeaturedResponse {
+  campaigns: [CampaignV2!]!
+  featuredCategories: [CampaignCategoryExpress_enum!]!
+}
+
+input CampaignsFeaturedInput {
+  """If null or empty, no category filtering is applied."""
+  categories: [CampaignCategoryExpress_enum!]
+}
+
+type CampaignsForExploreResponse {
+  campaigns(after: String, first: PaginationAmount!, input: CampaignsForExploreInput!): CampaignsConnection
+}
+
+type CampaignsConnection {
+  edges: [CampaignsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type CampaignsEdge {
+  cursor: String!
+  node: CampaignV2!
+}
+
+input CampaignsForExploreInput {
+  """If null or empty, all categories are included."""
+  categories: [CampaignCategoryExpress_enum!]
+  sortOrder: CampaignSortOrder_enum!
+}
+
+enum CampaignSortOrder_enum {
+  Newest
+  Oldest
+}
+
+type CampaignsForHeroResponse {
+  campaigns: [CampaignV2!]!
+}
+
+type CampaignsForUserResponse {
+  campaigns(after: String, first: PaginationAmount!, input: CampaignsForUserInput!): CampaignsConnection
+}
+
+input CampaignsForUserInput {
+  """One of userId and username must be non-null"""
+  userId: ID
+
+  """One of userId and username must be non-null"""
+  username: String
+
+  """
+  A list of statuses to filter by. If null or empty, default filtering will be applied
+  """
+  statuses: [CampaignStatusExpress_enum!]
+  viewerId: ID
+}
+
+type CampaignsWhereUserIsActiveSupporterResponse {
+  campaigns(after: String, first: PaginationAmount!, input: CampaignsWhereUserIsActiveSupporterInput!): CampaignsConnection
+}
+
+input CampaignsWhereUserIsActiveSupporterInput {
+  """One of userId and username must be non-null"""
+  userId: ID
+
+  """One of userId and username must be non-null"""
+  username: String
+
+  """
+  A list of statuses to filter by. If null or empty, default filtering will be applied
+  """
+  statuses: [CampaignStatusExpress_enum!]
+}
+
+type CommentQueriesResponse {
+  commentsForPost: CommentsForPostResponse!
+}
+
+type CommentsForPostResponse {
+  comments(after: String, first: PaginationAmount!, input: CommentsForPostInput!): CommentsConnection!
+}
+
+type CommentsConnection {
+  edges: [CommentsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type CommentsEdge {
+  cursor: String!
+  node: CommentExpress!
+}
+
+type CommentExpress {
+  comment: String!
+  commenter: UserExpress!
+  id: ID!
+  timeCreated: timestamptz!
+}
+
+input CommentsForPostInput {
+  postId: ID!
+}
+
+type FlashbackQueriesResponse {
+  flashbackForUsername(input: FlashbackForUsernameInput!): FlashbackForUsernameResponse!
+  flashbackForViewer(input: FlashbackForViewerInput!): FlashbackForViewerResponse!
+}
+
+type FlashbackForUsernameResponse {
+  """Null if viewer is not a user or if they are not an artist"""
+  artistStats: FlashbackArtistStats
+
+  """Null if viewer is not a user or if they have not collected any pieces"""
+  collectorStats: FlashbackCollectorStats
+}
+
+type FlashbackArtistStats {
+  numEditionsSold: Int!
+  numOneOfOnesSold: Int!
+  numPrimarySales: Int!
+
+  """Null if not in the top 100. 1-indexed"""
+  numSalesRank: Int
+  numSecondarySales: Int!
+  numUniqueCollectors: Int!
+  soldNftAssets: [NftAsset!]!
+  topSellingPiece: MetadataAccount
+  topSellingPiecePrice: Price
+  totalIncomeInLamports: bigint!
+  totalIncomeInUsd: Float!
+  totalVolumeInLamports: bigint!
+  totalVolumeInUsd: Float!
+  uniqueCollectorsSample: [UserExpress!]!
+
+  """Null if not in the top 100. 1-indexed"""
+  volumeRank: Int
+}
+
+type FlashbackCollectorStats {
+  artistsSupportedSample: [UserExpress!]!
+  biggestSecondarySale: MetadataAccount
+  biggestSecondarySalePrice: Price
+  boughtNftAssets: [NftAsset!]!
+  firstArtistSupported: UserExpress
+  firstEditionBought: MetadataAccount
+  firstOneOfOneBought: MetadataAccount
+  numArtistsSupported: Int!
+
+  """Null if not in the top 100. 1-indexed"""
+  numBuysRank: Int
+  numEditionsBought: Int!
+  numOneOfOnesBought: Int!
+  numPrimaryBuys: Int!
+  numSecondaryBuys: Int!
+  numSecondarySales: Int!
+  totalVolumeSpentInLamports: bigint!
+
+  """Null if not in the top 100. 1-indexed"""
+  volumeRank: Int
+}
+
+input FlashbackForUsernameInput {
+  check: String!
+  username: String!
+}
+
+type FlashbackForViewerResponse {
+  """Null if viewer is not a user or if they are not an artist"""
+  artistStats: FlashbackArtistStats
+
+  """Null if viewer is not a user or if they have not collected any pieces"""
+  collectorStats: FlashbackCollectorStats
+}
+
+input FlashbackForViewerInput {
+  viewerId: ID!
+}
+
+type HolderQueriesResponse {
+  holdersForUser(input: HoldersForUserInput!): HoldersForUserResponse!
+  seriesHoldersForUser(input: SeriesHoldersForUserInput!): SeriesHoldersForUserResponse!
+}
+
+type HoldersForUserResponse {
+  """Null if viewer is null"""
+  holders: [Holder!]
+}
+
+input HoldersForUserInput {
+  userId: String!
+}
+
+type SeriesHoldersForUserResponse {
+  """Null if viewer is null"""
+  seriesHolders: [SeriesHolders!]
+}
+
+type SeriesHolders {
+  holders: [Holder!]!
+  series: SeriesExpress!
+}
+
+input SeriesHoldersForUserInput {
+  userId: ID!
+}
+
+type NftQueriesResponse {
+  editionsMerkleAllowlistInfoForMint(input: EditionsMerkleAllowlistInfoForMintInput!): EditionsMerkleAllowlistInfoForMintResponse!
+}
+
+type EditionsMerkleAllowlistInfoForMintResponse {
+  merkleAllowlistInfo: EditionsMerkleAllowlistInfoExpress
+}
+
+type EditionsMerkleAllowlistInfoExpress {
+  amountAllowed: Int!
+  amountMinted: Int!
+  id: ID!
+  proof: String!
+  rootIndex: Int!
+}
+
+input EditionsMerkleAllowlistInfoForMintInput {
+  mint: String!
+  viewerId: ID
+}
+
+type NotificationsNamespaceResponse {
+  activityNotificationsForViewer: ActivityNotificationsForViewerResponse!
+  unseenActivityNotificationsCountForViewer(input: UnseenActivityNotificationsCountForViewerInput): UnseenActivityNotificationsCountForViewerResponse!
+}
+
+type ActivityNotificationsForViewerResponse {
+  activityNotifications(after: String, first: Int!): ActivityNotificationsConnection!
+}
+
+type ActivityNotificationsConnection {
+  edges: [ActivityNotificationsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type ActivityNotificationsEdge {
+  cursor: String!
+  node: ActivityNotificationExpress!
+}
+
+union ActivityNotificationExpress = ActivityNotificationAirdropCompleted | ActivityNotificationAirdropGiftReceived | ActivityNotificationBidderAuctionAlmostOver | ActivityNotificationBidderAuctionExtended | ActivityNotificationBidderAuctionSettled | ActivityNotificationBidderClaimPnft | ActivityNotificationBidderClaimPnftReminder | ActivityNotificationBidderLostAuction | ActivityNotificationBidderOutbid | ActivityNotificationBidderWonAuction | ActivityNotificationBonkClaim | ActivityNotificationBuyerOfferAccepted | ActivityNotificationBuyerOfferExpired | ActivityNotificationCampaignAddedAsTeamMember | ActivityNotificationCampaignApproved | ActivityNotificationCampaignCommunityNewUpdateShared | ActivityNotificationCampaignFollowersCampaignPublished | ActivityNotificationCampaignGoalReachedXPercent | ActivityNotificationCampaignRejected | ActivityNotificationCampaignRejectedWithFeedback | ActivityNotificationCollabRequest | ActivityNotificationCreatorSecondarySale | ActivityNotificationFollowerAuctionAlmostOver | ActivityNotificationFollowerNewEditionsListed | ActivityNotificationFollowerNewPieceListed | ActivityNotificationFollowerNewPieceListedSecondary | ActivityNotificationFollowerNewPieceScheduled | ActivityNotificationFollowerScheduledAuctionIsLive | ActivityNotificationInvitesConvertedToCreator | ActivityNotificationInvitesInviteeAcceptedInvite | ActivityNotificationNewFollower | ActivityNotificationOwnerAuctionEnded | ActivityNotificationOwnerAuctionEndedNoBids | ActivityNotificationOwnerAuctionExtended | ActivityNotificationOwnerAuctionSettled | ActivityNotificationOwnerEditionSold | ActivityNotificationOwnerEditionsSoldOut | ActivityNotificationOwnerFirstBidReceived | ActivityNotificationOwnerGenerativeMintSoldOut | ActivityNotificationOwnerOfferReceived | ActivityNotificationOwnerOtherBidReceived | ActivityNotificationOwnerPieceSoldAsInstantSale | ActivityNotificationUnlockableDeclinedToSharedInfo | ActivityNotificationUnlockableInfoShared | ActivityNotificationUnlockableShareInfo
+
+type ActivityNotificationAirdropCompleted implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+interface IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+}
+
+union ActivityNotificationAction = ActivityNotificationLinkAction
+
+type ActivityNotificationLinkAction {
+  href: String!
+  text: String!
+}
+
+type ActivityNotificationNftInfo {
+  editionNumber: Int
+  mint: String!
+  name: String!
+  nftAsset: AssetExpress!
+}
+
+type ActivityNotificationAirdropGiftReceived implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+}
+
+type ActivityNotificationBidderAuctionAlmostOver implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationBidderAuctionExtended implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationBidderAuctionSettled implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+  txid: String!
+}
+
+type ActivityNotificationBidderClaimPnft implements IActivityNotification {
+  action: ActivityNotificationLinkAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationBidderClaimPnftReminder implements IActivityNotification {
+  action: ActivityNotificationLinkAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+  pnftCloseDate: timestamptz!
+}
+
+type ActivityNotificationBidderLostAuction implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationBidderOutbid implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+  refundAmount: Price!
+  txid: String!
+}
+
+type ActivityNotificationBidderWonAuction implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationBonkClaim implements IActivityNotification {
+  action: ActivityNotificationLinkAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+}
+
+type ActivityNotificationBuyerOfferAccepted implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+  txid: String!
+}
+
+type ActivityNotificationBuyerOfferExpired implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationCampaignAddedAsTeamMember implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  campaignInfo: ActivityNotificationCampaignInfo!
+}
+
+type ActivityNotificationCampaignInfo {
+  creator: UserExpress!
+  previewAsset: AssetExpress!
+  slug: String!
+  title: String!
+}
+
+type ActivityNotificationCampaignApproved implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  campaignInfo: ActivityNotificationCampaignInfo!
+}
+
+type ActivityNotificationCampaignCommunityNewUpdateShared implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  campaignInfo: ActivityNotificationCampaignInfo!
+}
+
+type ActivityNotificationCampaignFollowersCampaignPublished implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  campaignInfo: ActivityNotificationCampaignInfo!
+}
+
+type ActivityNotificationCampaignGoalReachedXPercent implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  campaignInfo: ActivityNotificationCampaignInfo!
+  percentAsNumber: Int!
+}
+
+type ActivityNotificationCampaignRejected implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  campaignInfo: ActivityNotificationCampaignInfo!
+}
+
+type ActivityNotificationCampaignRejectedWithFeedback implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  campaignInfo: ActivityNotificationCampaignInfo!
+  feedback: String!
+}
+
+type ActivityNotificationCollabRequest implements IActivityNotification {
+  action: ActivityNotificationLinkAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationCreatorSecondarySale implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+  txid: String!
+}
+
+type ActivityNotificationFollowerAuctionAlmostOver implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationFollowerNewEditionsListed implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+  txid: String!
+}
+
+type ActivityNotificationFollowerNewPieceListed implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+  txid: String!
+}
+
+type ActivityNotificationFollowerNewPieceListedSecondary implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+  txid: String!
+}
+
+type ActivityNotificationFollowerNewPieceScheduled implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationFollowerScheduledAuctionIsLive implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationInvitesConvertedToCreator implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+}
+
+type ActivityNotificationInvitesInviteeAcceptedInvite implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+}
+
+type ActivityNotificationNewFollower implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+}
+
+type ActivityNotificationOwnerAuctionEnded implements IActivityNotification {
+  action: ActivityNotificationLinkAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+  winningPrice: Price!
+}
+
+type ActivityNotificationOwnerAuctionEndedNoBids implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationOwnerAuctionExtended implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationOwnerAuctionSettled implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+  txid: String!
+}
+
+type ActivityNotificationOwnerEditionSold implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+  txid: String!
+}
+
+type ActivityNotificationOwnerEditionsSoldOut implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationOwnerFirstBidReceived implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  bidPrice: Price!
+  nftInfo: ActivityNotificationNftInfo!
+  txid: String!
+}
+
+type ActivityNotificationOwnerGenerativeMintSoldOut implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  candyMachineInfo: ActivityNotificationCandyMachineInfo!
+}
+
+type ActivityNotificationCandyMachineInfo {
+  asset: AssetExpress!
+  name: String!
+}
+
+type ActivityNotificationOwnerOfferReceived implements IActivityNotification {
+  action: ActivityNotificationLinkAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+  offerPrice: Price!
+  txid: String!
+}
+
+type ActivityNotificationOwnerOtherBidReceived implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  bidPrice: Price!
+  nftInfo: ActivityNotificationNftInfo!
+  txid: String!
+}
+
+type ActivityNotificationOwnerPieceSoldAsInstantSale implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+  price: Price!
+  txid: String!
+}
+
+type ActivityNotificationUnlockableDeclinedToSharedInfo implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationUnlockableInfoShared implements IActivityNotification {
+  action: ActivityNotificationAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type ActivityNotificationUnlockableShareInfo implements IActivityNotification {
+  action: ActivityNotificationLinkAction
+  id: ID!
+  receiver: UserExpress!
+  sender: UserExpress
+  timeCreated: timestamptz!
+  timeSeen: timestamptz
+  nftInfo: ActivityNotificationNftInfo!
+}
+
+type UnseenActivityNotificationsCountForViewerResponse {
+  unseenActivityNotificationsCount: Int!
+}
+
+input UnseenActivityNotificationsCountForViewerInput {
+  viewerId: ID
+}
+
+type PostsNamespaceQueryResponse {
+  postsForCampaign: PostsForCampaignResponse!
+}
+
+type PostsForCampaignResponse {
+  posts(after: String, first: Int!, input: PostsForCampaignInput!): PostsConnection!
+}
+
+type PostsConnection {
+  edges: [PostsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type PostsEdge {
+  cursor: String!
+  node: PostExpress!
+}
+
+union PostExpress = PostWithSingleAsset | PostTextOnly | PostWithPoll | PostWithAirdrop
+
+"""Post with a single asset attachment"""
+type PostWithSingleAsset implements IPost {
+  body: String
+  comments: PostComments!
+  creator: UserExpress!
+  id: ID!
+  link: Link
+  reactions: Reactions!
+  timeCreated: timestamptz!
+  title: String!
+  visibility: PostVisibilityExpress_enum!
+  visibilityFundingTiers: [CampaignFundingTierExpress!]
+  asset: AssetExpress!
+}
+
+interface IPost {
+  body: String
+  comments: PostComments!
+  creator: UserExpress!
+  id: ID!
+  link: Link
+  reactions: Reactions!
+  timeCreated: timestamptz!
+  title: String!
+  visibility: PostVisibilityExpress_enum!
+  visibilityFundingTiers: [CampaignFundingTierExpress!]
+}
+
+type PostComments {
+  previewComments: [CommentExpress!]!
+  totalCount: Int!
+}
+
+type Link {
+  href: String!
+  text: String!
+}
+
+type Reactions {
+  reactionCounts: [ReactionCount!]!
+  totalCount: Int!
+
+  """Indicates the reaction selected by the current viewer, if any"""
+  viewerReactionType: ReactionTypeExpress_enum
+}
+
+type ReactionCount {
+  count: Int!
+  type: ReactionTypeExpress_enum!
+}
+
+enum ReactionTypeExpress_enum {
+  Like
+}
+
+enum PostVisibilityExpress_enum {
+  CampaignSupportersOnly
+  Public
+}
+
+"""Text only post with no assets"""
+type PostTextOnly implements IPost {
+  body: String
+  comments: PostComments!
+  creator: UserExpress!
+  id: ID!
+  link: Link
+  reactions: Reactions!
+  timeCreated: timestamptz!
+  title: String!
+  visibility: PostVisibilityExpress_enum!
+  visibilityFundingTiers: [CampaignFundingTierExpress!]
+}
+
+"""Post with a poll"""
+type PostWithPoll implements IPost {
+  body: String
+  comments: PostComments!
+  creator: UserExpress!
+  id: ID!
+  link: Link
+  reactions: Reactions!
+  timeCreated: timestamptz!
+  title: String!
+  visibility: PostVisibilityExpress_enum!
+  visibilityFundingTiers: [CampaignFundingTierExpress!]
+  asset: AssetExpress
+  poll: PollExpress!
+}
+
+type PollExpress {
+  id: ID!
+  isMultiSelect: Boolean
+  options: [PollOptionExpress!]!
+  totalResponses: Int!
+  viewerRespondedToPoll: Boolean!
+}
+
+type PollOptionExpress {
+  id: String!
+  responseCount: Int!
+  responsePercentage: Float
+  text: String!
+  viewerRespondedToPoll: Boolean!
+  viewerRespondedToPollOption: Boolean
+}
+
+"""Post associated with an airdrop"""
+type PostWithAirdrop implements IPost {
+  body: String
+  comments: PostComments!
+  creator: UserExpress!
+  id: ID!
+  link: Link
+  reactions: Reactions!
+  timeCreated: timestamptz!
+  title: String!
+  visibility: PostVisibilityExpress_enum!
+  visibilityFundingTiers: [CampaignFundingTierExpress!]
+  nftAsset: NftAsset!
+}
+
+input PostsForCampaignInput {
+  campaignSlug: String!
+  creatorId: String
+  creatorUsername: String
+  viewerId: ID
+}
+
+type SeriesNamespaceResponse {
+  seriesStats(input: SeriesStatsInput!): SeriesStatsResponse
+}
+
+type SeriesStatsResponse {
+  """
+  If the series contains pieces that have been sold for a variety of currencies, all monetary amounts will be converted to lamports. If no pieces in the series are listed, the floor price will be null.
+  """
+  floorPriceInLamports: bigint
+
+  """
+  If the series contains pieces that have been sold for a variety of currencies, all monetary amounts will be converted to lamports.
+  """
+  volumeInLamports: bigint!
+}
+
+input SeriesStatsInput {
+  """Either one of creatorId or creatorUsername should be specified"""
+  creatorId: String
+
+  """Either one of creatorId or creatorUsername should be specified"""
+  creatorUsername: String
+  seriesSlug: String!
+}
+
+type SpotlightResponse {
+  activeSpotlights(after: String, first: Int!): SpotlightsConnection!
+
+  """Connection for querying spotlights that have happened in the past"""
+  recentSpotlights(after: String, first: Int!): SpotlightsConnection!
+
+  """Connection for querying spotlights that are upcoming"""
+  upcomingSpotlights(after: String, first: Int!): SpotlightsConnection!
+}
+
+type SpotlightsConnection {
+  edges: [SpotlightsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type SpotlightsEdge {
+  cursor: String!
+  node: SpotlightExpress!
+}
+
+type SpotlightExpress {
+  endTime: timestamptz!
+  heroUnitLayout: SpotlightExpressHeroUnitLayout_enum!
+  id: ID!
+  spotlightInfo: SpotlightInfo!
+  startTime: timestamptz!
+}
+
+enum SpotlightExpressHeroUnitLayout_enum {
+  Standard
+  TwoColumnSquareImage
+}
+
+type SpotlightInfo {
+  asset: AssetExpress!
+  description: String!
+  label: String!
+  status: SpotlightExpressStatus_enum!
+
+  """Used in cases where override is set in the DB"""
+  statusOverride: String
+  title: String!
+
+  """
+  Can be null for cases where we want to spotlight something where a link is not available yet.
+  """
+  url: String
+  users: [UserExpress!]!
+}
+
+enum SpotlightExpressStatus_enum {
+  Available
+  Ended
+
+  """To be used when a value is set in the DB to override this field"""
+  Override
+  Sold
+  SoldOut
+}
+
+type StatsNamespaceResponse {
+  topCollectorStats(after: String, first: Int!, input: TopCollectorStatsInput): CollectorStatsConnection!
+  topCreatorStats(after: String, first: Int!, input: TopCreatorStatsInput): CreatorStatsConnection!
+}
+
+type CollectorStatsConnection {
+  edges: [CollectorStatsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type CollectorStatsEdge {
+  cursor: String!
+  node: CollectorStats!
+}
+
+type CollectorStats {
+  collector: UserExpress!
+  numCreatorsSupported: Int!
+  numPiecesBought: Int!
+
+  """
+  Despite the name, this is actually denominated in lamports, the 'sol' part of the name refers to the currency
+  """
+  totalPaidInSol: bigint!
+}
+
+input TopCollectorStatsInput {
+  afterTime: timestamptz!
+}
+
+type CreatorStatsConnection {
+  edges: [CreatorStatsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type CreatorStatsEdge {
+  cursor: String!
+  node: CreatorStats!
+}
+
+type CreatorStats {
+  creator: UserExpress!
+  numCollectors: Int!
+  numPiecesSold: Int!
+
+  """
+  Total sales volume including primary and secondary sales. Despite the name, this is actually denominated in lamports, the 'sol' part of the name refers to the currency
+  """
+  totalSalesInSol: bigint!
+}
+
+input TopCreatorStatsInput {
+  afterTime: timestamptz!
+}
+
+type UserQueriesQueryResponse {
+  userForId(input: UserForIdInput!): UserForIdResponse!
+  userSearch(input: UserSearchInput!): UserSearchResponse!
+}
+
+type UserForIdResponse {
+  user: UserExpress
+}
+
+input UserForIdInput {
+  id: ID!
+}
+
+type UserSearchResponse {
+  users: [UserExpress!]!
+}
+
+input UserSearchInput {
+  first: PaginationAmount!
+  usernameOrUserId: String!
+}
+
+type AttributesForSeriesResponse {
+  traits: [AttributesForSeriesTrait!]!
+}
+
+type AttributesForSeriesTrait {
+  """How many times this trait appears in the series"""
+  count: Int!
+  traitName: String!
+  traitValue: String!
+}
+
+input AttributesForSeriesInput {
+  """Either one of creatorId or creatorUsername should be specified"""
+  creatorId: String
+
+  """Either one of creatorId or creatorUsername should be specified"""
+  creatorUsername: String
+  seriesSlug: String!
+}
+
+input BidToCancelInput {
+  mint: PublicKey!
+  userId: String!
+}
+
+type CampaignActivityForSlugResponse {
+  campaignActivity(after: String, first: PaginationAmount!, input: CampaignActivityForSlugInput!): NftTransactionsConnection
+}
+
+input CampaignActivityForSlugInput {
+  campaignSlug: String!
+  creatorId: String
+  creatorUsername: String
+}
+
+type CampaignForSlugResponse {
+  campaign: CampaignExpress
+}
+
+"""
+Contains high-level campaign information. Other information, like which NFTs belong to the campaign, is in CampaignSection
+"""
+type CampaignExpress {
+  """A comprehensive description of the campaign"""
+  about: String!
+  amountRaisedInLamports: bigint!
+  creator: UserExpress!
+
+  """A short description of the campaign"""
+  description: String!
+
+  """
+  An alternative description. May be displayed in certain places instead of the description
+  """
+  descriptionAlt: String
+
+  """A fun way to mark progress on the campaign progress bar"""
+  emojiMarker: String
+  goal: CampaignGoal!
+  goalInLamports: bigint!
+  heroAssets: [AssetExpress!]!
+  id: ID!
+  logoAsset: AssetExpress
+  socialLinks: CampaignSocialLinks
+  title: String!
+}
+
+input CampaignForSlugInput {
+  campaignSlug: String!
+  creatorId: String
+  creatorUsername: String
+}
+
+type CampaignSectionsForSlugResponse {
+  campaignSections: [CampaignSectionExpress!]
+}
+
+type CampaignSectionExpress {
+  """
+  A list of benefits collectors receive for supporting the campaign via this section
+  """
+  benefits: [String!]!
+  description: String!
+  id: ID!
+  metadataAccounts(after: String, first: PaginationAmount!): MetadataAccountsConnection
+  title: String!
+}
+
+input CampaignSectionsForSlugInput {
+  campaignSlug: String!
+  creatorId: String
+  creatorUsername: String
+}
+
+type CampaignSectionsForSlugV2Response {
+  campaignSections: [CampaignSectionV2!]
+}
+
+union CampaignSectionV2 = CampaignSectionWithNfts | CampaignSectionWithGenerativeMints
+
+"""Campaign section with NFTs as the funding type"""
+type CampaignSectionWithNfts implements ICampaignSectionV2 {
+  """
+  A list of benefits collectors receive for supporting the campaign via this section
+  """
+  benefits: [String!]!
+  description: String!
+  id: ID!
+  title: String!
+  metadataAccounts(after: String, first: PaginationAmount!): MetadataAccountsConnection
+}
+
+interface ICampaignSectionV2 {
+  """
+  A list of benefits collectors receive for supporting the campaign via this section
+  """
+  benefits: [String!]!
+  description: String!
+  id: ID!
+  title: String!
+}
+
+"""Campaign section with Generative Mint as funding type"""
+type CampaignSectionWithGenerativeMints implements ICampaignSectionV2 {
+  """
+  A list of benefits collectors receive for supporting the campaign via this section
+  """
+  benefits: [String!]!
+  description: String!
+  id: ID!
+  title: String!
+  candyMachineInfo(input: CampaignSectionWithGenerativeMintsCandyMachineInfoInput!): CampaignSectionWithGenerativeMintsCandyMachineInfo
+  previewMetadataAccounts(after: String, first: PaginationAmount!): MetadataAccountsConnection
+}
+
+type CampaignSectionWithGenerativeMintsCandyMachineInfo {
+  candyMachine: CandyMachineExpress!
+  id: ID!
+
+  """
+  If true, viewer can mint at any time, irrespective of sale times. null if viewer is null.
+  """
+  isViewerOmniMinter: Boolean
+
+  """Asset used to show a preview when minting from this generative series"""
+  mintPreviewAsset: AssetExpress
+
+  """Assets shown during premint phase, prior to any sale beginning"""
+  premintPreviewAssets: [AssetExpress!]
+  viewerAllowlistInfo: CandyMachineAllowlistInfoForViewer
+  viewerAmountMinted: Int
+}
+
+union CandyMachineAllowlistInfoForViewer = CandyMachineMerkleAllowlistInfoForViewerExpress | CandyMachineTokenAllowlistInfoForViewer
+
+type CandyMachineMerkleAllowlistInfoForViewerExpress {
+  amountAllowed: Int!
+
+  """How many NFTs the viewer minted in the allowlist phase."""
+  amountMinted: Int!
+  merkleRootIndexForProof: Int!
+  proof: String!
+}
+
+type CandyMachineTokenAllowlistInfoForViewer {
+  """
+  The viewer's token account for the allowlist mint. If the viewer has multiple token accounts for the same mint, this field may differ over time for the same viewer.
+  """
+  allowlistTokenAccount: String
+
+  """How many tokens the viewer owns."""
+  allowlistTokenAmount: Int!
+  allowlistTokenMint: String!
+
+  """How many NFTs the viewer minted in the allowlist phase."""
+  amountMinted: Int!
+}
+
+input CampaignSectionWithGenerativeMintsCandyMachineInfoInput {
+  viewerId: ID
+}
+
+input CampaignSectionsForSlugV2Input {
+  campaignSlug: String!
+  creatorId: String
+  creatorUsername: String
+}
+
+type EditionBuyerInfoResponse {
+  merkleAllowlistInfo: EditionsMerkleAllowlistInfoExpress
+
+  """
+  Total number of editions purchased (includes both allowlist and public sale phases)
+  """
+  numberBought: Int!
+}
+
+input EditionBuyerInfoInput {
+  mint: PublicKey!
+  viewerId: ID
+}
+
+type EditionsForMasterEditionMintResponse {
+  editions(after: String, first: Int!, input: EditionsForMasterEditionMintInput!): MetadataAccountsConnection!
+}
+
+input EditionsForMasterEditionMintInput {
+  masterEditionMint: PublicKey!
+}
+
+type ExchangeRateResponse {
+  rate: Float
+}
+
+input ExchangeRateInput {
+  """The currency we're exchanging from"""
+  baseCurrency: ExchangeRateCurrency!
+
+  """The currency we're exchanging to"""
+  exchangeCurrency: ExchangeRateCurrency!
+  forceUpdate: Boolean = false
+}
+
+enum ExchangeRateCurrency {
+  SOL
+  USD
+  USDC
+}
+
+type IsOwnerValidResponse {
+  isValid: Boolean!
+}
+
+input IsOwnerValidInput {
+  mint: PublicKey!
+}
+
+input MetadataAccountForMintInput {
+  mint: PublicKey!
+}
+
+input MetadataAccountsInput {
+  address: PublicKey!
+  includeCreator: Boolean
+  includeOffPlatform: Boolean
+  includeOwner: Boolean
+  status: NftStatusExpress_enum
+}
+
+type MetadataAccountsAvailableToAddToCampaignResponse {
+  metadataAccounts(after: String, first: PaginationAmount!, input: MetadataAccountsAvailableToAddToCampaignInput!): MetadataAccountsConnection!
+}
+
+input MetadataAccountsAvailableToAddToCampaignInput {
+  campaignFundingTierId: String!
+  creatorAddress: String
+  creatorUsername: String
+}
+
+type MetadataAccountsCollectedResponse {
+  """
+  Returns the union of the following: 1) The user collected the NFT (won an auction, instant sale, etc.) and 2) The user currently owns the NFT.
+  """
+  metadataAccounts(after: String, first: Int!, input: MetadataAccountsCollectedInput!): MetadataAccountsConnection!
+
+  """Returns the NFTs that the user owns and that are currently listed."""
+  metadataAccountsListedByUser(after: String, first: Int!, input: MetadataAccountsCollectedInput!): MetadataAccountsConnection!
+}
+
+input MetadataAccountsCollectedInput {
+  collectorAddress: String
+  collectorUsername: String
+}
+
+type MetadataAccountsCreatedResponse {
+  metadataAccounts(after: String, first: PaginationAmount!, input: MetadataAccountsCreatedInput!): MetadataAccountsConnection!
+}
+
+input MetadataAccountsCreatedInput {
+  creatorAddress: String
+  creatorUsername: String
+  includeCollaborations: Boolean = true
+}
+
+input MetadataAccountsFeaturedInput {
+  isExperimental: Boolean = false
+}
+
+type MetadataAccountsFeaturedEditionsResponse {
+  metadataAccounts: [MetadataAccount!]!
+}
+
+type MetadataAccountsForAddressResponse {
+  metadataAccounts(address: PublicKey!, after: String, first: Int!, status: NftStatusExpress_enum): MetadataAccountsConnection!
+}
+
+input MetadataAccountsForAidInput {
+  isExperimental: Boolean = false
+}
+
+type MetadataAccountsForExploreResponse {
+  metadataAccounts(after: String, first: Int!, input: MetadataAccountsForExploreInput!): MetadataAccountsConnection!
+}
+
+input MetadataAccountsForExploreInput {
+  """
+  A list of attributes to filter on (null can be used if no filtering on attributes is needed)
+  """
+  attributes: [NftAttributeInput!]
+  availabilitySet: [ExploreAvailabilityV2!]!
+
+  """
+  A list of content types to filter on. If empty or null, no filtering will be done.
+  """
+  contentTypes: [String!]
+  currencyNames: [CurrencyNameExpress_enum]
+  extras: [ExploreExtra!]
+  highPriceLamports: bigint
+  lowPriceLamports: bigint
+  market: [ExploreMarket!]!
+  nftKind: [NftKind!]! = []
+
+  """
+  If specified, only NFTs that belong to the specified owner will be returned
+  """
+  ownerId: ID
+
+  """
+  If specified, only NFTs that belong to the corresponding series will be returned
+  """
+  series: MetadataAccountsForExploreSeriesInput
+  sortOrder: ExploreSortOrder!
+  tag: String
+}
+
+input NftAttributeInput {
+  traitType: String!
+  value: String!
+}
+
+enum ExploreAvailabilityV2 {
+  """Used to show Editions that are available for primary sale."""
+  Available
+  InstantSale
+  LiveAuction
+
+  """Excludes scheduled auctions that have no bids"""
+  LiveAuctionWithBids
+
+  """Only shows scheduled auctions that have no bids"""
+  LiveAuctionWithoutBids
+  ReservePrice
+  Sold
+
+  """Used to show Editions that have sold out."""
+  SoldOut
+}
+
+enum ExploreExtra {
+  HasPnft
+  HasUnlockable
+}
+
+enum ExploreMarket {
+  Primary
+  Secondary
+}
+
+enum NftKind {
+  """
+  I.e. an NFT minted from a Candy Machine. Strictly speaking, Candy Machine NFTs do not HAVE to be generative, but typically are.
+  """
+  Generative
+  MasterEditionWithNonzeroSupply
+  MasterEditionWithUnlimitedSupply
+  OneOfOne
+  PnftMasterEdition
+  PnftStandardEdition
+  StandardEditionPrintNonzeroSupply
+  StandardEditionPrintUnlimitedSupply
+}
+
+input MetadataAccountsForExploreSeriesInput {
+  """Either one of creatorId or creatorUsername should be specified"""
+  creatorId: String
+
+  """Either one of creatorId or creatorUsername should be specified"""
+  creatorUsername: String
+  seriesSlug: String!
+}
+
+enum ExploreSortOrder {
+  AuctionEndEarliest
+  AuctionEndLatest
+  FewestPieces
+  HighestPrice
+  LeastRecentlyAddedTo
+  LowestPrice
+  MostPieces
+  MostRecentlyAddedTo
+  MostRecentlySold
+  NameAscending
+  NameDescending
+  Newest
+  Oldest
+  RarityHighest
+  RarityLowest
+}
+
+type MetadataAccountsForImportResponse {
+  metadataAccounts: [MetadataAccount!]!
+}
+
+input MetadataAccountsForImportInput {
+  mintAddresses: [String!]!
+}
+
+type MetadataAccountsForSeriesResponse {
+  metadataAccounts(after: String, first: Int!, input: MetadataAccountsForSeriesInput!): MetadataAccountsConnection!
+}
+
+input MetadataAccountsForSeriesInput {
+  """
+  Intended for using separate connections between NFT pages for NFTs that belong to the same series.
+  """
+  mint: String
+
+  """Either one of seriesId or slugInput should be specified"""
+  seriesId: PublicKey
+
+  """Used to loop the NFTs in the series for 'Next in this series' section"""
+  shouldLoop: Boolean
+
+  """Either one of seriesId or slugInput should be specified"""
+  slugInput: MetadataAccountsForSeriesSlugInput
+}
+
+input MetadataAccountsForSeriesSlugInput {
+  """Either one of creatorId or creatorUsername should be specified"""
+  creatorId: String
+
+  """Either one of creatorId or creatorUsername should be specified"""
+  creatorUsername: String
+  seriesSlug: String!
+}
+
+type MetadataAccountsHiddenGemsResponse {
+  metadataAccounts: [MetadataAccount!]!
+}
+
+type NftOffersResponse {
+  nftOffers(after: String, first: Int!, input: NftOffersInput!): NftOffersConnection!
+}
+
+type NftOffersConnection {
+  edges: [NftOffersEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type NftOffersEdge {
+  cursor: String!
+  node: NftOffer!
+}
+
+type NftOffer {
+  expirationDate: timestamptz!
+
+  """
+  Indication on whether offer is valid or not. We still surface invalid offers if the viewer made the offer and it hasn't been cancelled and refunded yet so that they can always cancel and refund themselves.
+  """
+  isValid: Boolean!
+  transaction: NftTransactionExpress!
+}
+
+input NftOffersInput {
+  mint: PublicKey!
+  viewerId: ID
+}
+
+type NftOffersForUserResponse {
+  nftOffers(after: String, first: Int!, input: NftOffersForUserInput!): NftOffersForUserConnection!
+}
+
+type NftOffersForUserConnection {
+  edges: [NftOffersForUserEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type NftOffersForUserEdge {
+  cursor: String!
+  node: NftOfferForUser!
+}
+
+type NftOfferForUser {
+  expirationDate: timestamptz!
+
+  """
+  Indication on whether offer is valid or not. We still surface invalid offers if the viewer made the offer and it hasn't been cancelled and refunded yet so that they can always cancel and refund themselves.
+  """
+  isValid: Boolean!
+  transaction: NftTransactionExpress!
+  metadataAccount: MetadataAccount!
+}
+
+input NftOffersForUserInput {
+  kinds: [NftOfferForUserKind!]!
+  userId: PublicKey!
+}
+
+enum NftOfferForUserKind {
+  Made
+  Received
+}
+
+type NftPageExtrasResponse {
+  viewerHasOpenOffersPlaced: Boolean!
+}
+
+input NftPageExtrasInput {
+  mint: PublicKey!
+}
+
+type NftTransactionsResponse {
+  nftTransactions(after: String, first: Int!, input: NftTransactionsInput!): NftTransactionsConnection!
+}
+
+input NftTransactionsInput {
+  mint: PublicKey!
+}
+
+type NftTransactionsForImportResponse {
+  transactions: [NftTransactionExpress!]!
+}
+
+input NftTransactionsForImportInput {
+  mintAddress: String!
+}
+
+type OpenBid {
+  metadataAccount: MetadataAccount!
+}
+
+input OpenBidsInput {
+  userId: String!
+}
+
+type PnftAuctionNftsResponse {
+  metadataAccounts: [MetadataAccount!]!
+}
+
+input PnftAuctionNftsInput {
+  masterEditionPnftId: PublicKey!
+}
+
+type PnftInfoResponse {
+  metadataAccount: MetadataAccount
+}
+
+input PnftInfoInput {
+  auctionNftMint: PublicKey!
+}
+
+type RefundableAmountsResponse {
+  amounts: [RefundableAmount!]!
+}
+
+type RefundableAmount {
+  amount: Price!
+  amountInLamports: bigint!
+  metadataAccount: MetadataAccount!
+  userId: String!
+}
+
+input RefundableAmountsInput {
+  userId: String
+}
+
+type UserAndMetadataAccounts {
+  metadataAccounts: [MetadataAccount!]!
+  user: UserExpress!
+}
+
+type UsersForExploreResponse {
+  users(after: String, first: Int!, input: UsersForExploreInput!): UserAndMetadataAccountsConnection!
+}
+
+type UserAndMetadataAccountsConnection {
+  edges: [UserAndMetadataAccountsEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type UserAndMetadataAccountsEdge {
+  cursor: String!
+  node: UserAndMetadataAccounts!
+}
+
+input UsersForExploreInput {
+  orderBy: ExploreCreatorsSortOrder
+}
+
+enum ExploreCreatorsSortOrder {
+  Newest
+  Oldest
+}
+
+input WalletViewerInput {
+  address: PublicKey!
+}
+
+type mutation_root {
+  """Mutation field that houses Airdrop mutations"""
+  AirdropMutations: AirdropMutationsMutationResponse!
+
+  """Namespace field for campaigns related mutations."""
+  CampaignsNamespace: CampaignsNamespaceMutationResponse!
+
+  """Mutation field that houses mutations for Comments."""
+  CommentMutations: CommentMutationsMutationResponse!
+
+  """Mutation field that houses mutations for Editions."""
+  EditionsMutations: EditionsMutationsResponse!
+
+  """Namespace field for post related mutations."""
+  PostNamespace: PostsNamespaceMutationResponse!
+
+  """Mutation field that houses mutations for Reactions."""
+  ReactionMutations: ReactionMutationsMutationResponse!
+
+  """Mutation field that houses safety check mutations"""
+  SafetyCheckMutations: SafetyCheckMutationsResponse!
+
+  """Mutation field that houses survey mutations"""
+  SurveyMutations: SurveyMutationsResponse!
+  acceptCreatorInvite(input: AcceptCreatorInviteInput!): AcceptCreatorInviteResponse!
+  claimBonk(userId: String!): timestamptz!
+  connectSocialNetwork(input: ConnectSocialNetworkInput!): SocialNetwork!
+  deleteNft(input: DeleteNftInput!): MetadataAccount!
+  disconnectSocialNetwork(input: DisconnectSocialNetworkInput!): SocialNetwork!
+  dismissUnlockableWinnerBuyerShareInfoCta(input: DismissUnlockableWinnerBuyerShareInfoCtaInput!): UpdateUnlockableWinnerResponse!
+  dismissUnlockableWinnerCreatorSeeInfoCta(input: DismissUnlockableWinnerCreatorSeeInfoCtaInput!): UpdateUnlockableWinnerResponse!
+  importNfts(input: ImportNftsInput!): ImportNftsResponse!
+  insertNft(input: InsertNftInput!): MetadataAccount!
+  insertNftTransaction(input: InsertNftTransactionInput!): InsertNftTransactionResponse!
+  insertPnft(input: InsertPnftInput!): InsertPnftResponse!
+  refreshMetadata(input: RefreshMetadataInput!): MetadataAccount!
+  sendCreatorInvites(input: SendCreatorInvitesInput!): SendCreatorInvitesResponse!
+  shareInfoAndSwapForToonies(input: ShareInfoAndSwapForTooniesInput!): ShareInfoAndSwapForTooniesResponse!
+  updateDiscordRolesForUser: UpdateDiscordRolesForUserResponse!
+  updateSeriesIdForNfts(after: String, first: Int!, input: UpdateSeriesIdForNftsInput!): UpdateSeriesIdForNftsResponse
+  updateUnlockableWinnerBuyerInfo(input: UpdateUnlockableWinnerBuyerInfoInput!): UpdateUnlockableWinnerResponse!
+  uploadNftToArweave(input: UploadNftToArweaveInput!): UploadNftToArweaveResponse!
+}
+
+type AirdropMutationsMutationResponse {
+  createAirdrops(input: CreateAirdropsInput!): CreateAirdropsResponse!
+}
+
+type CreateAirdropsResponse {
+  airdrops: [AirdropExpress!]!
+}
+
+type AirdropExpress {
+  id: ID!
+  toUser: UserExpress!
+  type: AirdropTypeExpress_enum!
+}
+
+enum AirdropTypeExpress_enum {
+  Claim
+  Gift
+}
+
+input CreateAirdropsInput {
+  masterEditionMint: ID!
+  type: AirdropTypeExpress_enum!
+  toAddresses: [ID!]!
+}
+
+type CampaignsNamespaceMutationResponse {
+  approveCampaign(input: ApproveCampaignInput!): ApproveCampaignResponse!
+  concludeCampaign(input: ConcludeCampaignInput!): ConcludeCampaignResponse!
+  createAirdropsForCampaign(input: CreateAirdropsForCampaignInput!): CreateAirdropsForCampaignResponse!
+  createCampaign(input: CreateCampaignInput!): CreateCampaignResponse!
+  createCampaignFundingTierStandard(input: CreateCampaignFundingTierStandardInput!): CreateCampaignFundingTierStandardResponse!
+  deleteCampaignFundingTier(input: DeleteCampaignFundingTierInput!): DeleteCampaignFundingTierResponse!
+  publishCampaign(input: PublishCampaignInput!): PublishCampaignResponse!
+  rejectCampaign(input: RejectCampaignInput!): RejectCampaignResponse!
+  removeUserAsTeamMemberFromCampaign(input: RemoveUserAsTeamMemberFromCampaignInput!): RemoveUserAsTeamMemberFromCampaignResponse!
+  submitCampaignForApproval(input: SubmitCampaignForApprovalInput!): SubmitCampaignForApprovalResponse!
+  updateCampaignAbout(input: UpdateCampaignAboutInput!): UpdateCampaignAboutResponse!
+  updateCampaignBasicInfo(input: UpdateCampaignBasicInfoInput!): UpdateCampaignBasicInfoResponse!
+  updateCampaignFundingTierNfts(input: UpdateCampaignFundingTierNftsInput!): UpdateCampaignFundingTierNftsResponse!
+  updateCampaignFundingTierOrder(input: UpdateCampaignFundingTierOrderInput!): UpdateCampaignFundingTierOrderResponse!
+  updateCampaignFundingTierStandard(input: UpdateCampaignFundingTierStandardInput!): UpdateCampaignFundingTierStandardResponse!
+  upsertCampaignGallery(input: UpsertCampaignGalleryInput!): UpsertCampaignGalleryResponse!
+}
+
+type ApproveCampaignResponse {
+  campaign: CampaignV2!
+}
+
+input ApproveCampaignInput {
+  campaignId: ID!
+}
+
+type ConcludeCampaignResponse {
+  campaign: CampaignV2!
+}
+
+input ConcludeCampaignInput {
+  campaignId: ID!
+}
+
+type CreateAirdropsForCampaignResponse {
+  airdrops: [AirdropExpress!]!
+}
+
+input CreateAirdropsForCampaignInput {
+  masterEditionMint: ID!
+  type: AirdropTypeExpress_enum!
+  campaignId: ID!
+
+  """
+  Specific funding tiers may be specified to only airdrop to holders of those tiers
+  """
+  fundingTierIds: [ID!]
+}
+
+type CreateCampaignResponse {
+  campaign: CampaignV2!
+}
+
+input CreateCampaignInput {
+  category: CampaignCategoryExpress_enum!
+  colorScheme: CampaignColorSchemeExpress_enum!
+  goal: CampaignGoalInput!
+  tagline: String!
+  teamMembers: [CampaignTeamMemberInput!]!
+  title: String!
+  previewAsset: AssetInput!
+}
+
+input CampaignGoalInput {
+  goalAmount: bigint!
+  goalCurrencyName: CurrencyNameExpress_enum!
+  goalProgressSymbol: String!
+  goalType: CampaignGoalTypeExpress_enum!
+}
+
+enum CampaignGoalTypeExpress_enum {
+  Monetary
+  SaleCount
+}
+
+input CampaignTeamMemberInput {
+  role: CampaignTeamMemberRoleExpress_enum!
+  userId: ID!
+}
+
+input AssetInput {
+  """
+  The Arweave txid, non-null if this asset has been (or will be) uploaded to Arweave
+  """
+  arweaveTxid: String
+  contentType: String!
+  dimensions: AssetDimensionsInput
+  downloadUrl: String!
+  path: String!
+}
+
+input AssetDimensionsInput {
+  height: Int!
+  width: Int!
+}
+
+type CreateCampaignFundingTierStandardResponse {
+  campaign: CampaignV2!
+}
+
+input CreateCampaignFundingTierStandardInput {
+  benefits: [String!]!
+  campaignId: ID!
+  description: String!
+  title: String!
+}
+
+type DeleteCampaignFundingTierResponse {
+  campaign: CampaignV2!
+}
+
+input DeleteCampaignFundingTierInput {
+  campaignFundingTierId: ID!
+}
+
+type PublishCampaignResponse {
+  campaign: CampaignV2!
+}
+
+input PublishCampaignInput {
+  campaignId: ID!
+}
+
+type RejectCampaignResponse {
+  campaign: CampaignV2!
+}
+
+input RejectCampaignInput {
+  campaignId: ID!
+  feedback: String
+  isPermaReject: Boolean!
+}
+
+type RemoveUserAsTeamMemberFromCampaignResponse {
+  campaign: CampaignV2!
+}
+
+input RemoveUserAsTeamMemberFromCampaignInput {
+  campaignId: ID!
+  userId: ID!
+}
+
+type SubmitCampaignForApprovalResponse {
+  campaign: CampaignV2!
+}
+
+input SubmitCampaignForApprovalInput {
+  campaignId: ID!
+}
+
+type UpdateCampaignAboutResponse {
+  campaign: CampaignV2!
+}
+
+input UpdateCampaignAboutInput {
+  about: CampaignAboutInput!
+  campaignId: ID!
+}
+
+input CampaignAboutInput {
+  campaign: String
+  contactInfo: String
+  creator: String
+  risksAndChallenges: String
+  timeline: String
+}
+
+type UpdateCampaignBasicInfoResponse {
+  campaign: CampaignV2!
+}
+
+input UpdateCampaignBasicInfoInput {
+  category: CampaignCategoryExpress_enum!
+  colorScheme: CampaignColorSchemeExpress_enum!
+  goal: CampaignGoalInput!
+  tagline: String!
+  teamMembers: [CampaignTeamMemberInput!]!
+  title: String!
+  campaignId: ID!
+  previewAsset: AssetInput
+}
+
+type UpdateCampaignFundingTierNftsResponse {
+  campaignFundingTier: CampaignFundingTierExpress!
+}
+
+input UpdateCampaignFundingTierNftsInput {
+  campaignFundingTierId: ID!
+  nftIds: [ID!]!
+}
+
+type UpdateCampaignFundingTierOrderResponse {
+  campaign: CampaignV2!
+}
+
+input UpdateCampaignFundingTierOrderInput {
+  campaignId: ID!
+  fundingTierOrder: [ID!]!
+}
+
+type UpdateCampaignFundingTierStandardResponse {
+  campaign: CampaignV2!
+}
+
+input UpdateCampaignFundingTierStandardInput {
+  benefits: [String!]!
+  campaignFundingTierId: ID!
+  description: String!
+  title: String!
+}
+
+type UpsertCampaignGalleryResponse {
+  campaign: CampaignV2!
+}
+
+input UpsertCampaignGalleryInput {
+  campaignId: ID!
+  galleryAssets: [AssetInput!]!
+  youtubeVideoHref: String
+}
+
+type CommentMutationsMutationResponse {
+  createCommentForPost(input: CreateCommentForPostInput!): CreateCommentForPostResponse!
+  deleteCommentForPost(input: DeleteCommentForPostInput!): DeleteCommentForPostResponse!
+}
+
+type CreateCommentForPostResponse {
+  comment: CommentExpress!
+}
+
+input CreateCommentForPostInput {
+  comment: String!
+  postId: ID!
+}
+
+type DeleteCommentForPostResponse {
+  comment: CommentExpress!
+}
+
+input DeleteCommentForPostInput {
+  commentId: ID!
+}
+
+type EditionsMutationsResponse {
+  addAllowlistAddresses(input: AddAllowlistAddressesInput!): AddAllowlistAddressesResponse!
+}
+
+type AddAllowlistAddressesResponse {
+  addedAddresses: [PublicKey!]!
+}
+
+input AddAllowlistAddressesInput {
+  addresses: [PublicKey!]!
+  masterEditionMint: ID!
+}
+
+type PostsNamespaceMutationResponse {
+  createPostBaseForCampaign(input: CreatePostBaseForCampaignInput!): CreatePostBaseForCampaignResponse
+  createPostWithPollForCampaign(input: CreatePostWithPollForCampaignInput!): CreatePostWithPollForCampaignResponse
+  respondToPoll(input: RespondToPollInput!): RespondToPollResponse
+}
+
+type CreatePostBaseForCampaignResponse {
+  post: PostExpress!
+}
+
+input CreatePostBaseForCampaignInput {
+  campaignSlug: String!
+  creatorId: String
+  creatorUsername: String
+  airdropMasterEditionMint: String
+  postInput: CreatePostBaseInput!
+}
+
+input CreatePostBaseInput {
+  assets: [AssetInput!]
+  body: String
+  link: String
+  title: String!
+  visibility: PostVisibilityExpress_enum!
+  visibilityFundingTierIds: [ID!]
+}
+
+type CreatePostWithPollForCampaignResponse {
+  post: PostExpress!
+}
+
+input CreatePostWithPollForCampaignInput {
+  campaignSlug: String!
+  creatorId: String
+  creatorUsername: String
+  pollInput: PollInput!
+  postInput: CreatePostBaseInput!
+}
+
+input PollInput {
+  isMultiSelect: Boolean!
+  pollOptions: [PollOptionInput!]!
+}
+
+input PollOptionInput {
+  text: String!
+}
+
+type RespondToPollResponse {
+  poll: PollExpress!
+}
+
+input RespondToPollInput {
+  pollOptionId: String!
+  responseValue: Boolean!
+}
+
+type ReactionMutationsMutationResponse {
+  createReactionForPost(input: CreateReactionForPostInput!): CreateReactionForPostResponse!
+  deleteReactionForPost(input: DeleteReactionForPostInput!): DeleteReactionForPostResponse!
+}
+
+type CreateReactionForPostResponse {
+  type: ReactionTypeExpress_enum!
+}
+
+input CreateReactionForPostInput {
+  postId: ID!
+  type: ReactionTypeExpress_enum!
+}
+
+type DeleteReactionForPostResponse {
+  type: ReactionTypeExpress_enum!
+}
+
+input DeleteReactionForPostInput {
+  postId: ID!
+}
+
+type SafetyCheckMutationsResponse {
+  createSafetyCheckSubmission(input: CreateSafetyCheckSubmissionInput!): CreateSafetyCheckSubmissionResponse!
+}
+
+type CreateSafetyCheckSubmissionResponse {
+  id: ID!
+}
+
+input CreateSafetyCheckSubmissionInput {
+  artProcess: String!
+  instagramName: String
+  isCopyrightVerified: Boolean!
+  processVideo: AssetInput
+  websiteUrl: String!
+}
+
+type SurveyMutationsResponse {
+  submitCollectorSurvey(input: SubmitCollectorSurveyInput!): SubmitCollectorSurveyResponse!
+  submitCreatorSurvey(input: SubmitCreatorSurveyInput!): SubmitCreatorSurveyResponse!
+}
+
+type SubmitCollectorSurveyResponse {
+  user: UserExpress!
+}
+
+input SubmitCollectorSurveyInput {
+  freeform: String
+  recommend: Int!
+  seanEllis: String!
+  why1: String!
+  why2: String!
+}
+
+type SubmitCreatorSurveyResponse {
+  user: UserExpress!
+}
+
+input SubmitCreatorSurveyInput {
+  competition: String!
+  impact: String!
+  improvements: String!
+  isFofuBetterThanWeb2: Boolean!
+  isFofuMainRevenue: Boolean!
+  positiveDifference: String!
+  problems: String!
+  recommend: Int!
+  seanEllis: String!
+  usesWeb2Platforms: Boolean!
+}
+
+type AcceptCreatorInviteResponse {
+  username: String!
+}
+
+input AcceptCreatorInviteInput {
+  inviteLinkToken: String!
+  username: String!
+}
+
+type SocialNetwork {
+  authLink: String!
+}
+
+input ConnectSocialNetworkInput {
+  redirectLocation: RedirectLocation_enum
+  socialNetworkType: SocialNetworkType_enum!
+  userId: String!
+}
+
+enum RedirectLocation_enum {
+  Apply
+  EditProfile
+  Profile
+}
+
+enum SocialNetworkType_enum {
+  Discord
+  Instagram
+  Twitter
+}
+
+input DeleteNftInput {
+  mint: String!
+}
+
+input DisconnectSocialNetworkInput {
+  socialNetworkType: SocialNetworkType_enum!
+  userId: String!
+}
+
+type UpdateUnlockableWinnerResponse {
+  unlockableWinner: UnlockableWinnerExpress!
+}
+
+"""Used to dismiss the "Share info" CTA the buyer sees in the UI."""
+input DismissUnlockableWinnerBuyerShareInfoCtaInput {
+  unlockableId: ID!
+}
+
+"""Used to dismiss the "See info" CTA the creator sees in the UI."""
+input DismissUnlockableWinnerCreatorSeeInfoCtaInput {
+  unlockableId: ID!
+  unlockableWinnerUserId: String!
+}
+
+type ImportNftsResponse {
+  metadataAccountsImported: [MetadataAccount!]!
+  mintAddressesFailedToImport: [String!]!
+}
+
+input ImportNftsInput {
+  mintAddresses: [String!]!
+}
+
+input InsertNftInput {
+  assetArweaveTxid: String!
+  assetHeight: Int
+  assetWidth: Int
+  attributes: [NftAttributeInput!]
+  contentType: String!
+  creatorId: String!
+  creatorsMetadataString: String!
+  description: String!
+  disclosures: [NftDisclosureInput!]
+  editionNonce: Int
+  image: String!
+  isPnft: Boolean = false
+  maxSupply: Int
+  metadataArweaveTxid: String!
+  mint: String!
+  name: String!
+  nonstandardAsset: AssetInput
+  ownerId: String!
+  sellerFeeBasisPoints: Int!
+  seriesMint: String
+  status: NftStatusExpress_enum!
+}
+
+input NftDisclosureInput {
+  details: String
+  type: NftDisclosureTypeExpress_enum!
+}
+
+type InsertNftTransactionResponse {
+  editionsMerkleAllowlistInfoForBuyer: EditionsMerkleAllowlistInfoExpress
+  transaction: NftTransactionExpress!
+
+  """
+  When inserting transactions for standard editions, it is sometimes necessary to update the master edition NFT. In those cases, this field will return the updated master edition
+  """
+  updatedMasterEditionMetadataAccount: MetadataAccount
+
+  """
+  Returns the updated NFT with mint equal to the input object's mint field
+  """
+  updatedMetadataAccount: MetadataAccount!
+}
+
+input InsertNftTransactionInput {
+  comment: String
+  creatorId: String!
+  currencyName: CurrencyNameExpress_enum
+  editionsInput: InsertNftTransactionEditionsInput
+  fromUserId: String!
+  id: uuid
+
+  """
+  To make our transactions as atomic as possible, we include information that is necessary for inserting new nfts into our DB
+  """
+  insertNftInput: InsertNftInput
+
+  """
+  To make our transactions as atomic as possible, we include information that is necessary for inserting Pnfts into our DB
+  """
+  insertPnftInput: InsertPnftInput
+
+  """
+  To make our transactions as atomic as possible, we include information that is necessary for inserting standard editions into our DB
+  """
+  insertStandardEditionInput: InsertStandardEditionInput
+  ixIndex: Int
+  ixInnerIndex: Int
+  mint: String!
+
+  """
+  ID (not txid) of the offer transaction if inserting a SoldAcceptedOffer tx
+  """
+  offerTransactionId: String
+  price: bigint
+
+  """
+  A fallback timestamp that should be used if useTransactionBlockTime is false
+  """
+  timeCreatedFallback: timestamptz
+  toUserId: String!
+  txid: String!
+  type: NftTransactionTypeExpress_enum!
+  updateClaimInput: InsertNftTransactionUpdateClaimInput
+  updateNftInput: InsertNftTransactionUpdateNftInput
+}
+
+input InsertNftTransactionEditionsInput {
+  allowlistAddresses: [String!]
+  allowlistAmountAllowed: Int = 1
+  allowlistEnabled: Boolean
+  allowlistPrice: bigint
+  allowlistStartTime: timestamptz
+  priceFunctionType: PriceFunctionTypeExpress_enum!
+  priceParams: [Float!]!
+  publicSaleStartTime: timestamptz
+  startingPriceInLamports: bigint!
+}
+
+input InsertPnftInput {
+  edition: Int!
+  ownerId: String!
+  pnftLimitedEditionMint: PublicKey!
+  pnftMasterEditionMint: PublicKey!
+}
+
+input InsertStandardEditionInput {
+  masterEditionMint: PublicKey!
+  ownerId: String!
+  standardEditionMint: PublicKey!
+}
+
+"""
+Used to update the corresponding pNFT claim after inserting the transaction
+"""
+input InsertNftTransactionUpdateClaimInput {
+  claimId: uuid!
+}
+
+"""
+We prefer to derive Nft and NftListing updates from the transaction information itself, but this is not always possible. In cases where it is not possible, we can specify how to update the NFT using this input type.
+"""
+input InsertNftTransactionUpdateNftInput {
+  antiBotProtectionEnabled: Boolean
+  auctionDurationInSeconds: Int
+  editionBuyLimitPerAddress: Int
+  insertUnlockableInput: InsertUnlockableInput
+  pnftIdForAuction: ID
+  scheduledAuctionTime: timestamptz
+  tickSizeConstantInLamports: bigint
+  timeExtensionDurationInSeconds: Int
+}
+
+input InsertUnlockableInput {
+  asset: AssetInput!
+  unlockable: UnlockableInput!
+}
+
+input UnlockableInput {
+  activationPriceInLamports: bigint
+  category: UnlockableCategory!
+  description: String
+  id: ID!
+  name: String!
+}
+
+type InsertPnftResponse {
+  metadataAccount: MetadataAccount!
+}
+
+input RefreshMetadataInput {
+  mint: String!
+}
+
+type SendCreatorInvitesResponse {
+  convertedUserIds: [String!]!
+  sentEmails: [String!]!
+}
+
+input SendCreatorInvitesInput {
+  """List of emails to send email invites to"""
+  emails: [String!]!
+
+  """
+  User IDs or usernames to be used for converting existing users to creators using an invite
+  """
+  userIdsOrUsernames: [String!]!
+}
+
+type ShareInfoAndSwapForTooniesResponse {
+  proofOfOwnershipTokenMetadataAccount: MetadataAccount!
+}
+
+input ShareInfoAndSwapForTooniesInput {
+  email: String!
+  name: String!
+  shippingAddress: String!
+  swapTxid: ID!
+  swappedNftMint: ID!
+}
+
+"""
+Adds any applicable Discord roles to a user and returns all the role IDs they have afterwards.
+"""
+union UpdateDiscordRolesForUserResponse = UpdateDiscordRolesForUserResponseSuccess | UpdateDiscordRolesForUserResponseFailure
+
+type UpdateDiscordRolesForUserResponseSuccess {
+  roleIds: [ID!]!
+}
+
+type UpdateDiscordRolesForUserResponseFailure {
+  reason: String!
+}
+
+type UpdateSeriesIdForNftsResponse {
+  metadataAccountsInSeries: MetadataAccountsConnection!
+  metadataAccountsRemovedFromSeries: [MetadataAccount!]!
+}
+
+input UpdateSeriesIdForNftsInput {
+  mintsToAdd: [String!]
+  mintsToRemove: [String!]
+  order: [String!]
+  seriesId: String!
+}
+
+"""
+Used to update the UnlockableWinner buyer info for the creator to send them the unlockable.
+"""
+input UpdateUnlockableWinnerBuyerInfoInput {
+  unlockableId: ID!
+  userEmail: String!
+}
+
+type UploadNftToArweaveResponse {
+  assetTxid: String!
+  metadataTxid: String!
+
+  """
+  For nonstandard files, e.g. GLB files, assetTxid is the txid of the preview file. This is the txid of the actual file.
+  """
+  nonstandardAssetTxid: String
+}
+
+input UploadNftToArweaveInput {
+  fileName: String!
+  metadata: NftMetadataV1Input!
+
+  """
+  For nonstandard files, e.g. GLB files, fileName is the name of the preview file. This is the name of the actual file.
+  """
+  nonstandardFileName: String
+}
+
+input NftMetadataV1Input {
+  animation_url: String
+  attributes: [NftMetadataV1AttributeInput!]
+  collection: NftMetadataV1CollectionInput
+  description: String!
+  external_url: String
+  name: String!
+  properties: NftMetadataV1PropertiesInput!
+  seller_fee_basis_points: Int!
+  symbol: String!
+}
+
+input NftMetadataV1AttributeInput {
+  trait_type: String!
+  value: String!
+}
+
+input NftMetadataV1CollectionInput {
+  family: String
+  name: String
+}
+
+input NftMetadataV1PropertiesInput {
+  category: String
+  creators: [NftMetadataV1CreatorPropertyInput!]!
+  files: [NftMetadataV1FilePropertyInput!]
+}
+
+input NftMetadataV1CreatorPropertyInput {
+  address: String!
+  share: Int!
+  verified: Boolean!
+}
+
+input NftMetadataV1FilePropertyInput {
+  cdn: Boolean
+  type: String!
+  uri: String!
+}

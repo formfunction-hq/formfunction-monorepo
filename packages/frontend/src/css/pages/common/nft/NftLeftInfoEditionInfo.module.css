@@ -1,0 +1,11 @@
+.botProtectionInfo {
+  align-items: center;
+  column-gap: 10px;
+  display: flex;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}

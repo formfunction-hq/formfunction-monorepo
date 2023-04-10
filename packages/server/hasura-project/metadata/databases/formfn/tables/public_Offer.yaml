@@ -1,0 +1,34 @@
+table:
+  schema: public
+  name: Offer
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      columns:
+        - expirationDate
+        - mint
+        - nftTransactionId
+        - userId
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - expirationDate
+        - id
+        - nftTransactionId
+        - refundTxid
+        - saleTransactionId
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - expirationDate
+        - refundTxid
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      check: null

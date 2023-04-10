@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: CampaignCategory
+is_enum: true

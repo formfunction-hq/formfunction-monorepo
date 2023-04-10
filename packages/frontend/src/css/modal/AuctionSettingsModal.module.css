@@ -1,0 +1,27 @@
+.body {
+  width: 660px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  row-gap: 36px;
+}
+
+.saveButton {
+  display: block;
+  margin: auto;
+  margin-top: 48px;
+  width: 260px;
+}
+
+@media only screen and (max-width: 768px) {
+  .body {
+    width: 100%;
+  }
+
+  .saveButton {
+    width: 220px;
+  }
+}

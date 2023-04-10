@@ -1,0 +1,58 @@
+.assetAndDescription {
+  align-items: center;
+  column-gap: 16px;
+  display: flex;
+}
+
+.container {
+  padding: 16px 0px;
+}
+
+.description {
+  align-items: center;
+  column-gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+
+.descriptionAndTime {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.profileLink {
+  align-items: center;
+  column-gap: 8px;
+  display: flex;
+}
+
+.timeAndExpiration {
+  align-items: center;
+  display: flex;
+  column-gap: 8px;
+}
+
+.transactionMain {
+  column-gap: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 640px) {
+  .mobileActionButton {
+    margin-top: 24px;
+  }
+
+  .timeAndExpiration {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .transactionMain {
+    align-items: flex-start;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+}

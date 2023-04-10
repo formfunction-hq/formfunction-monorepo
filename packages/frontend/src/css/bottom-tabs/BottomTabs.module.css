@@ -1,0 +1,29 @@
+.tabs {
+  background-color: var(--color-floatingElement);
+  bottom: 0px;
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  width: 100%;
+  z-index: var(--z-index-bottomTabs);
+}
+
+.indicator {
+  position: absolute;
+  right: 22px;
+  top: 6px;
+}
+
+@media only screen and (max-width: 768px) {
+  .indicator {
+    right: 18px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .indicator {
+    right: 14px;
+    top: 2px;
+  }
+}

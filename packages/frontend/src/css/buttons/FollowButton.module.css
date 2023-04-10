@@ -1,0 +1,10 @@
+.button {
+  flex-shrink: 0;
+  width: 180px;
+}
+
+@media only screen and (max-width: 640px) {
+  .button {
+    width: 150px;
+  }
+}

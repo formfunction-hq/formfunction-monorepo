@@ -1,0 +1,53 @@
+table:
+  schema: public
+  name: Claim
+object_relationships:
+  - name: NftTransaction
+    using:
+      foreign_key_constraint_on: claimTransactionId
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      columns:
+        - auctionNftId
+        - claimTransactionId
+        - timeLastReminded
+        - proof
+        - userId
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - auctionNftId
+        - claimTransactionId
+        - id
+        - timeLastReminded
+        - proof
+        - timeCreated
+        - userId
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - auctionNftId
+        - claimTransactionId
+        - id
+        - timeLastReminded
+        - proof
+        - timeCreated
+        - userId
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - claimTransactionId
+        - timeLastReminded
+        - proof
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      check: null

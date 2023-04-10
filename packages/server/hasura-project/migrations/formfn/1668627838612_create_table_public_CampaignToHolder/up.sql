@@ -1,0 +1,2 @@
+CREATE TABLE "public"."CampaignToHolder" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "timeCreated" timestamptz NOT NULL DEFAULT now(), "campaignId" uuid NOT NULL, "holderUserId" text NOT NULL, PRIMARY KEY ("campaignId","holderUserId") , FOREIGN KEY ("campaignId") REFERENCES "public"."Campaign"("id") ON UPDATE cascade ON DELETE cascade, FOREIGN KEY ("holderUserId") REFERENCES "public"."User"("id") ON UPDATE cascade ON DELETE cascade, UNIQUE ("id"), UNIQUE ("campaignId", "holderUserId"));
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

@@ -1,0 +1,5 @@
+.indicator {
+  background: var(--color-purpleGradient);
+  height: 100%;
+  width: 6px;
+}

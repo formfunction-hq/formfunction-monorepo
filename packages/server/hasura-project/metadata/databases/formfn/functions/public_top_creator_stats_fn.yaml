@@ -1,0 +1,3 @@
+function:
+  schema: public
+  name: top_creator_stats_fn

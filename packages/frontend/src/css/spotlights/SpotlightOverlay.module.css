@@ -1,0 +1,21 @@
+/* For higher specificity */
+div.container {
+  display: flex;
+  height: unset;
+  width: unset;
+  margin-left: 8px;
+  margin-top: 8px;
+}
+
+.content {
+  align-items: center;
+  background-color: var(--color-spotlightOverlay);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.condensed {
+  padding: 12px 24px;
+}

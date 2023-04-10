@@ -1,0 +1,30 @@
+.actionButton {
+  margin-top: 8px;
+}
+
+.container {
+  align-items: center;
+  background-color: var(--color-cardBackground);
+  column-gap: 16px;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  width: 600px;
+}
+
+.labelAndTimestamp {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  row-gap: 8px;
+}
+
+.left {
+  align-self: flex-start;
+}
+
+@media only screen and (max-width: 640px) {
+  .container {
+    width: 100%;
+  }
+}

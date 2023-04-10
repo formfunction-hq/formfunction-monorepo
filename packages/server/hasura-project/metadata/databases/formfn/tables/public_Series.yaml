@@ -1,0 +1,119 @@
+table:
+  schema: public
+  name: Series
+object_relationships:
+  - name: AvatarPhoto
+    using:
+      foreign_key_constraint_on: avatarPhotoId
+  - name: CoverPhoto
+    using:
+      foreign_key_constraint_on: coverPhotoId
+  - name: Creator
+    using:
+      foreign_key_constraint_on: creatorId
+  - name: logoAsset
+    using:
+      foreign_key_constraint_on: logoAssetId
+array_relationships:
+  - name: Nfts
+    using:
+      foreign_key_constraint_on:
+        column: seriesId
+        table:
+          schema: public
+          name: Nft
+computed_fields:
+  - name: nameLength
+    definition:
+      function:
+        schema: public
+        name: series_name_length_fn
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        creatorId:
+          _eq: X-Hasura-User-Id
+      columns:
+        - avatarPhotoId
+        - coverPhotoId
+        - creatorId
+        - description
+        - id
+        - mint
+        - name
+        - nftOrder
+        - slug
+        - timeCreated
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - avatarPhotoId
+        - coverPhotoId
+        - creatorId
+        - description
+        - id
+        - logoAssetId
+        - mint
+        - name
+        - nftOrder
+        - slug
+        - timeCreated
+        - timeLastAddedTo
+        - type
+      computed_fields:
+        - nameLength
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - avatarPhotoId
+        - coverPhotoId
+        - creatorId
+        - description
+        - id
+        - logoAssetId
+        - mint
+        - name
+        - nftOrder
+        - slug
+        - timeCreated
+        - timeLastAddedTo
+        - type
+      computed_fields:
+        - nameLength
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - avatarPhotoId
+        - coverPhotoId
+        - description
+        - name
+        - slug
+      filter:
+        creatorId:
+          _eq: X-Hasura-User-Id
+      check: null
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        creatorId:
+          _eq: X-Hasura-User-Id
+event_triggers:
+  - name: seriesUploadPreviewImage
+    definition:
+      enable_manual: true
+      insert:
+        columns: '*'
+      update:
+        columns:
+          - avatarPhotoId
+    retry_conf:
+      num_retries: 3
+      interval_sec: 10
+      timeout_sec: 180
+    webhook: '{{EVENT_BASE_URL}}/hasura/seriesUploadPreviewImageWebhook'

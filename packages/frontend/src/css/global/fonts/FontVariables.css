@@ -1,0 +1,167 @@
+:root {
+  /* artName */
+  --font-family-artName: "DM Sans", sans-serif;
+  --font-size-artName: 25px;
+  --font-weight-artName: 500;
+  --line-height-artName: 33px;
+
+  /* body1 */
+  --font-family-body1: "DM Sans", sans-serif;
+  --font-size-body1: 19px;
+  --font-weight-body1: 400;
+  --line-height-body1: 24px;
+
+  /* body2 */
+  --font-family-body2: "DM Sans", sans-serif;
+  --font-size-body2: 15px;
+  --font-weight-body2: 400;
+  --line-height-body2: 22px;
+
+  /* body3 */
+  --font-family-body3: "DM Sans", sans-serif;
+  --font-size-body3: 13px;
+  --font-weight-body3: 400;
+  --line-height-body3: 20px;
+
+  /* header1 */
+  --font-family-header1: "TanNimbus", serif;
+  --font-size-header1: 56px;
+  --font-weight-header1: 400;
+
+  /* header2 */
+  --font-family-header2: "DM Sans", sans-serif;
+  --font-size-header2: 44px;
+  --font-weight-header2: 700;
+  --line-height-header2: 56px;
+
+  /* header3 */
+  --font-family-header3: "DM Sans", sans-serif;
+  --font-size-header3: 32px;
+  --font-weight-header3: 500;
+  --line-height-header3: 40px;
+
+  /* spotlightTitle */
+  --font-family-spotlightTitle: "DM Sans", sans-serif;
+  --font-size-spotlightTitle: 84px;
+  --font-weight-spotlightTitle: 700;
+  --line-height-spotlightTitle: 96px;
+
+  /* navLink */
+  --font-family-navLink: "DM Sans", sans-serif;
+  --font-size-navLink: 20px;
+  --font-weight-navLink: 500;
+  --line-height-navLink: 22px;
+
+  /* price */
+  --font-family-price: "DM Sans", sans-serif;
+  --font-size-price: 22px;
+  --font-weight-price: 500;
+
+  /* subheader */
+  --font-family-subheader: "DM Sans", sans-serif;
+  --font-size-subheader: 20px;
+  --font-weight-subheader: 400;
+  --line-height-subheader: 28px;
+
+  /* tinyLabel */
+  --font-family-tinyLabel: "DM Sans", sans-serif;
+  --font-size-tinyLabel: 14px;
+  --font-weight-tinyLabel: 700;
+  --letter-spacing-tinyLabel: 0.5px;
+  --line-height-tinyLabel: 20px;
+
+  /* flashbackHeader0 */
+  --font-family-flashbackHeader0: "TanNimbus", serif;
+  --font-size-flashbackHeader0: 180px;
+  --font-weight-flashbackHeader0: 400;
+  --line-height-flashbackHeader0: 240px;
+
+  /* flashbackHeader1 */
+  --font-family-flashbackHeader1: "TanNimbus", serif;
+  --font-size-flashbackHeader1: 120px;
+  --font-weight-flashbackHeader1: 400;
+
+  /* flashbackHeader2 */
+  --font-family-flashbackHeader2: "DM Sans", sans-serif;
+  --font-size-flashbackHeader2: 48px;
+  --font-weight-flashbackHeader2: 700;
+
+  /* flashbackHeader3 */
+  --font-family-flashbackHeader3: "DM Sans", sans-serif;
+  --font-size-flashbackHeader3: 36px;
+  --font-weight-flashbackHeader3: 700;
+}
+
+@media only screen and (max-width: 1024px) {
+  :root {
+    /* header1 */
+    --font-size-header1: 46px;
+
+    /* flashbackHeader0 */
+    --font-size-flashbackHeader0: 140px;
+    --line-height-flashbackHeader0: 180px;
+  }
+}
+
+/* TODO: fill out mobile fonts */
+@media only screen and (max-width: 768px) {
+  :root {
+    /* artName */
+    --font-size-artName: 21px;
+
+    /* body1 */
+    --font-size-body1: 16px;
+    --line-height-body1: 20px;
+
+    /* body2 */
+    --font-size-body2: 12px;
+    --line-height-body2: 18px;
+
+    /* body3 */
+    --font-size-body3: 10px;
+    --line-height-body3: 26px;
+
+    /* header1 */
+    --font-size-header1: 36px;
+
+    /* header2 */
+    --font-size-header2: 28px;
+    --line-height-header2: 34px;
+
+    /* header3 */
+    --font-size-header3: 24px;
+    --line-height-header3: 30px;
+
+    /* navLink */
+    --font-size-navLink: 17px;
+    --line-height-navLink: 22px;
+
+    /* price */
+    --font-size-price: 18px;
+    --line-height-price: 22px;
+
+    /* subheader */
+    --font-size-subheader: 16px;
+    --line-height-subheader: 22px;
+
+    /* tinyLabel */
+    --font-size-tinyLabel: 12px;
+    --line-height-tinyLabel: 20px;
+
+    /* flashbackHeader0 */
+    --font-size-flashbackHeader0: 80px;
+    --line-height-flashbackHeader0: 100px;
+
+    /* flashbackHeader1 */
+    --font-size-flashbackHeader1: 60px;
+    --line-height-flashbackHeader1: 80px;
+
+    /* flashbackHeader2 */
+    --font-size-flashbackHeader2: 32px;
+    --line-height-flashbackHeader2: 40px;
+
+    /* flashbackHeader3 */
+    --font-size-flashbackHeader3: 24px;
+    --line-height-flashbackHeader3: 32px;
+  }
+}

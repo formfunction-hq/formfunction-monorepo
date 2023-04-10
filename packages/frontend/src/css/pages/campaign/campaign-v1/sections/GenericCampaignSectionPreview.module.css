@@ -1,0 +1,31 @@
+.assets {
+  column-gap: 12px;
+  display: flex;
+}
+
+.container {
+  align-items: flex-start;
+  background-color: var(--color-cardBackground);
+  border-radius: 12px;
+  box-shadow: var(--box-shadow-button);
+  display: flex;
+  flex-direction: column;
+  /* Keep in sync with CampaignSectionPreviews.module.css */
+  min-width: 376px;
+  padding: 32px;
+  row-gap: 24px;
+}
+
+.seePieces {
+  align-items: center;
+  column-gap: 8px;
+  display: flex;
+  margin-top: 8px;
+}
+
+.text {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}

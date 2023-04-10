@@ -1,0 +1,56 @@
+.blankContent {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0%;
+  visibility: hidden;
+  width: 100%;
+}
+
+.dragActive {
+  background-color: var(--color-lightPurple);
+  cursor: pointer;
+}
+
+.dropzone {
+  /* Removes weird outline on safari (can test with chat buttons) */
+  outline: none;
+  position: relative;
+}
+
+.dropzone.disabled {
+  opacity: 0.6;
+}
+
+.dragAccept .overlayAccept {
+  background-color: rgba(0, 255, 0, 0.1) !important;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0%;
+  width: 100%;
+}
+
+.dragReject .overlayReject {
+  background-color: rgba(255, 0, 0, 0.1) !important;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0%;
+  width: 100%;
+}
+
+@media (hover: hover) {
+  .dropzoneHover:hover {
+    background-color: var(--color-lightPurple);
+    cursor: pointer;
+  }
+
+  .dropzone:hover .blankContent {
+    visibility: visible;
+  }
+}

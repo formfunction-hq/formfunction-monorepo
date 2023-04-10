@@ -1,0 +1,75 @@
+.artistPillContainer {
+  column-gap: 24px;
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.button {
+  padding: 16px;
+}
+
+.body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 176px;
+  row-gap: 16px;
+}
+
+.container {
+  align-items: center;
+  border-radius: 24px;
+  display: flex;
+  height: 734px;
+  justify-content: center;
+  width: 100%;
+}
+
+.description {
+  margin-bottom: 16px;
+}
+
+@media only screen and (max-width: 980px) {
+  .body {
+    padding: 0 120px;
+  }
+
+  .container {
+    height: 680px;
+  }
+
+  .title {
+    font-size: 64px;
+    line-height: 72px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .body {
+    padding: 0 60px;
+  }
+
+  .container {
+    height: 624px;
+  }
+
+  .title {
+    font-size: 56px;
+    line-height: 64px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .body {
+    padding: 0 24px;
+  }
+
+  .container {
+    height: 514px;
+  }
+
+  .title {
+    font-size: 36px;
+    line-height: 42px;
+  }
+}

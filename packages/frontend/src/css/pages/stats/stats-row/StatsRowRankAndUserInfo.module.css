@@ -1,0 +1,22 @@
+.container {
+  align-items: center;
+  column-gap: 8px;
+  display: flex;
+  /* See https://stackoverflow.com/questions/43809612/prevent-a-child-element-from-overflowing-its-parent-in-flexbox */
+  min-width: 0px;
+  width: 440px;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .container {
+    column-gap: 4px;
+    max-width: 220px;
+    width: auto;
+  }
+}

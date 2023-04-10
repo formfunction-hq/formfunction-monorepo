@@ -1,0 +1,38 @@
+.textWhite {
+  color: white;
+}
+
+.toggle {
+  align-items: center;
+  background-color: var(--color-floatingElement);
+  border-radius: 100px;
+  box-shadow: var(--box-shadow-button);
+  box-sizing: border-box;
+  display: grid;
+  height: 70px;
+  justify-content: space-around;
+  position: relative;
+  width: 100%;
+}
+
+.toggleSmall {
+  height: 48px;
+}
+
+.toggleButton {
+  z-index: 1;
+}
+
+.toggleHighlight {
+  background: var(--color-purpleGradient);
+  border-radius: 100px;
+  height: 54px;
+  position: absolute;
+  top: 8px;
+  transition: left 0.5s;
+}
+
+.toggleHighlightSmall {
+  height: 36px;
+  top: 6px;
+}

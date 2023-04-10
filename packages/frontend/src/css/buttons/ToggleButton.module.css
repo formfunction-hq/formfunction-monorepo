@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.label {
+  margin-left: 12px;
+}

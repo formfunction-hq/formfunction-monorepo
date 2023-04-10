@@ -1,0 +1,1 @@
+INSERT INTO "public"."Currency"("id", "name", "decimals", "symbol", "shortSymbol", "iconSrc", "mint", "usdRate", "solRate") VALUES (E'd603482b-0368-49c6-8614-924bfd3d45af', E'Particles', 2, E'OOO', null, E'https://formfunction.imgix.net/currency/particles/logo-particles.jpg', E'BDNRJZ6MA3YRhHcewYMjRDEc7oWQCxHknXU98wwTsSxu', null, null);

@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: PriceFunctionType
+is_enum: true

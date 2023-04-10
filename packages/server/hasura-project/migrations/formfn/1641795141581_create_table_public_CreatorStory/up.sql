@@ -1,0 +1,2 @@
+CREATE TABLE "public"."CreatorStory" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "userId" text NOT NULL, "headline" text, "process" text, "inspiration" text, "goals" text, "colorScheme" integer NOT NULL DEFAULT 0, PRIMARY KEY ("id") , FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON UPDATE restrict ON DELETE restrict, UNIQUE ("id"), UNIQUE ("userId"));COMMENT ON TABLE "public"."CreatorStory" IS E'Holds information about each creator\'s creator story';
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

@@ -1,0 +1,105 @@
+.backButton {
+  margin-top: 32px;
+}
+
+.body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.bodyTitle {
+  max-width: 453px;
+}
+
+.connectWalletDescription {
+  margin-top: 20px;
+  max-width: 448px;
+}
+
+.firstTimeButton {
+  margin: auto;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.icon {
+  height: 40px;
+  width: 40px;
+}
+
+.iconGlow {
+  filter: invert(95%) sepia(100%) saturate(20%) hue-rotate(326deg)
+    brightness(106%) contrast(105%);
+  height: 40px;
+  width: 40px;
+}
+
+.loadingSpinner {
+  margin: auto;
+  margin-top: 32px;
+}
+
+.needInstall {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.ol {
+  margin-top: 12px;
+  text-align: left;
+}
+
+.walletTypeButtons {
+  column-gap: 24px;
+  display: flex;
+  margin-top: 40px;
+}
+
+.wallet {
+  align-items: center;
+  background-color: var(--color-primary) !important;
+  border-radius: 12px;
+  column-gap: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 16px 32px;
+  width: 314px;
+}
+
+.wallets {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  row-gap: 24px;
+}
+
+/* TODO: hover states */
+
+/* Wallet styles */
+.walletBackpack {
+  /* Don't use var(--color-primary), we don't want this to change based on the color mode */
+  background-color: #201F2A !important;
+}
+
+.walletGlow {
+  background-color: var(--color-tertiary) !important;
+  color: var(--color-primary) !important;
+}
+
+.walletPhantom {
+  background-color: var(--color-phantomPurple) !important;
+}
+
+.walletSolflare {
+  /* Don't use var(--color-primary), we don't want this to change based on the color mode */
+  background-color: #201F2A !important;
+}
+
+@media only screen and (max-width: 500px) {
+  .wallet {
+    width: 280px;
+  }
+}

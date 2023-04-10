@@ -1,0 +1,15 @@
+.button {
+  align-items: center;
+  background: var(--color-purpleGradient);
+  border-radius: 50%;
+  display: flex;
+  height: 48px;
+  justify-content: center;
+  width: 48px;
+}
+
+.button:disabled {
+  cursor: default;
+  opacity: 0.48;
+  pointer-events: none;
+}

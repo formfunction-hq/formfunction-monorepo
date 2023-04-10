@@ -1,0 +1,17 @@
+.desktopContainer {
+  display: block;
+}
+
+.mobileContainer {
+  display: none;
+}
+
+@media only screen and (max-width: 868px) {
+  .desktopContainer {
+    display: none;
+  }
+
+  .mobileContainer {
+    display: block;
+  }
+}

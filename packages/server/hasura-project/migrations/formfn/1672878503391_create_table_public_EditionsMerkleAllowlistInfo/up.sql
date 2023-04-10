@@ -1,0 +1,2 @@
+CREATE TABLE "public"."EditionsMerkleAllowlistInfo" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "userId" text NOT NULL, "nftId" text NOT NULL, "proof" text NOT NULL, "rootIndex" integer NOT NULL, "amountAllowed" integer NOT NULL, "timeCreated" timestamptz NOT NULL DEFAULT now(), PRIMARY KEY ("id") , FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON UPDATE cascade ON DELETE cascade, FOREIGN KEY ("nftId") REFERENCES "public"."Nft"("id") ON UPDATE cascade ON DELETE cascade, UNIQUE ("id"), UNIQUE ("userId", "nftId"));
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

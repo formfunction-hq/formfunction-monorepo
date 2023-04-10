@@ -1,0 +1,1 @@
+CREATE TABLE "public"."DeletedNftTransaction" ("txid" text NOT NULL, PRIMARY KEY ("txid") , UNIQUE ("txid"));COMMENT ON TABLE "public"."DeletedNftTransaction" IS E'Keeps track of txids deleted from NftTransaction and NftTransactionRaw, so that we can ignore them in syncAuctionTxs';

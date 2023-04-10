@@ -1,0 +1,17 @@
+.image {
+  align-items: center;
+  border-radius: 16px;
+  display: flex;
+  height: 300px;
+  justify-content: center;
+  object-fit: cover;
+  overflow: auto;
+  width: 300px;
+}
+
+@media only screen and (max-width: 640px) {
+  .image {
+    height: 250px;
+    width: 250px;
+  }
+}

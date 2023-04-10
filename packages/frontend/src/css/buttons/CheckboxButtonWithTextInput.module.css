@@ -1,0 +1,10 @@
+.container {
+  column-gap: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.textInput {
+  height: 54px;
+  width: 100%;
+}

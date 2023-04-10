@@ -1,0 +1,10 @@
+- name: formfn
+  kind: postgres
+  configuration:
+    connection_info:
+      use_prepared_statements: false
+      database_url:
+        from_env: DATABASE_URL
+      isolation_level: read-committed
+  tables: "!include formfn/tables/tables.yaml"
+  functions: "!include formfn/functions/functions.yaml"

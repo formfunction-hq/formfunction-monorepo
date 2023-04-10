@@ -1,0 +1,28 @@
+.body {
+  max-width: 730px;
+}
+
+.chooseButton {
+  margin-top: 24px;
+  text-align: left;
+  padding-bottom: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chooseButton:hover {
+  text-decoration: none;
+}
+
+.chooseButton:nth-of-type(1) {
+  border-bottom: 1px solid var(--color-tertiary);
+}
+
+.chooseSubtext {
+  margin-top: 8px;
+}
+
+.description {
+  text-align: center;
+}

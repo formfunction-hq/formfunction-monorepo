@@ -1,0 +1,20 @@
+.body {
+  width: 630px;
+}
+
+.saveButton {
+  display: block;
+  margin: auto;
+  margin-top: 48px;
+  width: 260px;
+}
+
+@media only screen and (max-width: 768px) {
+  .body {
+    width: 100%;
+  }
+
+  .saveButton {
+    width: 220px;
+  }
+}

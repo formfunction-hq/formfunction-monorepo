@@ -1,0 +1,30 @@
+.container {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 1000px;
+}
+
+.input {
+  align-self: center;
+  margin-top: 24px;
+  max-width: 700px;
+  width: 100%;
+}
+
+.inputLabel {
+  margin-top: 48px;
+}
+
+.nextButton {
+  align-self: center;
+  margin-top: 48px;
+}
+
+/* Header breakpoint */
+@media only screen and (max-width: 980px) {
+  .inputLabel {
+    margin-top: 32px;
+  }
+}

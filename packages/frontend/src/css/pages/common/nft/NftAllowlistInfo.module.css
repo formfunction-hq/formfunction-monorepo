@@ -1,0 +1,8 @@
+.description {
+  /* Makes top line of description aligned with center of icon */
+  margin-top: 2px;
+}
+
+.iconContainer {
+  flex-shrink: 0;
+}

@@ -1,0 +1,24 @@
+.form {
+  margin-top: 48px;
+}
+
+.rejectedDescription {
+  margin-top: 24px;
+  max-width: 840px;
+}
+
+.submitted {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.submittedDescription {
+  margin-top: 16px;
+}
+
+.submittedImage {
+  margin-top: 60px;
+  max-width: 700px;
+  width: 100%;
+}

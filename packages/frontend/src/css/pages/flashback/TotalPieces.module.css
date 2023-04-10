@@ -1,0 +1,44 @@
+.fullViewportWidth {
+  margin-left: 0px;
+  margin-top: 32px;
+}
+
+.header1 {
+  margin-top: 64px;
+}
+
+.image {
+  flex-shrink: 0;
+  margin-right: 32px;
+}
+
+.imagesContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 32px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1300px) {
+  .imagesContainer {
+    margin-top: 0px;
+  }
+
+  .header2 {
+    font-size: 40px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .header1 {
+    margin-top: 32px;
+  }
+
+  .header2 {
+    font-size: 32px;
+  }
+}

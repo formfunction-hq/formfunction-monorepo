@@ -1,0 +1,2 @@
+CREATE TABLE "public"."ActivityNotification" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "notificationId" uuid NOT NULL, "timeSeen" timestamptz, "timeCreated" timestamptz NOT NULL DEFAULT now(), PRIMARY KEY ("id") , FOREIGN KEY ("notificationId") REFERENCES "public"."Notification"("id") ON UPDATE restrict ON DELETE restrict, UNIQUE ("id"), UNIQUE ("notificationId"));
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

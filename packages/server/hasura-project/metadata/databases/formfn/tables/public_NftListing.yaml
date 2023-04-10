@@ -1,0 +1,49 @@
+table:
+  schema: public
+  name: NftListing
+object_relationships:
+  - name: Nft
+    using:
+      foreign_key_constraint_on: nftId
+  - name: PnftForAuction
+    using:
+      foreign_key_constraint_on: pnftIdForAuction
+  - name: Unlockable
+    using:
+      foreign_key_constraint_on: unlockableId
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - nftId
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - antiBotProtectionEnabled
+        - auctionDurationInSeconds
+        - auctionEndTime
+        - scheduledAuctionTime
+        - tickSizeConstantInLamports
+        - timeExtensionDurationInSeconds
+      filter:
+        Nft:
+          ownerId:
+            _eq: X-Hasura-User-Id
+      check: null
+event_triggers:
+  - name: createOnchainAllowlistForEditions
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+      update:
+        columns:
+          - editionAllowlistEnabled
+    retry_conf:
+      num_retries: 3
+      interval_sec: 60
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/createOnchainAllowlistForEditions'

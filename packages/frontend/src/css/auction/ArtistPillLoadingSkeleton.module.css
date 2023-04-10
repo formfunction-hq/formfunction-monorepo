@@ -1,0 +1,29 @@
+.buttonSkeleton {
+  align-items: center;
+  background-color: var(--color-floatingElement) !important;
+  border-radius: 24px;
+  box-shadow: var(--box-shadow-button);
+  column-gap: 8px;
+  display: inline-flex;
+  padding: 8px 16px 8px 8px;
+  width: 200px;
+}
+
+.imageSkeleton {
+  align-items: center;
+  background-color: var(--color-lightPurple);
+  border-radius: 50%;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  object-fit: cover;
+  width: 32px;
+}
+
+.pill {
+  bottom: 0px;
+  left: 24px;
+  position: absolute;
+  transform: translateY(50%);
+  z-index: 1;
+}

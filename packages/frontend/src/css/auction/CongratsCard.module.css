@@ -1,0 +1,78 @@
+.button {
+  margin-top: 24px;
+}
+
+.container {
+  background-color: var(--color-floatingElement);
+  border-radius: 24px;
+  box-shadow: var(--box-shadow-button);
+  column-gap: 40px;
+  display: flex;
+  max-width: 890px;
+  padding: 48px 36px;
+}
+
+.description {
+  margin-top: 24px;
+}
+
+.image {
+  border-radius: 16px;
+  box-shadow: var(--box-shadow-button);
+  height: 324px;
+  width: 324px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  row-gap: 44px;
+}
+
+.price {
+  margin-top: 12px;
+}
+
+.right {
+  min-width: 300px;
+}
+
+.soldFor {
+  margin-top: 24px;
+}
+
+@media only screen and (max-width: 1280px) {
+  .image {
+    height: 280px;
+    width: 280px;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .container {
+    align-items: center;
+    flex-direction: column;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  .right {
+    margin-top: 36px;
+    min-width: auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    box-sizing: border-box;
+    padding: 24px;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .image {
+    height: 237px;
+    width: 237px;
+  }
+}

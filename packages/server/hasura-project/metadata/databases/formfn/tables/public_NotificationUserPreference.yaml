@@ -1,0 +1,44 @@
+table:
+  schema: public
+  name: NotificationUserPreference
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      columns:
+        - enabled
+        - notificationChannel
+        - notificationType
+        - userId
+      backend_only: false
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - enabled
+        - notificationChannel
+        - notificationType
+        - userId
+        - id
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - enabled
+        - notificationChannel
+        - notificationType
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id
+      check: null
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        userId:
+          _eq: X-Hasura-User-Id

@@ -1,0 +1,22 @@
+.description {
+  margin-bottom: 8px;
+  margin-top: 6px;
+}
+
+.label {
+  margin-left: 12px;
+}
+
+.labels {
+  align-items: center;
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.hint {
+  margin-top: 16px;
+}
+
+.subLabel {
+  margin-left: 8px;
+}

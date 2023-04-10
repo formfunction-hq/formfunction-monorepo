@@ -1,0 +1,12 @@
+.sections {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .sections {
+    row-gap: 32px;
+  }
+}

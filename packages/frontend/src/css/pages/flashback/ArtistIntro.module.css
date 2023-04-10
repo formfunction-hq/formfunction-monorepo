@@ -1,0 +1,21 @@
+.artistColor {
+  color: #063d8f;
+}
+
+.banner {
+  margin-top: 64px;
+}
+
+.collectorColor {
+  color: #08756e;
+}
+
+.header0 {
+  margin-top: 32px;
+}
+
+@media only screen and (max-width: 640px) {
+  .header0 {
+    font-size: 60px;
+  }
+}

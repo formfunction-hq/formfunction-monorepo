@@ -1,0 +1,25 @@
+table:
+  schema: public
+  name: Attribute
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - traitType
+        - value
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - traitType
+        - value
+        - id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - traitType
+        - value
+        - id
+      filter: {}

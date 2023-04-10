@@ -1,0 +1,23 @@
+.button {
+  display: flex;
+  column-gap: 8px;
+  padding: 16px;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.description {
+  margin-top: 24px;
+  max-width: 906px;
+}
+
+@media only screen and (max-width: 768px) {
+  .button {
+    margin: auto;
+  }
+}

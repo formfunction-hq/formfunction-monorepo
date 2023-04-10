@@ -1,0 +1,97 @@
+:root {
+  --color-artistPillShadow-darkMode: #454356;
+  --color-backgroundOverlay-darkMode: rgba(0, 0, 0, 0.3);
+  --color-backgroundOverlayDark-darkMode: rgba(0, 0, 0, 0.85);
+  --color-brightPurple-darkMode: #A89AFF;
+  --color-cardBackground-darkMode: #403E4F;
+  --color-clickableAreaBackground-darkMode: rgba(255, 255, 255, 0.1);
+  --color-darkCerulean-darkMode: #004084;
+  --color-darkPurple-darkMode: #ACA8E0;
+  --color-dimmer-darkMode: rgba(0, 0, 0, 0.36);
+  --color-error-darkMode: #E75555;
+  --color-floatingElement-darkMode: #454356;
+  --color-footer-darkMode: #35333F;
+  --color-green-darkMode: #13bc68;
+  --color-ghost-darkMode: #817E90;
+  --color-lightBlue-darkMode: #eaffff;
+  --color-lightPink-darkMode: #ffdcdc;
+  --color-lightPurple-darkMode: #56557D;
+  --color-lightPurpleHover-darkMode: #d8d6ff;
+  --color-linkWater-darkMode: #caddd0;
+  --color-menuPopup-darkMode: #514F66;
+  --color-navy-darkMode: #1d1989;
+  --color-navyHover-darkMode: #080561;
+  --color-overlayButton-darkMode: rgba(0, 0, 0, 0.58);
+  --color-pink-darkMode: #ffc8c8;
+  --color-primary-darkMode: #fff;
+  --color-progressBar-darkMode: #EEEDF4;
+  --color-purple-darkMode: #3530bf;
+  --color-purpleGradientHover-darkMode: #513CCF;
+  --color-red-darkMode: #fd4646;
+  --color-redHover-darkMode: #dd1111;
+  --color-secondary-darkMode: #9B98AA;
+  --color-shader-darkMode: #4F4D64;
+  --color-skeletonBase-darkMode: #9B98AA;
+  --color-skeletonHighlight-darkMode: #838288;
+  --color-spotlightOverlay-darkMode: rgba(64, 62, 79, 0.8);
+  --color-tertiary-darkMode: #676575;
+  --color-transparent-darkMode: transparent;
+  --color-websiteBackground-darkMode: #35333F;
+  --color-white-darkMode: #fff;
+  --color-yellow-darkMode: #ffbb37;
+
+  --color-phantomPurple-darkMode: #6C57EB;
+
+  --color-blueGradient-darkMode: linear-gradient(112.27deg, #D8E0EB -3.54%, #F2F7FF 93.45%);
+  --color-greenGradient-darkMode: linear-gradient(91.96deg, #55D779 17.52%, #1CD592 91.27%);
+  --color-lightPurpleGradient-darkMode: radial-gradient(50% 582.01% at 50% 50%, #57526D 0%, #4F4970 100%);
+  --color-lightPurpleVerticalGradient-darkMode: linear-gradient(180deg, #3F4794 0%, #48326C 100%);
+  --color-pinkVerticalGradient-darkMode: linear-gradient(180deg, #7E3C6C 0%, #171247 100%);
+  --color-purpleGradient-darkMode: linear-gradient(91.96deg, #4e48f2 17.52%, #8458ff 91.27%);
+  --color-purpleGradientForText-darkMode: #A89AFF;
+  --color-redGradient-darkMode: linear-gradient(91.96deg, #F34972 17.52%, #FF3838 91.27%);
+
+  /* Color schemes for creator stories */
+
+  --color-scheme11-darkMode: #CCD2FD;
+  --color-scheme12-darkMode: #2522B4;
+
+  --color-scheme21-darkMode: #C0DCFF;
+  --color-scheme22-darkMode: #E14C2D;
+
+  --color-scheme31-darkMode: #2C6955;
+  --color-scheme32-darkMode: #F7CE4B;
+
+  --color-scheme41-darkMode: #37575C;
+  --color-scheme42-darkMode: #A4BAE3;
+
+  --color-scheme51-darkMode: #FFCBCE;
+  --color-scheme52-darkMode: #E85047;
+
+  --color-scheme61-darkMode: #E7FDED;
+  --color-scheme62-darkMode: #18406B;
+
+  /* Colors for campaigns */
+  --color-brightGray-darkMode: #edeef6;
+  --color-mediumBlue-darkMode: #1410d1;
+
+  --color-aliceBlue-darkMode: #eaf3ff;
+  --color-sinopia-darkMode: #d72500;
+
+  --color-cultured-darkMode: #f5f4f1;
+  --color-cadmiumGreen-darkMode: #006b45;
+
+  --color-seashell-darkMode: #fff1ea;
+  --color-maximumRed-darkMode: #d81b1b;
+
+  --color-greenishGray-darkMode: #eaf6ee;
+  --color-midnightBlue-darkMode: #003f84;
+
+  --color-antiFlashWhite-darkMode: #f1f1f1;
+  /* Note: same as primary */
+  --color-darkGunmetal-darkMode: #201f2a;
+
+  /* Popheadz colors */
+  --color-popheadzDarkGray-darkMode: #A89AFF;
+  --color-popheadzLightGray-darkMode: #35333F;
+}

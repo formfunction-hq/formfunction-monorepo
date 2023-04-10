@@ -1,0 +1,20 @@
+.label {
+  margin-left: 16px;
+}
+
+.tab {
+  border-bottom: 3px solid transparent;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 13px;
+  padding-left: 16px;
+  padding-right: 16px;
+  row-gap: 4px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.tabActive {
+  border-bottom: 3px solid var(--color-brightPurple);
+}

@@ -1,0 +1,21 @@
+.body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+}
+
+.burnButton {
+  width: 200px;
+}
+
+.destinationInput {
+  max-width: 560px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 980px) {
+  .body {
+    width: auto;
+  }
+}

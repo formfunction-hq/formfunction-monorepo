@@ -1,0 +1,38 @@
+/**
+ * Ignore padding introduced by ResponsivePageBody component
+ * higher up in the component tree. Since ResponsivePageBody
+ * adds vertical padding, it is possible to specify which
+ * direction to remove from.
+ *
+ * IMPORTANT: must be kept in sync with ResponsivePageBody.module.css
+ */
+.bottom {
+  margin-bottom: -100px;
+}
+
+.top {
+  margin-top: -60px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .bottom {
+    margin-bottom: -80px;
+  }
+}
+
+/* Header breakpoint */
+@media only screen and (max-width: 980px) {
+  .bottom {
+    margin-bottom: -60px;
+  }
+
+  .top {
+    margin-top: -30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .bottom {
+    margin-bottom: -50px;
+  }
+}

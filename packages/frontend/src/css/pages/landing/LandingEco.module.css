@@ -1,0 +1,30 @@
+.description {
+  margin-top: 24px;
+}
+
+.image {
+  border: 3px solid #FFC930;
+  border-radius: 12px;
+  height: 246px;
+  margin-left: 49px;
+  object-fit: cover;
+  width: 246px;
+}
+
+.info {
+  margin: auto;
+  max-width: 968px;
+  padding-top: 104px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .info {
+    padding-top: 80px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .info {
+    padding-top: 64px;
+  }
+}

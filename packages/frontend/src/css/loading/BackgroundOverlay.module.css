@@ -1,0 +1,27 @@
+/* Keep in sync with GenericModal.module.css */
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.backgroundOverlay {
+  bottom: 0;
+  display: block;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: var(--z-index-backgroundOverlay);
+
+  opacity: 0;
+  animation-name: fadein;
+  animation-duration: 0.25s;
+  animation-fill-mode: forwards;
+}

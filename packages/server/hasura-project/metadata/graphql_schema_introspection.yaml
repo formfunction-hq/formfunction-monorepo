@@ -1,0 +1,3 @@
+disabled_for_roles:
+  - user
+  - anonymous

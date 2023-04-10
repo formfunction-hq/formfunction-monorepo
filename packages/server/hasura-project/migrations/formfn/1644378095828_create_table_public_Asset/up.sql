@@ -1,0 +1,2 @@
+CREATE TABLE "public"."Asset" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "downloadUrl" text NOT NULL, "contentType" text NOT NULL, "artistSubmissionId" uuid, "userId" text NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("artistSubmissionId") REFERENCES "public"."ArtistSubmission"("id") ON UPDATE restrict ON DELETE restrict, FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON UPDATE restrict ON DELETE restrict);COMMENT ON TABLE "public"."Asset" IS E'A single asset (e.g. a photo or a video)';
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

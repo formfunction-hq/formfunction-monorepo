@@ -1,0 +1,17 @@
+.card {
+  align-items: center;
+  background-color: var(--color-floatingElement);
+  border-radius: 24px;
+  box-shadow: var(--box-shadow-button);
+  column-gap: 48px;
+  display: flex;
+  padding: 32px 56px 32px 32px;
+}
+@media only screen and (max-width: 1024px) {
+  .card {
+    align-items: stretch;
+    flex-direction: column;
+    row-gap: 36px;
+    padding: 24px;
+  }
+}

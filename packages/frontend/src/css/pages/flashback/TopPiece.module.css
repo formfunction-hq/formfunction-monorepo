@@ -1,0 +1,42 @@
+.assetContainer {
+  flex-shrink: 0;
+  height: 540px;
+  width: 540px;
+}
+
+.container {
+  align-items: center;
+  column-gap: 96px;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    row-gap: 60px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .assetContainer {
+    height: auto;
+    max-width: 540px;
+    width: 100%;
+  }
+
+  .container {
+    row-gap: 32px;
+  }
+
+  .text {
+    row-gap: 24px;
+  }
+}

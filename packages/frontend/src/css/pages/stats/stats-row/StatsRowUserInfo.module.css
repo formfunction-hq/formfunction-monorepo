@@ -1,0 +1,45 @@
+.image {
+  background-color: var(--color-lightPurple);
+  border-radius: 50%;
+  flex-shrink: 0;
+  height: 64px;
+  object-fit: cover;
+  width: 64px;
+}
+
+.imageSkeletonContainer {
+  font-size: 0px;
+}
+
+.userInfo {
+  align-items: center;
+  column-gap: 16px;
+  display: flex;
+  /* See https://stackoverflow.com/questions/43809612/prevent-a-child-element-from-overflowing-its-parent-in-flexbox */
+  min-width: 0px;
+}
+
+.username {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.userNames {
+  display: flex;
+  flex-direction: column;
+  /* See https://stackoverflow.com/questions/43809612/prevent-a-child-element-from-overflowing-its-parent-in-flexbox */
+  min-width: 0px;
+  row-gap: 4px;
+}
+
+@media only screen and (max-width: 640px) {
+  .image {
+    height: 32px;
+    width: 32px;
+  }
+
+  .userInfo {
+    column-gap: 8px;
+  }
+}

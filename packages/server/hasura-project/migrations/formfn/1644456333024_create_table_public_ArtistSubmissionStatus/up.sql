@@ -1,0 +1,1 @@
+CREATE TABLE "public"."ArtistSubmissionStatus" ("value" text NOT NULL, PRIMARY KEY ("value") , UNIQUE ("value"));COMMENT ON TABLE "public"."ArtistSubmissionStatus" IS E'Status of an artist submission';

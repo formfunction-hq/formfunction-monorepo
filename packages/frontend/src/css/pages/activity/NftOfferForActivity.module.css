@@ -1,0 +1,6 @@
+.container {
+  background-color: var(--color-floatingElement);
+  border-radius: 16px;
+  box-shadow: var(--box-shadow-button);
+  padding: 24px;
+}

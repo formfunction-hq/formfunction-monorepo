@@ -1,0 +1,19 @@
+.benefits {
+  padding-left: 32px;
+}
+
+.nftGrid {
+  margin-top: 48px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.textSection {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}

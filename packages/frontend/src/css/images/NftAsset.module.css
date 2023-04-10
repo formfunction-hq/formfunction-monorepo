@@ -1,0 +1,92 @@
+.border {
+  border: 6px solid var(--color-white);
+}
+
+.dropShadow {
+  filter: var(--drop-shadow-button);
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.shimmer {
+  min-height: unset;
+}
+
+.size32 {
+  border-radius: 4px;
+  height: 32px;
+  width: 32px;
+}
+
+.size48 {
+  border-radius: 8px;
+  height: 48px;
+  width: 48px;
+}
+
+.size64 {
+  border-radius: 12px;
+  height: 64px;
+  width: 64px;
+}
+
+.size72 {
+  border-radius: 12px;
+  height: 72px;
+  width: 72px;
+}
+
+.size96 {
+  border-radius: 12px;
+  height: 96px;
+  width: 96px;
+}
+
+.size120 {
+  border-radius: 12px;
+  height: 120px;
+  width: 120px;
+}
+
+.size188 {
+  border-radius: 12px;
+  height: 188px;
+  width: 188px;
+}
+
+.size234 {
+  border-radius: 12px;
+  height: 234px;
+  width: 234px;
+}
+
+.size320 {
+  border-radius: 12px;
+  height: 320px;
+  width: 320px;
+}
+
+.size480 {
+  border-radius: 12px;
+  height: 480px;
+  width: 480px;
+}
+
+.size588 {
+  border-radius: 16px;
+  height: 588px;
+  width: 588px;
+}
+
+.size100Percent {
+  border-radius: 12px;
+  height: 100%;
+  width: 100%;
+}
+
+/* Note: Needs to be below other styles. */
+.noBorderRadius {
+  border-radius: 0px;
+}

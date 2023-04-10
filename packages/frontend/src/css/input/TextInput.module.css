@@ -1,0 +1,27 @@
+.container {
+  position: relative;
+}
+
+.inputContainer {
+  align-items: center;
+  column-gap: 16px;
+  display: flex;
+}
+
+.inputContainer > div {
+  flex-shrink: 0;
+}
+
+.inputContainerButtonInner {
+  border: 1px solid var(--color-tertiary);
+  border-radius: 16px;
+  box-sizing: border-box;
+  padding: 16px 20px;
+  width: 100%;
+}
+
+.inputContainerButtonInner > input {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}

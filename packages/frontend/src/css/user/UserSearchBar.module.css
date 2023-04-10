@@ -1,0 +1,21 @@
+.popoverContent {
+  width: 550px;
+}
+
+.popoverContentInner {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
+.popoverSection {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+@media only screen and (max-width: 640px) {
+  .popoverContent {
+    width: 300px;
+  }
+}

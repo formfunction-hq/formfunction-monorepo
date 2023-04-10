@@ -1,0 +1,9 @@
+.icon {
+  width: 59px;
+  height: 28px;
+  margin: 0px 12px;
+  border-radius: 100px;
+  padding: 4px 12px;
+  background: var(--color-purpleGradient);
+  color: var(--color-white);
+}

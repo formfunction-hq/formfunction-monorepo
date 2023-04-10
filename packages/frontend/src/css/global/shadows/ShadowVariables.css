@@ -1,0 +1,8 @@
+:root {
+  --box-shadow-button: 0px 0px 20px rgba(0, 0, 0, 0.12);
+  --box-shadow-button2: 0px 0px 24px rgba(78, 76, 107, 0.12);
+
+  --box-shadow-button-hover: 0px 0px 20px rgba(0, 0, 0, 0.2);
+
+  --drop-shadow-button: drop-shadow(0px 0px 24px rgba(78, 76, 107, 0.12));
+}

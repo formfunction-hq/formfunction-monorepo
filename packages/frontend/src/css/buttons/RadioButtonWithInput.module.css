@@ -1,0 +1,15 @@
+.inputContainer {
+  width: 100%;
+  padding-left: 40px;
+}
+
+.radioButtonContainer {
+  column-gap: 16px;
+  display: flex;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 12px
+  }
+}

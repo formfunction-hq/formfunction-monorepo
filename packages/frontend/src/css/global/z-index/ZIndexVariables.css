@@ -1,0 +1,11 @@
+:root {
+  --z-index-antdNotification: 20000;
+  --z-index-backgroundOverlay: 3;
+  --z-index-bottomTabs: 9999;
+  --z-index-fixedBanner: 9999;
+  --z-index-listingCardImageOverlay: 2;
+  --z-index-loadingOverlay: 10;
+  --z-index-modal: 3;
+  --z-index-menuMobile: 4;
+  --z-index-overlayContainer: 1;
+}

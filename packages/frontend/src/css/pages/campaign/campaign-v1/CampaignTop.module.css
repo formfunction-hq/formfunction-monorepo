@@ -1,0 +1,29 @@
+.container {
+  padding: 64px 0px;
+}
+
+.responsiveContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 56px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .container {
+    padding: 48px 0px;
+  }
+
+  .responsiveContainer {
+    row-gap: 48px;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .container {
+    padding: 36px 0px;
+  }
+
+  .responsiveContainer {
+    row-gap: 36px;
+  }
+}

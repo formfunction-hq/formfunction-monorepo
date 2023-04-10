@@ -1,0 +1,26 @@
+table:
+  schema: public
+  name: Request
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - fromUserId
+        - toUserId
+        - status
+      filter:
+        _or:
+          - fromUserId:
+              _eq: X-Hasura-User-Id
+          - toUserId:
+              _eq: X-Hasura-User-Id
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - status
+      filter:
+        toUserId:
+          _eq: X-Hasura-User-Id
+      check: null

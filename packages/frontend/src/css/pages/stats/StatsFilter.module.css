@@ -1,0 +1,17 @@
+.toggle {
+  width: 500px;
+  padding-bottom: 24px;
+}
+
+@media only screen and (max-width: 980px) {
+  .toggle {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .toggle {
+    width: 100%;
+    padding-bottom: 12px;
+  }
+}

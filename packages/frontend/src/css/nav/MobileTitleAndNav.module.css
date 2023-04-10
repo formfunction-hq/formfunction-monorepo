@@ -1,0 +1,20 @@
+.container {
+  align-items: center;
+  border-bottom: 1px solid var(--color-tertiary);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  justify-items: center;
+  padding-bottom: 20px;
+}
+
+.containerOuter {
+  overflow-x: hidden;
+}
+
+.left {
+  justify-self: start;
+}
+
+.right {
+  justify-self: end;
+}

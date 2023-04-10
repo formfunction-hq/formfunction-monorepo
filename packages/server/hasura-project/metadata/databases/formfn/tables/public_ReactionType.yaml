@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: ReactionType
+is_enum: true

@@ -1,0 +1,11 @@
+-- Could not auto-generate a down migration.
+-- Please write an appropriate down migration for the SQL below:
+-- CREATE OR REPLACE FUNCTION public.series_name_length_fn(series_row "Series")
+--  RETURNS int
+--  LANGUAGE sql
+--  STABLE
+-- AS $function$
+--   SELECT LENGTH(name)
+--   FROM "Series"
+--   WHERE id = series_row.id
+-- $function$;

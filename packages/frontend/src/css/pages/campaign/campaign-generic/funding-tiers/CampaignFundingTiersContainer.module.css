@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 64px;
+}
+
+/* TODO: may want to move this to Global.css */
+.separator {
+  background-color: var(--color-tertiary);
+  height: 1px;
+  width: 100%;
+}

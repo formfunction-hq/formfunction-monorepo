@@ -1,0 +1,19 @@
+.button {
+  margin-top: 48px;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  margin-top: 16px;
+  max-width: 920px;
+}
+
+.grid {
+  margin-top: 48px;
+  width: 100%;
+}

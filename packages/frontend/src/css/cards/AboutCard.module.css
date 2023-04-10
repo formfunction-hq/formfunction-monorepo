@@ -1,0 +1,42 @@
+.container {
+  align-items: flex-start;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  padding: 72px 126px;
+  row-gap: 24px;
+  width: 100%;
+}
+
+.container img {
+  width: 100%;
+}
+
+.description {
+  white-space: pre-line;
+}
+
+.divider {
+  margin-bottom: 16px;
+  width: 100px;
+}
+
+.markdown h2 {
+  color: var(--color-primary);
+}
+
+@media only screen and (max-width: 980px) {
+  .container {
+    padding: 48px 72px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 24px 36px;
+  }
+
+  .divider {
+    margin-bottom: 0;
+  }
+}

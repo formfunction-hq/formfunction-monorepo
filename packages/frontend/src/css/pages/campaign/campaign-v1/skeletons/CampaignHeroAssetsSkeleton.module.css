@@ -1,0 +1,11 @@
+.mainAsset {
+  border-radius: 12px;
+  height: 100%;
+  width: 100%;
+}
+
+.pickerAsset {
+  border-radius: 8px;
+  height: 72px;
+  width: 128px;
+}

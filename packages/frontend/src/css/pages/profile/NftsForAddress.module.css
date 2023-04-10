@@ -1,0 +1,52 @@
+.collectedBigToggle {
+  width: 450px;
+}
+
+.createdBigToggle {
+  width: 500px;
+}
+
+.collectionDescription {
+  margin-top: 60px;
+}
+
+.divider {
+  /* For some reason doing 1px with border shows a small gap */
+  border-bottom: 2px solid var(--color-tertiary);
+  width: 100%;
+  margin: 40px 0;
+}
+
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
+.pnftSubtitle {
+  margin-top: 8px;
+  margin-bottom: 40px;
+}
+
+.pnfts {
+  padding: auto 24px;
+  width: 100%;
+}
+
+.seriesSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+@media only screen and (max-width: 768px) {
+  .collectionDescription {
+    margin-top: 48px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .collectedBigToggle, .createdBigToggle {
+    width: 100%;
+  }
+}

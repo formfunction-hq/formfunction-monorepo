@@ -1,0 +1,1153 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["tracing", "metrics", "orderByNulls"]
+  binaryTargets   = ["native", "darwin", "debian-openssl-1.1.x", "linux-arm64-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                                                 String                            @id
+  username                                           String                            @unique
+  email                                              String?                           @unique
+  bio                                                String?
+  timeCreated                                        DateTime                          @default(now()) @db.Timestamptz(6)
+  twitterName                                        String?
+  instagramName                                      String?
+  discordHandle                                      String?
+  websiteUrl                                         String?
+  profilePhotoId                                     String?                           @unique @db.Uuid
+  coverPhotoId                                       String?                           @unique @db.Uuid
+  isWhitelisted                                      Boolean                           @default(false)
+  hasUnseenActivity                                  Boolean?
+  displayName                                        String?
+  shouldSeeDiscordOnboardingPrompt                   Boolean                           @default(false)
+  seriesOrder                                        Json                              @default(dbgenerated("jsonb_build_array()"))
+  emailBlocklist                                     Json                              @default(dbgenerated("jsonb_build_array()"))
+  hasCompletedSignup                                 Boolean                           @default(false)
+  isCollector2                                       Boolean                           @default(false)
+  shouldBlurNsfwContent                              Boolean                           @default(true)
+  hasTakenCreatorSurvey2023                          Boolean?
+  hasTakenCollectorSurvey2023                        Boolean?
+  Airdrop_Airdrop_fromAddressToUser                  Airdrop[]                         @relation("Airdrop_fromAddressToUser")
+  Airdrop                                            Airdrop[]
+  ArtistSubmission                                   ArtistSubmission[]
+  Asset                                              Asset[]
+  BonkClaim                                          BonkClaim?
+  Campaign                                           Campaign[]
+  CampaignToCollaborator                             CampaignToCollaborator[]
+  CampaignToHolder                                   CampaignToHolder[]
+  CampaignToTeamMember                               CampaignToTeamMember[]
+  CandyMachine_CandyMachine_formfnAuthorityIdToUser  CandyMachine[]                    @relation("CandyMachine_formfnAuthorityIdToUser")
+  CandyMachine_CandyMachine_creatorAuthorityIdToUser CandyMachine[]                    @relation("CandyMachine_creatorAuthorityIdToUser")
+  CandyMachineMerkleAllowlistInfo                    CandyMachineMerkleAllowlistInfo[]
+  Claim                                              Claim[]
+  Comment                                            Comment[]
+  CreatorInvite_CreatorInvite_ownerIdToUser          CreatorInvite[]                   @relation("CreatorInvite_ownerIdToUser")
+  CreatorInvite_CreatorInvite_receiverIdToUser       CreatorInvite[]                   @relation("CreatorInvite_receiverIdToUser")
+  CreatorStory                                       CreatorStory?
+  DiscordAuth                                        DiscordAuth?
+  EditionsMerkleAllowlistInfo                        EditionsMerkleAllowlistInfo[]
+  InstagramAuth                                      InstagramAuth?
+  Nft_Nft_creatorIdToUser                            Nft[]                             @relation("Nft_creatorIdToUser")
+  Nft_Nft_ownerIdToUser                              Nft[]                             @relation("Nft_ownerIdToUser")
+  NftToCollaborator                                  NftToCollaborator[]
+  NftTransaction_NftTransaction_creatorIdToUser      NftTransaction[]                  @relation("NftTransaction_creatorIdToUser")
+  NftTransaction_NftTransaction_fromUserIdToUser     NftTransaction[]                  @relation("NftTransaction_fromUserIdToUser")
+  NftTransaction_NftTransaction_toUserIdToUser       NftTransaction[]                  @relation("NftTransaction_toUserIdToUser")
+  Notification_Notification_receiverToUser           Notification[]                    @relation("Notification_receiverToUser")
+  Notification_Notification_senderToUser             Notification[]                    @relation("Notification_senderToUser")
+  NotificationUserPreference                         NotificationUserPreference[]
+  Offer                                              Offer[]
+  Photo_Photo_userIdToUser                           Photo[]                           @relation("Photo_userIdToUser")
+  PollResponse                                       PollResponse[]
+  Post                                               Post[]
+  Reaction                                           Reaction[]
+  Request_Request_fromUserIdToUser                   Request[]                         @relation("Request_fromUserIdToUser")
+  Request_Request_toUserIdToUser                     Request[]                         @relation("Request_toUserIdToUser")
+  Series                                             Series[]
+  TooniesShippingInfo                                TooniesShippingInfo[]
+  TwitterAuth                                        TwitterAuth?
+  UnlockableWinner                                   UnlockableWinner[]
+  Photo_PhotoToUser_coverPhotoId                     Photo?                            @relation("PhotoToUser_coverPhotoId", fields: [coverPhotoId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  Photo_PhotoToUser_profilePhotoId                   Photo?                            @relation("PhotoToUser_profilePhotoId", fields: [profilePhotoId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  UserFollows_UserToUserFollows_followedId           UserFollows[]                     @relation("UserToUserFollows_followedId")
+  UserFollows_UserToUserFollows_followerId           UserFollows[]                     @relation("UserToUserFollows_followerId")
+  Vote                                               Vote[]
+  top_collector_stats                                top_collector_stats[]             @ignore
+  top_creator_stats                                  top_creator_stats[]               @ignore
+}
+
+model Nft {
+  id                          String                        @id
+  mint                        String                        @unique
+  creatorId                   String
+  timeCreated                 DateTime                      @default(now()) @db.Timestamptz(6)
+  status                      String
+  ownerId                     String
+  hasBeenSold                 Boolean                       @default(false)
+  isMasterEdition             Boolean                       @default(true)
+  masterEdition               String?
+  standardEdition             String?
+  metadataId                  String                        @unique
+  priceLastSoldForInLamports  BigInt?
+  auctionCount                Int                           @default(0)
+  seriesId                    String?
+  isImported                  Boolean                       @default(false)
+  isPnft                      Boolean                       @default(false)
+  edition                     Int?
+  maxSupply                   Int?                          @default(0)
+  masterEditionMint           String?
+  timeLastEditionSoldPrimary  DateTime?                     @db.Timestamptz(6)
+  priceLastSoldCurrencyId     String                        @default(dbgenerated("'451d3526-8aea-4b8b-b062-9b4c93e46c82'::uuid")) @db.Uuid
+  seriesRarityBasisPoints     Decimal?                      @db.Decimal
+  seriesRarityRanking         Int?
+  campaignFundingTierId       String?                       @db.Uuid
+  ActivityNotification        ActivityNotification[]
+  AirdropMasterEdition        Airdrop[]                     @relation("Airdrop_masterEditionMintToNft")
+  AirdropStandardEdition      Airdrop?                      @relation("Airdrop_standardEditionMintToNft")
+  CampaignBenefitToNft        CampaignBenefitToNft[]
+  Claim                       Claim[]
+  EditionsMerkleAllowlistInfo EditionsMerkleAllowlistInfo[]
+  CampaignFundingTier         CampaignFundingTier?          @relation(fields: [campaignFundingTierId], references: [id])
+  Creator                     User                          @relation("Nft_creatorIdToUser", fields: [creatorId], references: [id], onUpdate: Restrict, map: "Nft_creator_fkey")
+  PriceLastSoldCurrency       Currency                      @relation(fields: [priceLastSoldCurrencyId], references: [id], onUpdate: Restrict, map: "Nft_currencyId_fkey")
+  MasterEditionNft            Nft?                          @relation("NftToNft_masterEditionMint", fields: [masterEditionMint], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  StandardEditionNft          Nft[]                         @relation("NftToNft_masterEditionMint")
+  NftMetadata                 NftMetadata                   @relation(fields: [metadataId], references: [id], onUpdate: Restrict)
+  Owner                       User                          @relation("Nft_ownerIdToUser", fields: [ownerId], references: [id], onUpdate: Restrict)
+  Series                      Series?                       @relation(fields: [seriesId], references: [id], onUpdate: Restrict)
+  NftStatus                   NftStatus                     @relation(fields: [status], references: [value], onUpdate: Restrict)
+  NftDisclosure               NftDisclosure[]
+  NftListing                  NftListing?                   @relation("NftToNftListing_nftId")
+  AuctionNft                  NftListing[]                  @relation("NftToNftListing_pnftIdForAuction")
+  NftToAttribute              NftToAttribute[]
+  NftToCollaborator           NftToCollaborator[]
+  NftToTag                    NftToTag[]
+  NftTransaction              NftTransaction[]
+  Offer                       Offer[]
+  Post                        Post?
+  TooniesShippingInfo         TooniesShippingInfo?
+
+  @@index([status], map: "Nft_status")
+  @@index([timeCreated], map: "Nft_timeCreated")
+}
+
+model Photo {
+  id                                 String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  photoUrl                           String
+  timeCreated                        DateTime @default(now()) @db.Timestamptz(6)
+  userId                             String
+  title                              String?
+  description                        String?
+  storagePath                        String?
+  User_Photo_userIdToUser            User     @relation("Photo_userIdToUser", fields: [userId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  Series_PhotoToSeries_avatarPhotoId Series?  @relation("PhotoToSeries_avatarPhotoId")
+  Series_PhotoToSeries_coverPhotoId  Series?  @relation("PhotoToSeries_coverPhotoId")
+  User_PhotoToUser_coverPhotoId      User?    @relation("PhotoToUser_coverPhotoId")
+  User_PhotoToUser_profilePhotoId    User?    @relation("PhotoToUser_profilePhotoId")
+}
+
+model NftStatus {
+  value String @id
+  Nft   Nft[]
+}
+
+model NftTransaction {
+  id                                            String                 @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  mint                                          String
+  timeCreated                                   DateTime               @default(now()) @db.Timestamptz(6)
+  creatorId                                     String
+  toUserId                                      String
+  fromUserId                                    String
+  price                                         BigInt?
+  type                                          String
+  txid                                          String?
+  auctionCount                                  Int                    @default(0)
+  comment                                       String?
+  source                                        String?
+  ixIndex                                       Int                    @default(-1)
+  ixInnerIndex                                  Int                    @default(-1)
+  currencyId                                    String                 @default(dbgenerated("'451d3526-8aea-4b8b-b062-9b4c93e46c82'::uuid")) @db.Uuid
+  isCrossmint                                   Boolean                @default(false)
+  usdPrice                                      Decimal?               @db.Decimal
+  txSizeInBytes                                 Int?
+  txVersion                                     String?
+  ActivityNotification                          ActivityNotification[]
+  Claim                                         Claim?
+  Creator                                       User                   @relation("NftTransaction_creatorIdToUser", fields: [creatorId], references: [id], onUpdate: Restrict)
+  Currency                                      Currency               @relation(fields: [currencyId], references: [id], onUpdate: Restrict)
+  From                                          User                   @relation("NftTransaction_fromUserIdToUser", fields: [fromUserId], references: [id], onUpdate: Restrict)
+  Nft                                           Nft                    @relation(fields: [mint], references: [mint], onUpdate: Restrict)
+  NftTransactionSource                          NftTransactionSource?  @relation(fields: [source], references: [value], onDelete: Restrict, onUpdate: Restrict)
+  To                                            User                   @relation("NftTransaction_toUserIdToUser", fields: [toUserId], references: [id], onUpdate: Restrict)
+  NftTransactionType                            NftTransactionType     @relation(fields: [type], references: [value], onUpdate: Restrict)
+  Offer                                         Offer?
+  Offer_NftTransactionToOffer_saleTransactionId Offer?                 @relation("NftTransactionToOffer_saleTransactionId")
+
+  @@unique([txid, ixIndex, ixInnerIndex])
+  @@index([mint], map: "NftTransaction_mint")
+  @@index([type], map: "NftTransaction_type")
+  @@index([auctionCount], map: "NftTransaction_auctionCount")
+}
+
+model NftTransactionType {
+  value          String           @id
+  NftTransaction NftTransaction[]
+}
+
+model NftToTag {
+  nftId String
+  tagId String @db.Uuid
+  id    String @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  Nft   Nft    @relation(fields: [nftId], references: [id], onUpdate: Restrict)
+  Tag   Tag    @relation(fields: [tagId], references: [id], onUpdate: Restrict)
+
+  @@id([nftId, tagId])
+}
+
+model Tag {
+  id       String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  value    String     @unique
+  NftToTag NftToTag[]
+}
+
+model NftMetadata {
+  key                                             Int
+  updateAuthority                                 String
+  mint                                            String    @unique
+  isMutable                                       Boolean
+  editionNonce                                    Int?
+  id                                              String    @id
+  name                                            String
+  symbol                                          String
+  uri                                             String
+  sellerFeeBasisPoints                            Int
+  creators                                        Json?
+  description                                     String
+  image                                           String
+  contentType                                     String
+  assetArweaveTxid                                String?
+  videoPlaybackId                                 String?
+  videoPreviewPlaybackId                          String?
+  assetHeight                                     Int?
+  assetWidth                                      Int?
+  timeCreated                                     DateTime? @default(now()) @db.Timestamptz(6)
+  nonstandardAssetId                              String?   @db.Uuid
+  Nft                                             Nft?
+  NonstandardAsset                                Asset?    @relation(fields: [nonstandardAssetId], references: [id])
+  Video_NftMetadata_videoPlaybackIdToVideo        Video?    @relation("NftMetadata_videoPlaybackIdToVideo", fields: [videoPlaybackId], references: [playbackId], onDelete: Restrict, onUpdate: Restrict)
+  Video_NftMetadata_videoPreviewPlaybackIdToVideo Video?    @relation("NftMetadata_videoPreviewPlaybackIdToVideo", fields: [videoPreviewPlaybackId], references: [playbackId], onDelete: Restrict, onUpdate: Restrict)
+}
+
+model Whitelist {
+  address     String    @id
+  timeCreated DateTime? @default(now()) @db.Timestamptz(6)
+}
+
+model TwitterAuth {
+  id                 String   @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId             String   @id @unique
+  timeCreated        DateTime @default(now()) @db.Timestamptz(6)
+  requestToken       String?  @unique
+  requestTokenSecret String?
+  accessToken        String?
+  accessTokenSecret  String?
+  User               User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+}
+
+model CreatorStory {
+  id          String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId      String  @unique
+  headline    String?
+  process     String?
+  inspiration String?
+  goals       String?
+  colorScheme Int     @default(0)
+  User        User    @relation(fields: [userId], references: [id], onUpdate: Restrict)
+}
+
+model ExchangeRates {
+  name        String   @id
+  toUsdRate   Decimal  @db.Decimal
+  timeCreated DateTime @default(now()) @db.Timestamptz(6)
+  timeUpdated DateTime @default(now()) @db.Timestamptz(6)
+}
+
+model NftTransactionRaw {
+  txid        String   @id
+  timeCreated DateTime @default(now()) @db.Timestamptz(6)
+  mint        String
+  extraData   String?
+  id          String   @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  type        String?
+}
+
+model Video {
+  id                                                    String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  playbackId                                            String        @unique
+  status                                                String
+  timeCreated                                           DateTime?     @default(now()) @db.Timestamptz(6)
+  NftMetadata_NftMetadata_videoPlaybackIdToVideo        NftMetadata[] @relation("NftMetadata_videoPlaybackIdToVideo")
+  NftMetadata_NftMetadata_videoPreviewPlaybackIdToVideo NftMetadata[] @relation("NftMetadata_videoPreviewPlaybackIdToVideo")
+}
+
+model ArtistSubmission {
+  id                     String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId                 String
+  websiteUrl             String
+  twitterName            String
+  instagramName          String?
+  discordHandle          String?
+  artistStatement        String
+  isCopyrightVerified    Boolean
+  status                 String?
+  timeCreated            DateTime?               @default(now()) @db.Timestamptz(6)
+  artProcess             String?
+  ArtistSubmissionStatus ArtistSubmissionStatus? @relation(fields: [status], references: [value], onDelete: Restrict, onUpdate: Restrict)
+  User                   User                    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  Asset                  Asset[]
+  Vote                   Vote[]
+}
+
+model Asset {
+  id                                String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  downloadUrl                       String
+  contentType                       String
+  artistSubmissionId                String?           @db.Uuid
+  userId                            String?
+  path                              String
+  premintPreviewAssetCandyMachineId String?           @db.Uuid
+  height                            Int?
+  width                             Int?
+  campaignGalleryAssetCampaignId    String?           @db.Uuid
+  downloadUrlDarkMode               String?
+  pathDarkMode                      String?
+  postId                            String?           @db.Uuid
+  videoPlaybackId                   String?
+  arweaveTxid                       String?
+  ArtistSubmission                  ArtistSubmission? @relation(fields: [artistSubmissionId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  CampaignForGalleryAsset           Campaign?         @relation("Asset_campaignGalleryAssetCampaignIdToCampaign", fields: [campaignGalleryAssetCampaignId], references: [id], onDelete: Cascade)
+  Post                              Post?             @relation(fields: [postId], references: [id], onDelete: Cascade)
+  PremintPreviewAssetCandyMachine   CandyMachine?     @relation("Asset_premintPreviewAssetCandyMachineIdToCandyMachine", fields: [premintPreviewAssetCandyMachineId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  User                              User?             @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  Campaign                          Campaign[]
+  MintPreviewAssetCandyMachines     CandyMachine[]    @relation("AssetToCandyMachine_mintPreviewAssetId")
+  NftMetadata                       NftMetadata[]
+  Series                            Series[]
+  Spotlight                         Spotlight[]
+  Unlockable                        Unlockable?
+}
+
+model ArtistSubmissionStatus {
+  value            String             @id
+  ArtistSubmission ArtistSubmission[]
+}
+
+model VoteReason {
+  value String @id
+  Vote  Vote[]
+}
+
+model VoteType {
+  value String @id
+  Vote  Vote[]
+}
+
+model Vote {
+  id                 String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  timeCreated        DateTime         @default(now()) @db.Timestamptz(6)
+  userId             String
+  artistSubmissionId String           @db.Uuid
+  voteType           String
+  reason             String?
+  reportReasons      Json?
+  ArtistSubmission   ArtistSubmission @relation(fields: [artistSubmissionId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  VoteReason         VoteReason?      @relation(fields: [reason], references: [value], onDelete: Restrict, onUpdate: Restrict)
+  User               User             @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  VoteType           VoteType         @relation(fields: [voteType], references: [value], onUpdate: Restrict)
+}
+
+model top_creator_stats {
+  creatorId      String?
+  totalSales     BigInt?
+  collectorCount BigInt?
+  nftCount       BigInt?
+  User           User?   @relation(fields: [creatorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@ignore
+}
+
+model top_collector_stats {
+  collectorId            String?
+  totalPaid              BigInt?
+  creatorsSupportedCount BigInt?
+  nftCount               BigInt?
+  User                   User?   @relation(fields: [collectorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@ignore
+}
+
+model Series {
+  id                                String           @id
+  mint                              String           @unique
+  coverPhotoId                      String?          @unique @db.Uuid
+  avatarPhotoId                     String           @unique @db.Uuid
+  name                              String
+  description                       String
+  timeCreated                       DateTime         @default(now()) @db.Timestamptz(6)
+  slug                              String
+  creatorId                         String
+  nftOrder                          Json?
+  timeLastAddedTo                   DateTime?        @db.Timestamptz(6)
+  type                              String           @default("UserCurated")
+  logoAssetId                       String?          @db.Uuid
+  CandyMachine                      CandyMachine?
+  Nft                               Nft[]
+  NftToAttribute                    NftToAttribute[]
+  Photo_PhotoToSeries_avatarPhotoId Photo            @relation("PhotoToSeries_avatarPhotoId", fields: [avatarPhotoId], references: [id], onUpdate: Restrict)
+  Photo_PhotoToSeries_coverPhotoId  Photo?           @relation("PhotoToSeries_coverPhotoId", fields: [coverPhotoId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  User                              User             @relation(fields: [creatorId], references: [id], onUpdate: Restrict)
+  LogoAsset                         Asset?           @relation(fields: [logoAssetId], references: [id])
+  SeriesType                        SeriesType       @relation(fields: [type], references: [value], onUpdate: Restrict)
+
+  @@unique([creatorId, slug])
+  @@index([creatorId], map: "Series_creatorId_key")
+  @@index([slug], map: "Series_slug_key")
+}
+
+model UserFollows {
+  followedId                        String
+  followerId                        String
+  id                                String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  timeCreated                       DateTime @default(now()) @db.Timestamptz(6)
+  User_UserToUserFollows_followedId User     @relation("UserToUserFollows_followedId", fields: [followedId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  User_UserToUserFollows_followerId User     @relation("UserToUserFollows_followerId", fields: [followerId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+
+  @@unique([followedId, followerId])
+}
+
+model Attribute {
+  id             String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  traitType      String
+  value          String
+  NftToAttribute NftToAttribute[]
+
+  @@unique([traitType, value])
+}
+
+model NftToAttribute {
+  nftId             String
+  attributeId       String    @db.Uuid
+  id                String    @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  seriesId          String?
+  rarityBasisPoints Int?
+  Attribute         Attribute @relation(fields: [attributeId], references: [id], onUpdate: Restrict)
+  Nft               Nft       @relation(fields: [nftId], references: [id], onUpdate: Restrict)
+  Series            Series?   @relation(fields: [seriesId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@id([nftId, attributeId])
+}
+
+model NftTransactionSource {
+  value          String           @id
+  NftTransaction NftTransaction[]
+}
+
+model InstagramAuth {
+  id          String   @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId      String   @id
+  timeCreated DateTime @default(now()) @db.Timestamptz(6)
+  accessToken String?  @unique
+  User        User     @relation(fields: [userId], references: [id], onUpdate: Restrict)
+}
+
+model NftToCollaborator {
+  id             String   @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  collaboratorId String
+  nftId          String
+  share          Int
+  requestId      String?  @unique @db.Uuid
+  timeCreated    DateTime @default(now()) @db.Timestamptz(6)
+  User           User     @relation(fields: [collaboratorId], references: [id], onDelete: Cascade)
+  Nft            Nft      @relation(fields: [nftId], references: [id], onDelete: Cascade)
+  Request        Request? @relation(fields: [requestId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@id([collaboratorId, nftId])
+  @@unique([collaboratorId, nftId])
+  @@index([nftId], map: "NftToCollaborator_nftId")
+}
+
+model Request {
+  id                            String                   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  fromUserId                    String
+  toUserId                      String
+  status                        String
+  timeCreated                   DateTime                 @default(now()) @db.Timestamptz(6)
+  CampaignToCollaborator        CampaignToCollaborator[]
+  CampaignToTeamMember          CampaignToTeamMember?
+  NftToCollaborator             NftToCollaborator?
+  User_Request_fromUserIdToUser User                     @relation("Request_fromUserIdToUser", fields: [fromUserId], references: [id], onDelete: Cascade)
+  RequestStatus                 RequestStatus            @relation(fields: [status], references: [value], onUpdate: Restrict)
+  User_Request_toUserIdToUser   User                     @relation("Request_toUserIdToUser", fields: [toUserId], references: [id], onDelete: Cascade)
+}
+
+model RequestStatus {
+  value   String    @id
+  Request Request[]
+}
+
+model Offer {
+  id                                                     String          @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  nftTransactionId                                       String          @id @unique @db.Uuid
+  expirationDate                                         DateTime        @db.Timestamptz(6)
+  timeCreated                                            DateTime        @default(now()) @db.Timestamptz(6)
+  refundTxid                                             String?         @unique
+  mint                                                   String
+  userId                                                 String
+  saleTransactionId                                      String?         @unique @db.Uuid
+  Nft                                                    Nft             @relation(fields: [mint], references: [mint], onUpdate: Restrict)
+  NftTransaction                                         NftTransaction  @relation(fields: [nftTransactionId], references: [id], onUpdate: Restrict)
+  NftTransaction_NftTransactionToOffer_saleTransactionId NftTransaction? @relation("NftTransactionToOffer_saleTransactionId", fields: [saleTransactionId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  User                                                   User            @relation(fields: [userId], references: [id], onUpdate: Restrict)
+}
+
+model Claim {
+  id                 String          @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId             String
+  auctionNftId       String
+  proof              String?
+  claimTransactionId String?         @unique @db.Uuid
+  timeCreated        DateTime        @default(now()) @db.Timestamptz(6)
+  timeLastReminded   DateTime?       @db.Timestamptz(6)
+  Nft                Nft             @relation(fields: [auctionNftId], references: [id], onDelete: Cascade)
+  NftTransaction     NftTransaction? @relation(fields: [claimTransactionId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  User               User            @relation(fields: [userId], references: [id], onUpdate: Restrict)
+
+  @@id([userId, auctionNftId])
+  @@unique([userId, auctionNftId])
+}
+
+model NftListing {
+  id                                          String             @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  nftId                                       String             @id @unique
+  timeCreated                                 DateTime           @default(now()) @db.Timestamptz(6)
+  auctionDurationInSeconds                    Int                @default(86400)
+  auctionEndTime                              DateTime?          @db.Timestamptz(6)
+  isPnftDropActive                            Boolean?
+  pnftIdForAuction                            String?
+  priceInLamports                             BigInt?
+  scheduledAuctionTime                        DateTime?          @db.Timestamptz(6)
+  timeExtensionDurationInSeconds              Int                @default(600)
+  editionPriceFunctionType                    String?
+  editionPriceFunctionStartingPriceInLamports BigInt?
+  editionPriceFunctionParams                  Json?
+  timeLastAuctionAlmostOverEmailSent          DateTime?          @db.Timestamptz(6)
+  tickSizeConstantInLamports                  BigInt?
+  unlockableId                                String?            @unique @db.Uuid
+  antiBotProtectionEnabled                    Boolean?
+  currencyId                                  String             @default(dbgenerated("'451d3526-8aea-4b8b-b062-9b4c93e46c82'::uuid")) @db.Uuid
+  editionBuyLimitPerAddress                   Int?
+  editionAllowlistSaleStartTime               DateTime?          @db.Timestamptz(6)
+  editionPublicSaleStartTime                  DateTime?          @db.Timestamptz(6)
+  editionAllowlistEnabled                     Boolean            @default(false)
+  editionAllowlistPrice                       BigInt?
+  Currency                                    Currency           @relation(fields: [currencyId], references: [id], onUpdate: Restrict)
+  PriceFunctionType                           PriceFunctionType? @relation(fields: [editionPriceFunctionType], references: [value], onDelete: Restrict, onUpdate: Restrict)
+  Nft_NftToNftListing_nftId                   Nft                @relation("NftToNftListing_nftId", fields: [nftId], references: [id], onUpdate: Restrict)
+  Nft_NftToNftListing_pnftIdForAuction        Nft?               @relation("NftToNftListing_pnftIdForAuction", fields: [pnftIdForAuction], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  Unlockable                                  Unlockable?        @relation(fields: [unlockableId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@index([auctionEndTime], map: "NftListing_auctionEndTime")
+}
+
+model PriceFunctionType {
+  value      String       @id
+  NftListing NftListing[]
+}
+
+model Dev {
+  name String
+  date DateTime? @db.Timestamptz(6)
+  id   String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+}
+
+model DiscordRole {
+  id                       String                     @id
+  name                     String                     @unique
+  DiscordAuthToDiscordRole DiscordAuthToDiscordRole[]
+}
+
+model DiscordAuth {
+  id                         String                     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  timeCreated                DateTime                   @default(now()) @db.Timestamptz(6)
+  userId                     String                     @unique
+  discordUserId              String?                    @unique
+  discordHandle              String?
+  hasConnectedDiscordAccount Boolean
+  hasJoinedDiscordServer     Boolean?
+  authorizationNonce         String?                    @unique
+  User                       User                       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  DiscordAuthToDiscordRole   DiscordAuthToDiscordRole[]
+}
+
+model DiscordAuthToDiscordRole {
+  id            String      @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  discordRoleId String
+  discordAuthId String      @db.Uuid
+  timeCreated   DateTime    @default(now()) @db.Timestamptz(6)
+  DiscordAuth   DiscordAuth @relation(fields: [discordAuthId], references: [id], onUpdate: Restrict)
+  DiscordRole   DiscordRole @relation(fields: [discordRoleId], references: [id], onUpdate: Restrict)
+
+  @@id([discordRoleId, discordAuthId])
+}
+
+model Unlockable {
+  id                        String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  assetId                   String             @unique @db.Uuid
+  name                      String
+  description               String?
+  activationPriceInLamports BigInt?
+  timeCreated               DateTime           @default(now()) @db.Timestamptz(6)
+  category                  String
+  activationPriceCurrencyId String             @default(dbgenerated("'451d3526-8aea-4b8b-b062-9b4c93e46c82'::uuid")) @db.Uuid
+  NftListing                NftListing?
+  Currency                  Currency           @relation(fields: [activationPriceCurrencyId], references: [id], onUpdate: Restrict)
+  Asset                     Asset              @relation(fields: [assetId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  UnlockableWinner          UnlockableWinner[]
+}
+
+model UnlockableWinner {
+  id                            String     @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  unlockableId                  String     @db.Uuid
+  userId                        String
+  userEmail                     String?
+  timeCreated                   DateTime   @default(now()) @db.Timestamptz(6)
+  hasBuyerDismissedShareInfoCta Boolean    @default(false)
+  hasCreatorDismissedSeeInfoCta Boolean    @default(false)
+  Unlockable                    Unlockable @relation(fields: [unlockableId], references: [id], onUpdate: Restrict)
+  User                          User       @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+
+  @@id([unlockableId, userId])
+  @@index([unlockableId], map: "UnlockableWinner_unlockableId")
+}
+
+model CreatorInvite {
+  id                                  String                   @id @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  timeAccepted                        DateTime?                @db.Timestamptz(6)
+  timeCreated                         DateTime                 @default(now()) @db.Timestamptz(6)
+  issueReason                         String
+  ownerId                             String
+  receiverId                          String?
+  expirationTime                      DateTime?                @db.Timestamptz(6)
+  receiverEmail                       String?
+  inviteLinkToken                     String?                  @unique
+  inviteLinkTimeCreated               DateTime?                @db.Timestamptz(6)
+  inviteLinkExpirationTime            DateTime?                @db.Timestamptz(6)
+  CreatorInviteIssueReason            CreatorInviteIssueReason @relation(fields: [issueReason], references: [value], onUpdate: Restrict)
+  User_CreatorInvite_ownerIdToUser    User                     @relation("CreatorInvite_ownerIdToUser", fields: [ownerId], references: [id], onUpdate: Restrict)
+  User_CreatorInvite_receiverIdToUser User?                    @relation("CreatorInvite_receiverIdToUser", fields: [receiverId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+}
+
+model CreatorInviteIssueReason {
+  value         String          @id
+  CreatorInvite CreatorInvite[]
+}
+
+model Spotlight {
+  id                      String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  type                    String
+  objectId                String?
+  heroUnitLayout          String
+  startTime               DateTime                @db.Timestamptz(6)
+  endTime                 DateTime                @db.Timestamptz(6)
+  url                     String?
+  title                   String?
+  description             String?
+  status                  String?
+  label                   String?
+  assetId                 String?                 @db.Uuid
+  userIds                 Json?
+  Asset                   Asset?                  @relation(fields: [assetId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  SpotlightHeroUnitLayout SpotlightHeroUnitLayout @relation(fields: [heroUnitLayout], references: [value], onUpdate: Restrict)
+  SpotlightType           SpotlightType           @relation(fields: [type], references: [value], onUpdate: Restrict)
+}
+
+model SpotlightHeroUnitLayout {
+  value     String      @id
+  Spotlight Spotlight[]
+}
+
+model SpotlightType {
+  value     String      @id
+  Spotlight Spotlight[]
+}
+
+model NotificationType {
+  value                      String                       @id
+  Notification               Notification[]
+  NotificationUserPreference NotificationUserPreference[]
+}
+
+model Notification {
+  id                   String                @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  data                 Json
+  receiver             String?
+  sender               String?
+  timeCreated          DateTime              @default(now()) @db.Timestamptz(6)
+  type                 String
+  ActivityNotification ActivityNotification?
+  Receiver             User?                 @relation("Notification_receiverToUser", fields: [receiver], references: [id], onDelete: Cascade)
+  Sender               User?                 @relation("Notification_senderToUser", fields: [sender], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  NotificationType     NotificationType      @relation(fields: [type], references: [value], onUpdate: Restrict)
+}
+
+model ActivityNotification {
+  id               String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  notificationId   String          @unique @db.Uuid
+  timeSeen         DateTime?       @db.Timestamptz(6)
+  timeCreated      DateTime        @default(now()) @db.Timestamptz(6)
+  nftId            String?
+  nftTransactionId String?         @db.Uuid
+  Nft              Nft?            @relation(fields: [nftId], references: [id], onDelete: Cascade)
+  NftTransaction   NftTransaction? @relation(fields: [nftTransactionId], references: [id], onDelete: Cascade)
+  Notification     Notification    @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+}
+
+model NotificationChannel {
+  value                      String                       @id
+  NotificationUserPreference NotificationUserPreference[]
+}
+
+model NotificationUserPreference {
+  id                  String              @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId              String
+  notificationType    String
+  notificationChannel String
+  enabled             Boolean
+  NotificationChannel NotificationChannel @relation(fields: [notificationChannel], references: [value], onUpdate: Restrict)
+  NotificationType    NotificationType    @relation(fields: [notificationType], references: [value], onUpdate: Restrict)
+  User                User                @relation(fields: [userId], references: [id], onUpdate: Restrict)
+
+  @@id([userId, notificationType, notificationChannel])
+}
+
+model Currency {
+  id             String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name           String           @unique
+  decimals       Int
+  symbol         String           @unique
+  shortSymbol    String?
+  iconSrc        String?
+  mint           String           @unique
+  usdRate        Decimal?         @db.Decimal
+  solRate        Decimal?         @db.Decimal
+  Campaign       Campaign[]
+  CandyMachine   CandyMachine[]
+  CurrencyName   CurrencyName     @relation(fields: [name], references: [value], onUpdate: Restrict)
+  Nft            Nft[]
+  NftListing     NftListing[]
+  NftTransaction NftTransaction[]
+  Unlockable     Unlockable[]
+}
+
+model CurrencyName {
+  value    String    @id
+  Currency Currency?
+}
+
+model CandyMachine {
+  id                              String                            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  formfnAuthorityId               String
+  currencyId                      String                            @db.Uuid
+  seriesId                        String                            @unique
+  price                           BigInt
+  maxSupply                       Int
+  platformFeeBasisPoints          Int
+  timeCreated                     DateTime                          @default(now()) @db.Timestamptz(6)
+  allowlistSaleStartTime          DateTime?                         @db.Timestamptz(6)
+  publicSaleStartTime             DateTime                          @db.Timestamptz(6)
+  publicSaleEndTime               DateTime                          @db.Timestamptz(6)
+  antiBotProtectionEnabled        Boolean
+  limitPerAddress                 Int
+  creatorWallets                  Json
+  omniMintWallets                 Json
+  mintPreviewAssetId              String?                           @db.Uuid
+  creatorAuthorityId              String
+  premintPrice                    BigInt?
+  allowlistPrice                  BigInt?
+  publicKey                       String                            @unique(map: "CandyMachine_mint_key")
+  totalAmountMinted               Int                               @default(0)
+  allowlistTokenMint              String?
+  PremintPreviewAssets            Asset[]                           @relation("Asset_premintPreviewAssetCandyMachineIdToCandyMachine")
+  FormfnAuthority                 User                              @relation("CandyMachine_formfnAuthorityIdToUser", fields: [formfnAuthorityId], references: [id], onDelete: NoAction, onUpdate: Restrict, map: "CandyMachine_candyMachineAuthorityId_fkey")
+  CreatorAuthority                User                              @relation("CandyMachine_creatorAuthorityIdToUser", fields: [creatorAuthorityId], references: [id], onDelete: NoAction, onUpdate: Restrict)
+  Currency                        Currency                          @relation(fields: [currencyId], references: [id], onDelete: NoAction, onUpdate: Restrict)
+  MintPreviewAsset                Asset?                            @relation("AssetToCandyMachine_mintPreviewAssetId", fields: [mintPreviewAssetId], references: [id], onDelete: NoAction, onUpdate: Restrict)
+  Series                          Series                            @relation(fields: [seriesId], references: [id], onDelete: NoAction, onUpdate: Restrict)
+  CandyMachineMerkleAllowlistInfo CandyMachineMerkleAllowlistInfo[]
+}
+
+model CandyMachineMerkleAllowlistInfo {
+  id             String       @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId         String
+  candyMachineId String       @db.Uuid
+  amountAllowed  Int
+  proof          String
+  rootIndex      Int
+  timeCreated    DateTime     @default(now()) @db.Timestamptz(6)
+  CandyMachine   CandyMachine @relation(fields: [candyMachineId], references: [id], onUpdate: Restrict)
+  User           User         @relation(fields: [userId], references: [id], onUpdate: Restrict)
+
+  @@id([userId, candyMachineId])
+  @@unique([userId, candyMachineId])
+}
+
+model SeriesType {
+  value  String   @id
+  Series Series[]
+}
+
+model CampaignBenefitStatus {
+  value                String                 @id
+  CampaignBenefitToNft CampaignBenefitToNft[]
+}
+
+model CampaignCategory {
+  value    String     @id
+  Campaign Campaign[]
+}
+
+model CampaignColorScheme {
+  value    String     @id
+  Campaign Campaign[]
+}
+
+model CampaignFundingTierType {
+  value               String                @id
+  CampaignFundingTier CampaignFundingTier[]
+}
+
+model CampaignGoalType {
+  value    String     @id
+  Campaign Campaign[]
+}
+
+model CampaignStatus {
+  value    String     @id
+  Campaign Campaign[]
+}
+
+model Campaign {
+  id                      String                   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  colorScheme             String
+  category                String
+  creatorId               String
+  endTime                 DateTime?                @db.Timestamptz(6)
+  fundingTierOrder        Json?
+  previewAssetId          String                   @db.Uuid
+  slug                    String
+  status                  String
+  tagline                 String
+  timeCreated             DateTime                 @default(now()) @db.Timestamptz(6)
+  title                   String
+  youtubeVideoHref        String?
+  goalProgressSymbol      String
+  goalCurrencyId          String?                  @db.Uuid
+  goalAmount              BigInt
+  goalType                String
+  aboutTheCampaign        String?
+  aboutTheCreator         String?
+  aboutTimeline           String?
+  aboutRisksAndChallenges String?
+  aboutContactInfo        String?
+  discordHref             String?
+  instagramHref           String?
+  twitterHref             String?
+  websiteHref             String?
+  galleryAssetOrder       Json?
+  GalleryAssets           Asset[]                  @relation("Asset_campaignGalleryAssetCampaignIdToCampaign")
+  CampaignCategory        CampaignCategory         @relation(fields: [category], references: [value])
+  CampaignColorScheme     CampaignColorScheme      @relation(fields: [colorScheme], references: [value])
+  Creator                 User                     @relation(fields: [creatorId], references: [id])
+  GoalCurrency            Currency?                @relation(fields: [goalCurrencyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  CampaignGoalType        CampaignGoalType         @relation(fields: [goalType], references: [value], onUpdate: Restrict)
+  PreviewAsset            Asset                    @relation(fields: [previewAssetId], references: [id], onUpdate: Restrict)
+  CampaignStatus          CampaignStatus           @relation(fields: [status], references: [value], onUpdate: Restrict)
+  CampaignFundingTier     CampaignFundingTier[]
+  CampaignToCollaborator  CampaignToCollaborator[]
+  CampaignToHolder        CampaignToHolder[]
+  CampaignToTeamMember    CampaignToTeamMember[]
+  Post                    Post[]
+
+  @@unique([creatorId, slug])
+}
+
+model CampaignToCollaborator {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  campaignId     String   @db.Uuid
+  collaboratorId String
+  requestId      String   @db.Uuid
+  timeCreated    DateTime @default(now()) @db.Timestamptz(6)
+  Campaign       Campaign @relation(fields: [campaignId], references: [id], onUpdate: Restrict)
+  User           User     @relation(fields: [collaboratorId], references: [id], onUpdate: Restrict)
+  Request        Request  @relation(fields: [requestId], references: [id], onUpdate: Restrict)
+
+  @@unique([campaignId, collaboratorId])
+}
+
+model CampaignFundingTier {
+  id                      String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  campaignId              String                  @db.Uuid
+  description             String
+  title                   String
+  nftOrder                Json?
+  timeCreated             DateTime                @default(now()) @db.Timestamptz(6)
+  type                    String
+  CampaignBenefit         CampaignBenefit[]
+  Campaign                Campaign                @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  CampaignFundingTierType CampaignFundingTierType @relation(fields: [type], references: [value], onUpdate: Restrict)
+  Nft                     Nft[]
+}
+
+model CampaignBenefit {
+  id                    String                 @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  campaignFundingTierId String                 @db.Uuid
+  description           String
+  timeCreated           DateTime               @default(now()) @db.Timestamptz(6)
+  CampaignFundingTier   CampaignFundingTier    @relation(fields: [campaignFundingTierId], references: [id], onDelete: Cascade)
+  CampaignBenefitToNft  CampaignBenefitToNft[]
+}
+
+model CampaignBenefitToNft {
+  id                    String                @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  campaignBenefitId     String                @db.Uuid
+  nftId                 String
+  status                String
+  CampaignBenefit       CampaignBenefit       @relation(fields: [campaignBenefitId], references: [id], onUpdate: Restrict)
+  Nft                   Nft                   @relation(fields: [nftId], references: [id], onUpdate: Restrict)
+  CampaignBenefitStatus CampaignBenefitStatus @relation(fields: [status], references: [value], onUpdate: Restrict)
+
+  @@unique([campaignBenefitId, nftId])
+}
+
+model Post {
+  id                       String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  timeCreated              DateTime       @default(now()) @db.Timestamptz(6)
+  title                    String
+  body                     String?
+  link                     String?
+  campaignId               String?        @db.Uuid
+  creatorId                String
+  visibility               String         @default("Public")
+  pollId                   String?        @unique(map: "Post_PollId_key") @db.Uuid
+  visibilityFundingTierIds Json?
+  airdropMasterEditionMint String?        @unique
+  Asset                    Asset[]
+  Comment                  Comment[]
+  Poll                     Poll?          @relation(fields: [pollId], references: [id], onDelete: Cascade, map: "Post_PollId_fkey")
+  AirdropMasterEdition     Nft?           @relation(fields: [airdropMasterEditionMint], references: [mint], onDelete: Cascade)
+  Campaign                 Campaign?      @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  Creator                  User           @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  PostVisibility           PostVisibility @relation(fields: [visibility], references: [value], onDelete: Cascade)
+  Reaction                 Reaction[]
+}
+
+model PostVisibility {
+  value String @id
+  Post  Post[]
+}
+
+model Reaction {
+  id           String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  timeCreated  DateTime     @default(now()) @db.Timestamptz(6)
+  type         String
+  fromUserId   String
+  postId       String?      @db.Uuid
+  FromUser     User         @relation(fields: [fromUserId], references: [id], onDelete: Cascade)
+  Post         Post?        @relation(fields: [postId], references: [id], onDelete: Cascade)
+  ReactionType ReactionType @relation(fields: [type], references: [value], onDelete: Cascade)
+
+  @@unique([fromUserId, postId])
+}
+
+model ReactionType {
+  value    String     @id
+  Reaction Reaction[]
+}
+
+model Comment {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  comment         String
+  timeCreated     DateTime  @default(now()) @db.Timestamptz(6)
+  commenterId     String
+  postId          String    @db.Uuid
+  parentCommentId String?   @db.Uuid
+  Commenter       User      @relation(fields: [commenterId], references: [id], onDelete: Cascade)
+  ParentComment   Comment?  @relation("CommentToComment", fields: [parentCommentId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  ChildComments   Comment[] @relation("CommentToComment")
+  Post            Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
+}
+
+model CampaignToHolder {
+  id           String   @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  timeCreated  DateTime @default(now()) @db.Timestamptz(6)
+  campaignId   String   @db.Uuid
+  holderUserId String
+  Campaign     Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  User         User     @relation(fields: [holderUserId], references: [id], onDelete: Cascade)
+
+  @@id([campaignId, holderUserId])
+}
+
+model CampaignTeamMemberRole {
+  value                String                 @id
+  CampaignToTeamMember CampaignToTeamMember[]
+}
+
+model CampaignToTeamMember {
+  id                     String                 @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  campaignId             String                 @db.Uuid
+  memberId               String
+  timeCreated            DateTime               @default(now()) @db.Timestamptz(6)
+  requestId              String                 @unique @db.Uuid
+  role                   String
+  Campaign               Campaign               @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  Member                 User                   @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  Request                Request                @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  CampaignTeamMemberRole CampaignTeamMemberRole @relation(fields: [role], references: [value], onDelete: Cascade)
+
+  @@unique([campaignId, memberId])
+}
+
+model NftDisclosure {
+  nftId             String
+  type              String
+  details           String?
+  id                String            @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  Nft               Nft               @relation(fields: [nftId], references: [id], onDelete: Cascade)
+  NftDisclosureType NftDisclosureType @relation(fields: [type], references: [value], onDelete: Cascade)
+
+  @@id([nftId, type])
+  @@index([nftId], map: "NftDisclosure_nftId")
+}
+
+model NftDisclosureType {
+  value         String          @id
+  NftDisclosure NftDisclosure[]
+}
+
+model Airdrop {
+  id                     String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  timeCreated            DateTime    @default(now()) @db.Timestamptz(6)
+  masterEditionMint      String
+  standardEditionMint    String?     @unique
+  toAddress              String
+  type                   String
+  fromAddress            String
+  standardEditionMintRaw String?     @unique
+  FromUser               User        @relation("Airdrop_fromAddressToUser", fields: [fromAddress], references: [id], onDelete: Cascade)
+  MasterEditionNft       Nft         @relation("Airdrop_masterEditionMintToNft", fields: [masterEditionMint], references: [id], onDelete: Cascade)
+  StandardEditionNft     Nft?        @relation("Airdrop_standardEditionMintToNft", fields: [standardEditionMint], references: [id], onDelete: Cascade)
+  ToUser                 User        @relation(fields: [toAddress], references: [id], onDelete: Cascade)
+  AirdropType            AirdropType @relation(fields: [type], references: [value], onDelete: Cascade)
+
+  @@unique([toAddress, masterEditionMint])
+}
+
+model AirdropType {
+  value   String    @id
+  Airdrop Airdrop[]
+}
+
+model EditionsMerkleAllowlistInfo {
+  id            String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId        String
+  nftId         String
+  proof         String
+  rootIndex     Int
+  amountAllowed Int
+  timeCreated   DateTime @default(now()) @db.Timestamptz(6)
+  Nft           Nft      @relation(fields: [nftId], references: [id], onDelete: Cascade)
+  User          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, nftId])
+}
+
+model BonkClaim {
+  userId                 String    @id
+  claimed                Boolean?  @default(false)
+  timeClaimed            DateTime? @db.Timestamptz(6)
+  id                     String    @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  transferTxid           String?   @unique
+  transferTxidBeforeSend String?   @unique
+  User                   User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Poll {
+  id            String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  isMultiSelect Boolean
+  PollOption    PollOption[]
+  Post          Post?
+}
+
+model PollOption {
+  id           String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  pollId       String         @db.Uuid
+  text         String
+  Poll         Poll           @relation(fields: [pollId], references: [id], onDelete: Cascade)
+  PollResponse PollResponse[]
+}
+
+model PollResponse {
+  id           String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId       String
+  pollOptionId String     @db.Uuid
+  PollOption   PollOption @relation(fields: [pollOptionId], references: [id], onDelete: Cascade)
+  User         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, pollOptionId])
+}
+
+model DeletedNftTransaction {
+  txid String @id
+}
+
+model TooniesShippingInfo {
+  userId                    String
+  name                      String
+  type                      String
+  shippingAddress           String
+  swappedNftMint            String @unique
+  proofOfOwnershipTokenMint String @unique
+  id                        String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email                     String
+  ProofOfOwnershipTokenNft  Nft    @relation(fields: [proofOfOwnershipTokenMint], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  User                      User   @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model CreatorSurvey {
+  id                   String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  impact               String
+  improvements         String
+  isFofuBetterThanWeb2 Boolean
+  isFofuMainRevenue    Boolean
+  positiveDifference   String
+  problems             String
+  recommend            Int
+  usesWeb2Platforms    Boolean
+  seanEllis            String?
+  competition          String?
+}
+
+model CollectorSurvey {
+  id        String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  recommend Int
+  seanEllis String
+  why1      String
+  why2      String
+  freeform  String?
+}

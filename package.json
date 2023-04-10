@@ -1,0 +1,51 @@
+{
+  "name": "formfn-monorepo",
+  "description": "Formfunction frontend and backend projects",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:formfunction-hq/formfn-monorepo.git",
+  "author": "matt@formfunction.xyz",
+  "private": true,
+  "scripts": {
+    "check": "./check.sh",
+    "server": "yarn workspace formfn-server run",
+    "frontend": "yarn workspace formfn-frontend run",
+    "shared": "yarn workspace formfn-shared run",
+    "tsc": "yarn shared tsc && yarn server tsc && yarn frontend tsc",
+    "eslint": "yarn frontend eslint && yarn shared eslint && yarn server eslint",
+    "lint": "yarn frontend lint && yarn shared lint && yarn server lint",
+    "test": "yarn frontend test && yarn shared test && yarn server test",
+    "deploy-prod": "gh workflow run 18645844 --ref prod",
+    "d:build": "docker image prune --force && docker build -t formfn-api -f packages/server/Dockerfile-dev --target formfn-api . --progress plain --no-cache=true",
+    "d:build:auction-finish": "docker build -t auction-finish -f packages/server/Dockerfile-dev --target auction-finish . --progress plain",
+    "d:build:all": "yarn d:build && yarn d:build:auction-finish",
+    "d:up": "docker-compose -f packages/server/docker-compose-dev.yaml up",
+    "d:down": "docker-compose -f packages/server/docker-compose-dev.yaml down",
+    "start-frontend": "yarn && yarn frontend start",
+    "start-server": "yarn && yarn shared tsc && yarn server tsc && yarn d:build && yarn d:up",
+    "start-server-all": "yarn && yarn shared tsc && yarn server tsc && yarn d:build:all && yarn d:up",
+    "fix-frontend": "yarn && yarn frontend gen-graphql && yarn shared tsc && yarn frontend tsc",
+    "fix-server": "./scripts/fix-server.sh || echo 'Fix server failed. Try running yarn fix-server-verbose to debug'",
+    "fix-server-verbose": "./scripts/fix-server.sh -v",
+    "wait-server": "./scripts/wait_server.sh",
+    "update-local-exchange-rates": "curl --location --request POST 'http://localhost:4000/intern/updateExchangeRates' --header 'check: fofu'",
+    "notify-frontend": "curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"Frontend deployment failed. Check status at https://dash.cloudflare.com/1c303446d16283941adc8055b1763144/pages/view/formfn-monorepo\"}' https://hooks.slack.com/services/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",
+    "prepare": "husky install"
+  },
+  "workspaces": [
+    "packages/server",
+    "packages/shared",
+    "packages/frontend"
+  ],
+  "devDependencies": {
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1"
+  },
+  "resolutions": {
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2",
+    "@solana/web3.js": "1.73.0",
+    "@solana/spl-token": "0.3.7"
+  },
+  "packageManager": "yarn@3.2.3"
+}

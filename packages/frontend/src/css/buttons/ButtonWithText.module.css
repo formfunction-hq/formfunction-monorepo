@@ -1,0 +1,649 @@
+.button {
+  align-items: center;
+  border-radius: 100px;
+  border-style: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  padding: 16px;
+  outline: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button:disabled,
+.disabled {
+  cursor: default;
+  opacity: 0.48;
+  pointer-events: none;
+}
+
+.buttonAutoWidth {
+  padding: 16px 32px;
+}
+
+.button:enabled:hover {
+  cursor: pointer;
+}
+
+.icon {
+  /* Fixes https://github.com/vercel/next.js/issues/21914 */
+  font-size: 0px;
+  line-height: 0px;
+}
+
+.iconLeft {
+  margin-right: 10px;
+}
+
+.iconRight {
+  margin-left: 10px;
+}
+
+.hideChildren {
+  height: 0;
+  overflow-y: hidden;
+}
+
+.linkContent:hover {
+  cursor: pointer;
+}
+
+.linkInternal {
+  /* Otherwise, height gets messed up */
+  display: flex;
+}
+
+/*
+ * Themes
+ */
+
+/* Bright purple outline theme */
+
+.outlineTheme {
+  /* Account for border */
+  padding-bottom: 14px;
+  padding-top: 14px;
+}
+
+.brightPurpleOutlineTheme,
+.brightPurpleOutlineThemeLink {
+  background-color: transparent;
+  border: 2px solid var(--color-brightPurple);
+  color: var(--color-brightPurple);
+}
+
+.brightPurpleOutlineTheme:enabled:active,
+.brightPurpleOutlineThemeLink:active {
+  background-color: var(--color-brightPurple);
+  color: var(--color-white);
+}
+
+.brightPurpleOutlineTheme:enabled:active path,
+.brightPurpleOutlineThemeLink:active path {
+  stroke: var(--color-white);
+}
+
+@media (hover: hover) {
+  .brightPurpleOutlineTheme:enabled:hover,
+  .brightPurpleOutlineThemeLink:hover {
+    background-color: var(--color-brightPurple);
+    color: var(--color-white);
+  }
+
+  .brightPurpleOutlineTheme:enabled:hover path,
+  .brightPurpleOutlineThemeLink:hover path {
+    stroke: var(--color-white);
+  }
+}
+
+/* Bright purple outline website background */
+
+.brightPurpleOutlineWebsiteBackgroundTheme,
+.brightPurpleOutlineWebsiteBackgroundThemeLink {
+  background-color: var(--color-websiteBackground);
+  border: 2px solid var(--color-brightPurple);
+  color: var(--color-brightPurple);
+}
+
+.brightPurpleOutlineWebsiteBackgroundTheme:enabled:active,
+.brightPurpleOutlineWebsiteBackgroundThemeLink:active {
+  background-color: var(--color-brightPurple);
+  color: var(--color-white);
+}
+
+.brightPurpleOutlineWebsiteBackgroundTheme:enabled:active path,
+.brightPurpleOutlineWebsiteBackgroundThemeLink:active path {
+  stroke: var(--color-white);
+}
+
+@media (hover: hover) {
+  .brightPurpleOutlineWebsiteBackgroundTheme:enabled:hover,
+  .brightPurpleOutlineWebsiteBackgroundThemeLink:hover {
+    background-color: var(--color-brightPurple);
+    color: var(--color-white);
+  }
+
+  .brightPurpleOutlineWebsiteBackgroundTheme:enabled:hover path,
+  .brightPurpleOutlineWebsiteBackgroundThemeLink:hover path {
+    stroke: var(--color-white);
+  }
+}
+
+/* Light pink outline theme */
+
+.lightPinkOutlineTheme,
+.lightPinkOutlineThemeLink {
+  background-color: transparent;
+  border: 2px solid var(--color-lightPink);
+  color: var(--color-lightPink);
+}
+
+.lightPinkOutlineTheme:enabled:active,
+.lightPinkOutlineThemeLink:active {
+  background-color: var(--color-lightPink);
+  color: var(--color-white);
+}
+
+@media (hover: hover) {
+  .lightPinkOutlineTheme:enabled:hover,
+  .lightPinkOutlineThemeLink:hover {
+    background-color: var(--color-lightPink);
+    color: var(--color-white);
+  }
+}
+
+/* Navy theme */
+
+.navyTheme,
+.navyThemeLink {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+.navyTheme:enabled:active,
+.navyThemeLink:active {
+  background-color: var(--color-navyHover);
+}
+
+@media (hover: hover) {
+  .navyTheme:enabled:hover,
+  .navyThemeLink:hover {
+    background-color: var(--color-navyHover);
+  }
+}
+
+/* Navy outline theme */
+
+.navyOutlineTheme,
+.navyOutlineThemeLink {
+  background-color: transparent;
+  border: 2px solid var(--color-navy);
+  color: var(--color-navy);
+}
+
+.navyOutlineTheme:enabled:active,
+.navyOutlineThemeLink:active {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+.navyOutlineTheme:enabled:active path,
+.navyOutlineThemeLink:active path {
+  stroke: var(--color-white);
+}
+
+@media (hover: hover) {
+  .navyOutlineTheme:enabled:hover,
+  .navyOutlineThemeLink:hover {
+    background-color: var(--color-navy);
+    color: var(--color-white);
+  }
+
+  .navyOutlineTheme:enabled:hover path,
+  .navyOutlineThemeLink:hover path {
+    stroke: var(--color-white);
+  }
+}
+
+/* Navy outline square outline theme */
+
+.navyOutlineSquareTheme,
+.navyOutlineSquareThemeLink {
+  background-color: transparent;
+  border: 2px solid var(--color-navy);
+  border-radius: 4px;
+  color: var(--color-navy);
+}
+
+.navyOutlineSquareTheme:enabled:active,
+.navyOutlineSquareThemeLink:active {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+.navyOutlineSquareTheme:enabled:active path,
+.navyOutlineSquareThemeLink:active path {
+  stroke: var(--color-white);
+}
+
+@media (hover: hover) {
+  .navyOutlineSquareTheme:enabled:hover,
+  .navyOutlineSquareThemeLink:hover {
+    background-color: var(--color-navy);
+    color: var(--color-white);
+  }
+
+  .navyOutlineSquareTheme:enabled:hover path,
+  .navyOutlineSquareThemeLink:hover path {
+    stroke: var(--color-white);
+  }
+}
+
+/* Purple gradient theme */
+
+.purpleGradientTheme,
+.purpleGradientThemeLink {
+  background: var(--color-purpleGradient);
+  color: var(--color-white);
+}
+
+.purpleGradientTheme:enabled:active,
+.purpleGradientThemeLink:active {
+  background: var(--color-purpleGradientHover);
+  color: var(--color-white);
+}
+
+@media (hover: hover) {
+  .purpleGradientTheme:enabled:hover,
+  .purpleGradientThemeLink:hover {
+    background: var(--color-purpleGradientHover);
+    color: var(--color-white);
+  }
+}
+
+/* Purple outline theme */
+
+.purpleOutlineTheme,
+.purpleOutlineThemeLink {
+  background-color: transparent;
+  border: 2px solid var(--color-purple);
+  color: var(--color-purple);
+}
+
+.purpleOutlineTheme:enabled:active,
+.purpleOutlineThemeLink:active {
+  background-color: var(--color-purple);
+  color: var(--color-white);
+}
+
+.purpleOutlineTheme:enabled:active path,
+.purpleOutlineThemeLink:active path {
+  stroke: var(--color-white);
+}
+
+@media (hover: hover) {
+  .purpleOutlineTheme:enabled:hover,
+  .purpleOutlineThemeLink:hover {
+    background-color: var(--color-purple);
+    color: var(--color-white);
+  }
+
+  .purpleOutlineTheme:enabled:hover path,
+  .purpleOutlineThemeLink:hover path {
+    stroke: var(--color-white);
+  }
+}
+
+/* Red outline theme */
+
+.redOutlineTheme,
+.redOutlineThemeLink {
+  background-color: var(--color-transparent);
+  border: 2px solid var(--color-red);
+  color: var(--color-red);
+}
+
+.redOutlineTheme:enabled:active,
+.redOutlineThemeLink:active {
+  background-color: var(--color-red);
+  color: var(--color-white);
+}
+
+.redOutlineTheme:enabled:active path,
+.redOutlineThemeLink:active path {
+  stroke: var(--color-white);
+}
+
+@media (hover: hover) {
+  .redOutlineTheme:enabled:hover,
+  .redOutlineThemeLink:hover {
+    background-color: var(--color-red);
+    color: var(--color-white);
+  }
+
+  .redOutlineTheme:enabled:hover path,
+  .redOutlineThemeLink:hover path {
+    stroke: var(--color-white);
+  }
+}
+
+/* Red theme */
+
+.redTheme,
+.redThemeLink {
+  background-color: var(--color-red);
+  color: var(--color-white);
+}
+
+.redTheme:enabled:active,
+.redThemeLink:active {
+  background-color: var(--color-redHover);
+}
+
+@media (hover: hover) {
+  .redTheme:enabled:hover,
+  .redThemeLink:hover {
+    background-color: var(--color-redHover);
+  }
+}
+
+/* White Theme */
+.whiteTheme,
+.whiteThemeLink {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+/* Secondary outline theme */
+
+.secondaryOutlineTheme,
+.secondaryOutlineThemeLink {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.secondaryOutlineTheme:enabled:active,
+.secondaryOutlineThemeLink:active {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.secondaryOutlineTheme:enabled:active path,
+.secondaryOutlineThemeLink:active path {
+  stroke: var(--color-white);
+}
+
+@media (hover: hover) {
+  .secondaryOutlineTheme:enabled:hover,
+  .secondaryOutlineThemeLink:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+  }
+
+  .secondaryOutlineTheme:enabled:hover path,
+  .secondaryOutlineThemeLink:hover path {
+    stroke: var(--color-white);
+  }
+}
+
+/* Cadmium Green Theme */
+
+.cadmiumGreenTheme,
+.cadmiumGreenThemeLink {
+  background-color: transparent;
+  border: 2px solid var(--color-cadmiumGreen);
+  color: var(--color-cadmiumGreen);
+}
+
+.cadmiumGreenTheme:enabled:active,
+.cadmiumGreenThemeLink:active {
+  background-color: var(--color-cadmiumGreen);
+  color: var(--color-white);
+}
+
+.cadmiumGreenTheme:enabled:active path,
+.cadmiumGreenThemeLink:active path {
+  stroke: var(--color-white);
+}
+
+@media (hover: hover) {
+  .cadmiumGreenTheme:enabled:hover,
+  .cadmiumGreenThemeLink:hover {
+    background-color: var(--color-cadmiumGreen);
+    color: var(--color-white);
+  }
+
+  .cadmiumGreenTheme:enabled:hover path,
+  .cadmiumGreenThemeLink:hover path {
+    stroke: var(--color-white);
+  }
+}
+
+/* Sinopia Theme */
+
+.sinopiaTheme,
+.sinopiaThemeLink {
+  background-color: transparent;
+  border: 2px solid var(--color-sinopia);
+  color: var(--color-sinopia);
+}
+
+.sinopiaTheme:enabled:active,
+.sinopiaThemeLink:active {
+  background-color: var(--color-sinopia);
+  color: var(--color-white);
+}
+
+.sinopiaTheme:enabled:active path,
+.sinopiaThemeLink:active path {
+  stroke: var(--color-white);
+}
+
+@media (hover: hover) {
+  .sinopiaTheme:enabled:hover,
+  .sinopiaThemeLink:hover {
+    background-color: var(--color-sinopia);
+    color: var(--color-white);
+  }
+
+  .sinopiaTheme:enabled:hover path,
+  .sinopiaThemeLink:hover path {
+    stroke: var(--color-white);
+  }
+}
+
+/* Dark Gunmetal Theme */
+
+.darkGunmetalTheme,
+.darkGunmetalThemeLink {
+  background-color: transparent;
+  border: 2px solid var(--color-darkGunmetal);
+  color: var(--color-darkGunmetal);
+}
+
+.darkGunmetalTheme:enabled:active,
+.darkGunmetalThemeLink:active {
+  background-color: var(--color-darkGunmetal);
+  color: var(--color-white);
+}
+
+.darkGunmetalTheme:enabled:active path,
+.darkGunmetalThemeLink:active path {
+  stroke: var(--color-white);
+}
+
+@media (hover: hover) {
+  .darkGunmetalTheme:enabled:hover,
+  .darkGunmetalThemeLink:hover {
+    background-color: var(--color-darkGunmetal);
+    color: var(--color-white);
+  }
+
+  .darkGunmetalTheme:enabled:hover path,
+  .darkGunmetalThemeLink:hover path {
+    stroke: var(--color-white);
+  }
+}
+
+/* Medium Blue Theme */
+
+.mediumBlueTheme,
+.mediumBlueThemeLink {
+  background-color: transparent;
+  border: 2px solid var(--color-mediumBlue);
+  color: var(--color-mediumBlue);
+}
+
+.mediumBlueTheme:enabled:active,
+.mediumBlueThemeLink:active {
+  background-color: var(--color-mediumBlue);
+  color: var(--color-white);
+}
+
+.mediumBlueTheme:enabled:active path,
+.mediumBlueThemeLink:active path {
+  stroke: var(--color-white);
+}
+
+@media (hover: hover) {
+  .mediumBlueTheme:enabled:hover,
+  .mediumBlueThemeLink:hover {
+    background-color: var(--color-mediumBlue);
+    color: var(--color-white);
+  }
+
+  .mediumBlueTheme:enabled:hover path,
+  .mediumBlueThemeLink:hover path {
+    stroke: var(--color-white);
+  }
+}
+
+/* Midnight Blue Theme */
+
+.midnightBlueTheme,
+.midnightBlueThemeLink {
+  background-color: transparent;
+  border: 2px solid var(--color-midnightBlue);
+  color: var(--color-midnightBlue);
+}
+
+.midnightBlueTheme:enabled:active,
+.midnightBlueThemeLink:active {
+  background-color: var(--color-midnightBlue);
+  color: var(--color-white);
+}
+
+.midnightBlueTheme:enabled:active path,
+.midnightBlueThemeLink:active path {
+  stroke: var(--color-white);
+}
+
+@media (hover: hover) {
+  .midnightBlueTheme:enabled:hover,
+  .midnightBlueThemeLink:hover {
+    background-color: var(--color-midnightBlue);
+    color: var(--color-white);
+  }
+
+  .midnightBlueTheme:enabled:hover path,
+  .midnightBlueThemeLink:hover path {
+    stroke: var(--color-white);
+  }
+}
+
+/* Maximum Red Theme */
+
+.maximumRedTheme,
+.maximumRedThemeLink {
+  background-color: transparent;
+  border: 2px solid var(--color-maximumRed);
+  color: var(--color-maximumRed);
+}
+
+.maximumRedTheme:enabled:active,
+.maximumRedThemeLink:active {
+  background-color: var(--color-maximumRed);
+  color: var(--color-white);
+}
+
+.maximumRedTheme:enabled:active path,
+.maximumRedThemeLink:active path {
+  stroke: var(--color-white);
+}
+
+@media (hover: hover) {
+  .maximumRedTheme:enabled:hover,
+  .maximumRedThemeLink:hover {
+    background-color: var(--color-maximumRed);
+    color: var(--color-white);
+  }
+
+  .maximumRedTheme:enabled:hover path,
+  .maximumRedThemeLink:hover path {
+    stroke: var(--color-white);
+  }
+}
+
+/* White with purple gradient theme */
+
+.whiteWithPurpleGradientTheme,
+.whiteWithPurpleGradientThemeLink {
+  background-color: var(--color-white);
+}
+
+.whiteWithPurpleGradientTheme:enabled:active,
+.whiteWithPurpleGradientThemeLink:active {
+  opacity: 0.9;
+}
+
+@media (hover: hover) {
+  .whiteWithPurpleGradientTheme:enabled:hover,
+  .whiteWithPurpleGradientThemeLink:hover {
+    opacity: 0.9;
+  }
+}
+
+.whiteWithPurpleGradientTheme div, .whiteWithPurpleGradientThemeLink div {
+  background: var(--color-purpleGradientForText);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* White outline theme */
+
+.whiteOutlineTheme,
+.whiteOutlineThemeLink {
+  background-color: transparent;
+  border: 2px solid var(--color-white);
+  color: var(--color-white);
+}
+
+.whiteOutlineTheme:enabled:active,
+.whiteOutlineThemeLink:active {
+  background-color: rgba(0,0,0,0.05);
+  color: var(--color-white);
+}
+
+@media (hover: hover) {
+  .whiteOutlineTheme:enabled:hover,
+  .whiteOutlineThemeLink:hover {
+    background-color: rgba(0,0,0,0.05);
+    color: var(--color-white);
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .button,
+  .buttonAutoWidth {
+    padding: 12px 20px;
+  }
+
+  .outlineTheme {
+    /* Account for border */
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+}

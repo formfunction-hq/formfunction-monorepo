@@ -1,0 +1,196 @@
+table:
+  schema: public
+  name: User
+object_relationships:
+  - name: CoverPhoto
+    using:
+      foreign_key_constraint_on: coverPhotoId
+  - name: CreatorStory
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: CreatorStory
+  - name: DiscordAuth
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: DiscordAuth
+  - name: ProfilePhoto
+    using:
+      foreign_key_constraint_on: profilePhotoId
+array_relationships:
+  - name: ArtistSubmissions
+    using:
+      foreign_key_constraint_on:
+        column: userId
+        table:
+          schema: public
+          name: ArtistSubmission
+  - name: Followed
+    using:
+      foreign_key_constraint_on:
+        column: followerId
+        table:
+          schema: public
+          name: UserFollows
+  - name: Followers
+    using:
+      foreign_key_constraint_on:
+        column: followedId
+        table:
+          schema: public
+          name: UserFollows
+computed_fields:
+  - name: isCollector
+    definition:
+      function:
+        schema: public
+        name: is_collector_fn
+  - name: usernameLength
+    definition:
+      function:
+        schema: public
+        name: username_length_fn
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        id:
+          _eq: X-Hasura-User-Id
+      columns:
+        - bio
+        - coverPhotoId
+        - discordHandle
+        - displayName
+        - email
+        - hasCompletedSignup
+        - id
+        - instagramName
+        - profilePhotoId
+        - shouldSeeDiscordOnboardingPrompt
+        - timeCreated
+        - twitterName
+        - username
+        - websiteUrl
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - bio
+        - coverPhotoId
+        - discordHandle
+        - displayName
+        - emailBlocklist
+        - hasCompletedSignup
+        - hasTakenCollectorSurvey2023
+        - hasTakenCreatorSurvey2023
+        - hasUnseenActivity
+        - id
+        - instagramName
+        - isCollector2
+        - isWhitelisted
+        - profilePhotoId
+        - seriesOrder
+        - shouldBlurNsfwContent
+        - shouldSeeDiscordOnboardingPrompt
+        - timeCreated
+        - twitterName
+        - username
+        - websiteUrl
+      computed_fields:
+        - isCollector
+        - usernameLength
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - bio
+        - coverPhotoId
+        - discordHandle
+        - displayName
+        - emailBlocklist
+        - hasCompletedSignup
+        - hasTakenCollectorSurvey2023
+        - hasTakenCreatorSurvey2023
+        - hasUnseenActivity
+        - id
+        - instagramName
+        - isCollector2
+        - isWhitelisted
+        - profilePhotoId
+        - seriesOrder
+        - shouldBlurNsfwContent
+        - shouldSeeDiscordOnboardingPrompt
+        - timeCreated
+        - twitterName
+        - username
+        - websiteUrl
+      computed_fields:
+        - isCollector
+        - usernameLength
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - bio
+        - coverPhotoId
+        - discordHandle
+        - displayName
+        - email
+        - emailBlocklist
+        - hasCompletedSignup
+        - hasUnseenActivity
+        - instagramName
+        - profilePhotoId
+        - seriesOrder
+        - shouldBlurNsfwContent
+        - shouldSeeDiscordOnboardingPrompt
+        - twitterName
+        - username
+        - websiteUrl
+      filter:
+        id:
+          _eq: X-Hasura-User-Id
+      check: null
+event_triggers:
+  - name: preventInvalidUsernames
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+      update:
+        columns:
+          - displayName
+          - username
+    retry_conf:
+      num_retries: 3
+      interval_sec: 60
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/preventInvalidUsernamesWebhook'
+  - name: userInsertWhitelistSync
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 1
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/userWhitelistWebhook'
+  - name: userSetProfileMixpanel
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+      update:
+        columns: '*'
+    retry_conf:
+      num_retries: 1
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/userSetProfileMixpanel'

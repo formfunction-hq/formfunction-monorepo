@@ -1,0 +1,178 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+
+.containerInner {
+  align-self: stretch;
+  flex-grow: 1;
+  padding-bottom: 100px;
+}
+
+.editProfileButton {
+  flex-shrink: 0;
+}
+
+.nfts {
+  margin-top: 42px;
+}
+
+.profileCard {
+  margin-top: 48px;
+}
+
+.profilePhoto {
+  background-color: var(--color-tertiary);
+  border: 8px solid var(--color-websiteBackground);
+  border-radius: 50%;
+  box-sizing: border-box;
+  object-fit: cover;
+
+  height: 153px;
+  width: 153px;
+}
+
+.profilePhotoContainer {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -76.5px;
+  position: relative;
+}
+
+.profileTabsContainer {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profileTabsContainerDivider {
+  width: 100%;
+  border-bottom: 1px solid var(--color-tertiary);
+}
+
+.profileTabsDesktopContainer {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.row1 {
+  align-items: center;
+  column-gap: 32px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.row1Left {
+  align-items: center;
+  column-gap: 28px;
+  display: flex;
+}
+
+.row2 {
+  margin-top: 16px;
+}
+
+.shadowButtonSocialLarge {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+}
+
+.shadowButtonSocialLargeText {
+  margin: 0 8px;
+}
+
+.shadowButtons {
+  align-items: center;
+  column-gap: 16px;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.tabsLeft {
+  align-items: flex-end;
+  column-gap: 36px;
+  display: flex;
+}
+
+.userFollowsInfo {
+  margin-top: 24px;
+}
+
+@media only screen and (max-width: 1100px) {
+  .row1Left {
+    align-items: center;
+    column-gap: 16px;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .profileCard {
+    margin-top: 24px;
+  }
+}
+
+@media only screen and (max-width: 868px) {
+  .profilePhoto {
+    height: 140px;
+    width: 140px;
+  }
+
+  .profilePhotoContainer {
+    margin-top: -70px;
+  }
+
+  .tabsLeft {
+    column-gap: 24px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .tabsLeft {
+    column-gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .containerInner {
+    padding-bottom: 60px;
+  }
+
+  .profilePhoto {
+    border: 4px solid var(--color-white);
+    height: 100px;
+    width: 100px;
+  }
+
+  .profilePhotoContainer {
+    margin-top: -50px;
+  }
+
+  .shadowButtons {
+    column-gap: 12px;
+  }
+
+  .shadowButtonSocialLarge {
+    column-gap: 8px;
+  }
+
+  .shadowButtonSocialLargeText {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .tabsLeft {
+    column-gap: 10px;
+    width: 100%;
+  }
+}

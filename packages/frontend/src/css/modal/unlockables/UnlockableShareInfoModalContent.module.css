@@ -1,0 +1,51 @@
+.body {
+  width: 640px;
+}
+
+.button {
+  display: block;
+  margin: auto;
+  margin-top: 48px;
+}
+
+.description {
+  text-align: center;
+}
+
+.dismissButton {
+  margin: 36px auto 0;
+}
+
+.input {
+  margin-top: 48px;
+}
+
+.saveButton {
+  display: block;
+  margin: auto;
+  margin-top: 48px;
+  width: 320px;
+}
+
+.useEmailCheckbox {
+  margin-top: 16px;
+}
+
+@media only screen and (max-width: 980px) {
+  .body {
+    width: 100%;
+  }
+
+  .input {
+    margin-top: 24px;
+  }
+
+  .button {
+    margin-top: 24px;
+  }
+
+  .saveButton {
+    margin-top: 24px;
+    width: 220px;
+  }
+}

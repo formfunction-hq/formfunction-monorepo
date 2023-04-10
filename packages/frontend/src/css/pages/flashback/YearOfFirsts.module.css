@@ -1,0 +1,78 @@
+.assetContainer {
+  border: 4px solid #ffe83d;
+}
+
+.color {
+  color: #ffe83d;
+}
+
+.container {
+  column-gap: 64px;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.nonBold {
+  font-weight: 400;
+}
+
+.text {
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.text > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@media screen and (max-width: 1280px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 40px;
+  }
+
+  .text,
+  .text > div {
+    text-align: center;
+    align-items: center;
+  }
+
+  .text h3 {
+    font-size: 25px;
+    margin: 0px;
+  }
+}
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+  .text h3 {
+    font-size: 20px;
+  }
+
+  .text > div {
+    row-gap: 8px;
+  }
+}
+
+
+
+
+@media screen and (max-height: 740px) {
+  .header1 {
+    margin-top: 32px;
+  }
+  .header2 {
+    font-size: 24px;
+  }
+}

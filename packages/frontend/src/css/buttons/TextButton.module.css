@@ -1,0 +1,115 @@
+.button {
+  align-items: center;
+  background-color: transparent;
+  border-style: none;
+  outline: none;
+  padding: 0;
+  text-decoration: none;
+}
+
+.button:disabled {
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.icon {
+  /* Fixes https://github.com/vercel/next.js/issues/21914 */
+  font-size: 0px;
+  line-height: 0px;
+}
+
+.iconLeft {
+  margin-right: 10px;
+}
+
+.iconRight {
+  margin-left: 10px;
+}
+
+/* Themes */
+
+/* Bright purple */
+.buttonBrightPurple,
+.buttonBrightPurpleActive {
+  color: var(--color-brightPurple);
+}
+
+.buttonBrightPurple:hover {
+  color: var(--color-brightPurple);
+}
+
+/* Error */
+.buttonError,
+.buttonErrorActive {
+  color: var(--color-error);
+}
+
+.buttonError:hover {
+  color: var(--color-error);
+}
+
+/* Navy */
+.buttonNavy,
+.buttonNavyActive {
+  color: var(--color-navy);
+}
+
+.buttonNavy:hover {
+  color: var(--color-navy);
+}
+
+/* Popheadz Dark Gray */
+.buttonPopheadzDarkGray,
+.buttonPopheadzDarkGrayActive {
+  color: var(--color-popheadzDarkGray);
+}
+
+.buttonPrimary:hover {
+  color: var(--color-primary);
+}
+
+/* Primary */
+.buttonPrimary,
+.buttonPrimaryActive {
+  color: var(--color-primary);
+}
+
+.buttonPrimary:hover {
+  color: var(--color-primary);
+}
+
+/* Purple gradient */
+.buttonPurpleGradient,
+.buttonPurpleGradientActive {
+  background: var(--color-purpleGradientForText);
+  background-clip: text;
+  display: inline;
+  text-align: left;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Secondary */
+.buttonSecondary,
+.buttonSecondaryActive {
+  color: var(--color-secondary);
+}
+
+.buttonSecondary:hover {
+  color: var(--color-secondary);
+}
+
+/* White */
+.buttonWhite,
+.buttonWhiteActive {
+  color: var(--color-white);
+}
+
+.buttonWhite:hover {
+  color: var(--color-white);
+}

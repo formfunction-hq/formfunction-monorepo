@@ -1,0 +1,2 @@
+CREATE TABLE "public"."UserFollows" ("followedId" text NOT NULL, "followerId" text NOT NULL, "id" uuid NOT NULL DEFAULT gen_random_uuid(), "timeCreated" timestamptz NOT NULL DEFAULT now(), PRIMARY KEY ("id") , FOREIGN KEY ("followedId") REFERENCES "public"."User"("id") ON UPDATE restrict ON DELETE restrict, FOREIGN KEY ("followerId") REFERENCES "public"."User"("id") ON UPDATE restrict ON DELETE restrict, UNIQUE ("id"));
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

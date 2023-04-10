@@ -1,0 +1,17 @@
+.active {
+  border: 8px solid var(--color-brightPurple);
+  border-radius: 50%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  height: 24px;
+  width: 24px;
+}
+
+.inactive {
+  border: 1px solid var(--color-secondary);
+  border-radius: 50%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  height: 24px;
+  width: 24px;
+}

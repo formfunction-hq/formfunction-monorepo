@@ -1,0 +1,9 @@
+.heroImg {
+  max-height: 350px;
+  margin: 64px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 84px auto;
+}

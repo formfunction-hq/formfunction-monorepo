@@ -1,0 +1,10 @@
+.button {
+  align-items: center;
+  background-color: var(--color-overlayButton) !important;
+  border-radius: 100px;
+  color: var(--color-white);
+  column-gap: 10px;
+  display: flex;
+  height: 40px;
+  padding: 12px 16px;
+}

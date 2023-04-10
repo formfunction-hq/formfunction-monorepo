@@ -1,0 +1,35 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 64px;
+}
+
+.mobileTitleAndNav {
+  align-self: stretch;
+}
+
+.progressBar {
+  margin: auto;
+}
+
+.progressBarContainer {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Header breakpoint */
+@media only screen and (max-width: 980px) {
+  .container {
+    row-gap: 48px;
+  }
+}
+
+/* Header breakpoint */
+@media only screen and (max-width: 768px) {
+  .container {
+    row-gap: 32px;
+  }
+}

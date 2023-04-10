@@ -1,0 +1,17 @@
+.acceptedFiles {
+  margin-top: 16px;
+}
+
+.content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  margin-top: 12px;
+}
+
+.title {
+  margin-top: 43px;
+}

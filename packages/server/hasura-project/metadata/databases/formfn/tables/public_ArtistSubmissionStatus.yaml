@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: ArtistSubmissionStatus
+is_enum: true

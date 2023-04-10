@@ -1,0 +1,1 @@
+INSERT INTO "public"."Currency"("id", "name", "decimals", "symbol", "shortSymbol", "iconSrc", "mint", "usdRate", "solRate") VALUES (E'b837fff4-dfe0-46ee-8a81-e3a842074288', E'FamousFoxFederation', 0, E'FOXY', null, E'https://formfunction.imgix.net/currency/foxy/logo.png', E'FoXyMu5xwXre7zEoSvzViRk3nGawHUp9kUh97y2NDhcq', null, null);

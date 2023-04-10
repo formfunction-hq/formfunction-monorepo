@@ -1,0 +1,77 @@
+.body {
+  column-gap: 48px;
+  display: flex;
+}
+
+.bottomDrawerContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  width: 168px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 48px;
+}
+
+.description {
+  margin-top: 8px;
+}
+
+.noWithdraw {
+  margin-top: 16px;
+}
+
+.priceInput {
+  align-items: center;
+  display: flex;
+  column-gap: 12px;
+  margin-top: 16px;
+}
+
+.right {
+  text-align: left;
+  width: 616px;
+}
+
+.walletBalance {
+  margin-top: 48px;
+}
+
+/* Bottom drawer breakpoint */
+@media only screen and (max-width: 1024px) {
+  .body {
+    margin-top: 0px;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .body {
+    align-items: center;
+    flex-direction: column;
+    row-gap: 28px;
+  }
+
+  .buttons {
+    justify-content: center;
+    margin-top: 48px;
+  }
+
+  .right {
+    width: 100%;
+  }
+
+  .walletBalance {
+    margin-top: 32px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .buttons {
+    margin-top: 32px;
+  }
+}

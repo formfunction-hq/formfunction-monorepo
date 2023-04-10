@@ -1,0 +1,12 @@
+.profilePhoto {
+  background-color: var(--color-skeletonBase) !important;
+}
+
+.title {
+  height: var(--line-height-header3);
+  width: 100%;
+}
+
+.usernameAndBio {
+  width: 100%;
+}

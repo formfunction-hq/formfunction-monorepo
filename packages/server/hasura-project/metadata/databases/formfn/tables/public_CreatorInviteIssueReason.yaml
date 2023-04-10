@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: CreatorInviteIssueReason
+is_enum: true

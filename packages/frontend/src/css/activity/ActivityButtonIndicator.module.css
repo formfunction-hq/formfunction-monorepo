@@ -1,0 +1,39 @@
+.indicator {
+  align-items: center;
+  background: var(--color-purpleGradient);
+  border-radius: 50%;
+  display: flex;
+  height: 24px;
+  justify-content: center;
+  width: 24px;
+}
+
+.indicatorCount {
+  color: var(--color-white);
+  text-align: center;
+
+  font-family: var(--font-family-tinyLabel);
+  font-size: 12px;
+  font-weight: var(--font-weight-tinyLabel);
+  letter-spacing: var(--letter-spacing-tinyLabel);
+  line-height: var(--line-height-tinyLabel);
+}
+
+.indicatorWide {
+  margin-right: -4px;
+  width: 28px;
+}
+
+/* Header breakpoint */
+@media only screen and (max-width: 980px) {
+  .indicator {
+    height: 20px;
+    width: 20px;
+  }
+
+  .indicatorWide {
+    height: 22px;
+    margin-right: -4px;
+    width: 26px;
+  }
+}

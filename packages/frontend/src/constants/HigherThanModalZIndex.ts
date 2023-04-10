@@ -1,0 +1,3 @@
+const HIGHER_THAN_MODAL_Z_INDEX = 10001;
+
+export default HIGHER_THAN_MODAL_Z_INDEX;

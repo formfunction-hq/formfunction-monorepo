@@ -1,0 +1,10 @@
+.button {
+  align-self: center;
+  max-width: 280px;
+}
+
+.tokenPreviewImage {
+  box-sizing: border-box;
+  max-width: 120px;
+  width: 100%;
+}

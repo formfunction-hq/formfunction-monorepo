@@ -1,0 +1,26 @@
+.dayAvailable {
+  color: var(--color-primary);
+}
+
+.dayAvailable:hover,
+.dayAvailable:active {
+  cursor: pointer;
+}
+
+.dayAvailable:hover:before, .dayAvailable:active:before {
+  background: var(--color-lightPurpleGradient);
+  border-radius: 50%;
+  content: '';
+  height: 36px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+}
+
+.dayUnavailable {
+  background-color: var(--color-menuPopup);
+  color: var(--color-ghost);
+  pointer-events: none;
+}

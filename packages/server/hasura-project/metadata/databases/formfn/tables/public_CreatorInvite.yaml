@@ -1,0 +1,26 @@
+table:
+  schema: public
+  name: CreatorInvite
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - inviteLinkExpirationTime
+        - inviteLinkToken
+        - receiverEmail
+        - timeAccepted
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - expirationTime
+        - id
+        - inviteLinkExpirationTime
+        - inviteLinkToken
+        - ownerId
+        - receiverEmail
+        - receiverId
+        - timeAccepted
+      filter: {}
+      allow_aggregations: true

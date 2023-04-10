@@ -1,0 +1,88 @@
+.body {
+  column-gap: 48px;
+  display: flex;
+  margin-top: 36px;
+}
+
+.bottomDrawerContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 48px;
+}
+
+.buyDisabledDescription {
+  margin-top: 16px;
+}
+
+.buyNowButton {
+  width: 168px;
+}
+
+.buyNowPriceContainer {
+  background-color: var(--color-shader);
+  border-radius: 16px;
+  padding: 16px 24px 24px 24px;
+}
+
+.buyNowPriceRow1 {
+  align-items: center;
+  column-gap: 24px;
+  display: flex;
+}
+
+.buyNowPriceRow2 {
+  margin-top: 8px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.buyNowPriceSol {
+  font-size: 44px;
+  line-height: 56px;
+}
+
+.container {
+  max-width: 980px;
+}
+
+.right {
+  text-align: left;
+  width: 616px;
+}
+
+/* Bottom drawer breakpoint */
+@media only screen and (max-width: 1024px) {
+  .body {
+    margin-top: 24px;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .body {
+    align-items: center;
+    flex-direction: column;
+    row-gap: 28px;
+  }
+
+  .buttons {
+    justify-content: center;
+    margin-top: 48px;
+  }
+
+  .right {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .buttons,
+  .comment {
+    margin-top: 32px;
+  }
+}

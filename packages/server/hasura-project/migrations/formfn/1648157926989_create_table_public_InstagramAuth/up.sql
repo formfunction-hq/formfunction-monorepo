@@ -1,0 +1,2 @@
+CREATE TABLE "public"."InstagramAuth" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "userId" text NOT NULL, "timeCreated" timestamptz NOT NULL DEFAULT now(), "accessToken" text NOT NULL, PRIMARY KEY ("userId") , FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON UPDATE restrict ON DELETE restrict, UNIQUE ("id"), UNIQUE ("userId"));COMMENT ON TABLE "public"."InstagramAuth" IS E'Holds access tokens for users that have authenticated their IG accounts';
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

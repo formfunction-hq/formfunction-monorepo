@@ -1,0 +1,5 @@
+import BYTES_PER_MEGABYTE from "constants/BytesPerMegabyte";
+
+const DEFAULT_MAX_FILE_SIZE_FOR_MINT = 100 * BYTES_PER_MEGABYTE;
+
+export default DEFAULT_MAX_FILE_SIZE_FOR_MINT;

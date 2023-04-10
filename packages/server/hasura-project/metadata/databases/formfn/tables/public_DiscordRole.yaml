@@ -1,0 +1,16 @@
+table:
+  schema: public
+  name: DiscordRole
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - name
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - name
+      filter: {}

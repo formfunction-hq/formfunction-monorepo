@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: CampaignTeamMemberRole
+is_enum: true

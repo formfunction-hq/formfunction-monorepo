@@ -1,0 +1,13 @@
+.container {
+  align-items: center;
+  column-gap: 24px;
+  display: flex;
+  position: relative;
+}
+
+.line {
+  border-bottom: 1px dashed var(--color-ghost);
+  bottom: 6px;
+  left: 70px;
+  position: absolute;
+}

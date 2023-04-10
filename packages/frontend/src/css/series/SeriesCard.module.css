@@ -1,0 +1,30 @@
+.container {
+  background-color: var(--color-cardBackground);
+  border-radius: 16px;
+  box-shadow: var(--box-shadow-button);
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+}
+
+.info {
+  justify-content: space-between;
+  display: flex;
+  padding: 12px 24px 24px 24px;
+}
+
+.infoLeft {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  width: 100%;
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

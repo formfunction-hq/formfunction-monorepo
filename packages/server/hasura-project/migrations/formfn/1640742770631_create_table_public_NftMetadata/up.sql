@@ -1,0 +1,1 @@
+CREATE TABLE "public"."NftMetadata" ("key" integer NOT NULL, "updateAuthority" text NOT NULL, "mint" text NOT NULL, "isMutable" boolean NOT NULL, "editionNonce" integer, "id" text NOT NULL, "name" text NOT NULL, "symbol" text NOT NULL, "uri" text NOT NULL, "sellerFeeBasisPoints" integer NOT NULL, "creators" jsonb, PRIMARY KEY ("id") , UNIQUE ("mint"), UNIQUE ("id"));

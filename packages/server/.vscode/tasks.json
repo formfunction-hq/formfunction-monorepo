@@ -1,0 +1,63 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile",
+      "type": "shell",
+      "command": "yarn tsc",
+      "problemMatcher": []
+    },
+    {
+      "label": "Stop Docker API Server",
+      "type": "shell",
+      "command": "docker compose -f docker-compose-dev.yaml stop api",
+      "problemMatcher": []
+    },
+    {
+      "label": "API PreLaunch",
+      "dependsOn": ["Compile", "Stop Docker API Server"]
+    },
+    {
+      "label": "Run Postgres",
+      "type": "shell",
+      "command": "docker compose -f docker-compose-dev.yaml up postgres --force-recreate",
+      "problemMatcher": []
+    },
+    {
+      "label": "Stop Postgres",
+      "type": "shell",
+      "command": "docker compose -f docker-compose-dev.yaml stop postgres",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Hasura GraphQL Engine",
+      "type": "shell",
+      "command": "docker compose -f docker-compose-dev.yaml up graphql-engine --force-recreate",
+      "problemMatcher": []
+    },
+    {
+      "label": "Stop Hasura GraphQL Engine",
+      "type": "shell",
+      "command": "docker compose -f docker-compose-dev.yaml stop graphql-engine",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Hasura Console",
+      "type": "shell",
+      "command": "yarn hasura-console",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Frontend",
+      "type": "shell",
+      "command": "(cd ../..; yarn start-frontend)",
+      "problemMatcher": []
+    },
+    {
+      "label": "Generate Types",
+      "type": "shell",
+      "command": "yarn gen-types",
+      "problemMatcher": []
+    }
+  ]
+}

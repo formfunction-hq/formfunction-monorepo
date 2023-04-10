@@ -1,0 +1,12 @@
+.overlay {
+  column-gap: 16px;
+  display: none;
+  height: 100%;
+  left: 0;
+  padding: 12px;
+  position: absolute;
+  top: 0;
+  row-gap: 16px;
+  width: 100%;
+  z-index: var(--z-index-overlayContainer);
+}

@@ -1,0 +1,27 @@
+.priceInputSolPadding {
+  padding-left: var(--padding-left-solSymbol);
+}
+
+.priceInputAshPadding {
+  padding-left: 80px;
+}
+
+.priceInputBonkPadding {
+  padding-left: 80px;
+}
+
+.priceInputUsdcPadding {
+  padding-left: 80px;
+}
+
+.priceInputFoxyPadding {
+  padding-left: 80px;
+}
+
+.priceInputParticlesPadding {
+  padding-left: 80px;
+}
+
+.priceInputSkeletonCrewPadding {
+  padding-left: 80px;
+}

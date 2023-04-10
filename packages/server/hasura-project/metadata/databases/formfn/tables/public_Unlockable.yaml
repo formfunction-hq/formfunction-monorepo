@@ -1,0 +1,66 @@
+table:
+  schema: public
+  name: Unlockable
+object_relationships:
+  - name: Asset
+    using:
+      foreign_key_constraint_on: assetId
+  - name: NftListing
+    using:
+      foreign_key_constraint_on:
+        column: unlockableId
+        table:
+          schema: public
+          name: NftListing
+array_relationships:
+  - name: UnlockableWinners
+    using:
+      foreign_key_constraint_on:
+        column: unlockableId
+        table:
+          schema: public
+          name: UnlockableWinner
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - activationPriceInLamports
+        - assetId
+        - category
+        - description
+        - name
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - activationPriceInLamports
+        - assetId
+        - category
+        - description
+        - id
+        - name
+        - timeCreated
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - activationPriceInLamports
+        - assetId
+        - category
+        - description
+        - id
+        - name
+        - timeCreated
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - activationPriceInLamports
+        - assetId
+        - category
+        - description
+        - name
+      filter: {}
+      check: null

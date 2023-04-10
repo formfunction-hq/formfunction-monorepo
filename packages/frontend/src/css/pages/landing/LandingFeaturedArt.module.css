@@ -1,0 +1,12 @@
+.buttonContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+}
+
+@media only screen and (max-width: 640px) {
+  .buttonContainer {
+    margin-top: 48px;
+  }
+}

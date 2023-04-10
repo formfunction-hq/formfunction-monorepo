@@ -1,0 +1,21 @@
+.circleArrowButton {
+  flex-shrink: 0;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  row-gap: 48px;
+  width: 100%;
+}
+
+.img {
+  min-width: 0;
+  width: 100%;
+}
+
+.imgHidden {
+  display: none;
+}

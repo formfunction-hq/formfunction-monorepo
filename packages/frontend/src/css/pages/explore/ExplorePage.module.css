@@ -1,0 +1,49 @@
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.controlBar {
+  align-self: stretch;
+  margin-top: 32px;
+}
+
+.exploreGrid {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.subheader {
+  margin-top: 12px;
+}
+
+.title {
+  opacity: 0;
+  animation-name: fadein;
+  animation-duration: 0.40s;
+  animation-fill-mode: forwards;
+}
+
+/* Header breakpoint */
+@media only screen and (max-width: 980px) {
+  .controlBar {
+    margin-top: 0px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .exploreGrid {
+    margin-top: 28px;
+  }
+}

@@ -1,0 +1,34 @@
+.closeButton {
+  align-self: flex-end;
+}
+
+.container {
+  align-items: center;
+  background-color: var(--color-floatingElement);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  padding-bottom: 36px;
+  /* Close button should be in same position as hamburger menu button */
+  padding-top: 24px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: var(--z-index-menuMobile);
+}
+
+.firstRow {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.textButtons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  width: 100%;
+}

@@ -1,0 +1,90 @@
+table:
+  schema: public
+  name: NftMetadata
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - isMutable
+        - editionNonce
+        - key
+        - sellerFeeBasisPoints
+        - creators
+        - description
+        - id
+        - image
+        - mint
+        - name
+        - symbol
+        - updateAuthority
+        - uri
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - key
+        - updateAuthority
+        - mint
+        - isMutable
+        - editionNonce
+        - id
+        - name
+        - symbol
+        - uri
+        - sellerFeeBasisPoints
+        - creators
+        - description
+        - image
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - uri
+      filter:
+        updateAuthority:
+          _eq: X-Hasura-User-Id
+      check: null
+event_triggers:
+  - name: nft-metadata
+    definition:
+      enable_manual: true
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 2
+      interval_sec: 60
+      timeout_sec: 180
+    webhook: '{{EVENT_BASE_URL}}/hasura/nftMetadataWebhook'
+  - name: nftMetadataGifToMp4
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 3
+      interval_sec: 120
+      timeout_sec: 120
+    webhook: '{{EVENT_BASE_URL}}/hasura/nftMetadataGifToMp4Webhook'
+  - name: uploadImportedAssetWebhook
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 5
+      interval_sec: 10
+      timeout_sec: 400
+    webhook: '{{EVENT_BASE_URL}}/hasura/uploadImportedAssetWebhook'
+  - name: uploadToMux
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+      update:
+        columns: '*'
+    retry_conf:
+      num_retries: 0
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/uploadToMuxWebhook'

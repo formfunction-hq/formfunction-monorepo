@@ -1,0 +1,37 @@
+table:
+  schema: public
+  name: Campaign
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - creatorId
+        - id
+        - slug
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - creatorId
+        - id
+        - slug
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - status
+      filter: {}
+      check: null
+event_triggers:
+  - name: createCampaignNotificationsWebhook
+    definition:
+      enable_manual: false
+      update:
+        columns:
+          - status
+    retry_conf:
+      num_retries: 3
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/createCampaignNotificationsWebhook'

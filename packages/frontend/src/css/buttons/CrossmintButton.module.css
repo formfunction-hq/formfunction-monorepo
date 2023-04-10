@@ -1,0 +1,32 @@
+/* Need to use !important to override default Crossmint styles */
+.button {
+  background: var(--color-purpleGradient) !important;
+  border-radius: 100px !important;
+  box-shadow: none !important;
+  display: block !important;
+  opacity: 1 !important;
+  padding: 16px 32px !important;
+  text-align: left;
+  transition: none !important;
+  width: auto !important;
+}
+
+@media (hover: hover) {
+  .button:enabled:hover {
+    background: var(--color-purpleGradientHover) !important;
+  }
+}
+
+.button img {
+  display: none;
+}
+
+.button span {
+  color: var(--color-white) !important;
+
+  font-family: var(--font-family-navLink);
+  font-size: var(--font-size-navLink);
+  font-weight: 500;
+  letter-spacing: var(--letter-spacing-navLink);
+  line-height: var(--line-height-navLink);
+}

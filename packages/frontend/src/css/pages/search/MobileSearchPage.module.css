@@ -1,0 +1,31 @@
+.chevronLeftIcon {
+  display: flex;
+  margin-right: 8px;
+}
+
+.closeButton {
+  margin-left: 16px;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding: 24px 0px;
+}
+
+.results {
+  padding: 6px 0px 24px 0;
+}
+
+.seachItem {
+  margin-top: 12px;
+}
+
+.searchIcon {
+  padding-right: 4px;
+}
+
+.searchItemSection {
+  margin-bottom: 24px;
+}

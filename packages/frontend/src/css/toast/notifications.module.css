@@ -1,0 +1,35 @@
+.notification > div {
+  background-color: var(--color-floatingElement);
+  color: var(--color-primary);
+}
+
+.notification :global(.ant-notification-notice-message) {
+  font-family: var(--font-family-body1);
+  font-size: var(--font-size-body1) !important;
+  font-weight: 500;
+  letter-spacing: var(--letter-spacing-body1);
+  line-height: var(--line-height-body1);
+}
+
+.notification :global(.ant-notification-notice-description) {
+  color: var(--color-secondary);
+  font-family: var(--font-family-body1);
+  font-size: var(--font-size-body1) !important;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-body1);
+  line-height: var(--line-height-body1);
+  max-width: 40ch;
+}
+
+.notification :global(.anticon-info-circle) path {
+  fill: var(--color-primary);
+}
+
+.notification :global(anticon-close-circle) path {
+  fill: var(--color-error);
+}
+
+:global(.ant-notification-notice) {
+  border-radius: 12px !important;
+  padding: 20px 24px !important;
+}

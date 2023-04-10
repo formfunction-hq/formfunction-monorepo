@@ -1,0 +1,30 @@
+/*
+ * This CSS module provides a reusable responsive container.
+ *
+ * If content is placed within this container, it will have responsive horizontal padding.
+ * This means if the content within this container has a width of 100%, it will look good 
+ * on screens of all sizes, as this container will make sure there is adequate horizontal padding.
+ */
+
+.container {
+  align-self: stretch;
+  margin-left: -16px;
+  margin-right: -16px;
+  width: calc(100% + 32px);
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    margin-left: -48px;
+    margin-right: -48px;
+    width: calc(100% + 96px);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    margin-left: -64px;
+    margin-right: -64px;
+    width: calc(100% + 128px);
+  }
+}

@@ -1,0 +1,15 @@
+.button {
+  width: 230px;
+}
+
+.buttonSmall {
+  width: 130px;
+}
+
+.buttons {
+  column-gap: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 24px;
+}

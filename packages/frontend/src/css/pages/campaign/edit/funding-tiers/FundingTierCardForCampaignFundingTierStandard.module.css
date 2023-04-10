@@ -1,0 +1,23 @@
+.container {
+  background-color: var(--color-cardBackground);
+  border-radius: 12px;
+  box-shadow: var(--box-shadow-button);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 32px;
+}
+
+.container:hover {
+  cursor: default;
+}
+
+.editButtons {
+  margin-top: 24px;
+}
+
+.imagePlaceholder {
+  border-radius: 12px;
+  height: 96px;
+  width: 96px;
+}

@@ -1,0 +1,17 @@
+.assetPicker {
+  column-gap: 20px;
+  display: flex;
+  overflow-x: auto;
+  /* So there is some spacing between assets and scrollbar (if scrollbar is visible) */
+  padding-bottom: 12px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.editCampaignGalleryButton {
+  align-self: flex-start;
+}

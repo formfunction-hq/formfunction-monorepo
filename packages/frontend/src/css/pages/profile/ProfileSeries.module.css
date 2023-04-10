@@ -1,0 +1,15 @@
+.seriesButtonContainer {
+  align-items: center;
+  row-gap: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 80px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .seriesButtonContainer {
+    margin-top: 48px;
+  }
+}

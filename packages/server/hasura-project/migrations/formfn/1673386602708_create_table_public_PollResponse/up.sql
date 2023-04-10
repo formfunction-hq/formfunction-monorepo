@@ -1,0 +1,2 @@
+CREATE TABLE "public"."PollResponse" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "pollOptionId" text NOT NULL, "userId" text NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON UPDATE cascade ON DELETE cascade, UNIQUE ("id"));COMMENT ON TABLE "public"."PollResponse" IS E'Responses to a Poll, Responses are tied to PollOptions as well';
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

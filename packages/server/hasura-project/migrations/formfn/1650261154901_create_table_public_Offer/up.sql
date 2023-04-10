@@ -1,0 +1,2 @@
+CREATE TABLE "public"."Offer" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "nftTransactionId" uuid NOT NULL, "expirationDate" timestamptz NOT NULL, "timeCreated" timestamptz NOT NULL DEFAULT now(), "refundTxid" text, "mint" text NOT NULL, PRIMARY KEY ("id") , FOREIGN KEY ("nftTransactionId") REFERENCES "public"."NftTransaction"("id") ON UPDATE restrict ON DELETE restrict, FOREIGN KEY ("mint") REFERENCES "public"."Nft"("mint") ON UPDATE restrict ON DELETE restrict, UNIQUE ("id"), UNIQUE ("nftTransactionId"), UNIQUE ("refundTxid"));
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

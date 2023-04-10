@@ -1,0 +1,90 @@
+@keyframes fadein {
+  from {
+    top: 10px;
+    opacity: 0.5;
+  }
+
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein2 {
+  from {
+    top: 10px;
+    opacity: 0.5;
+  }
+
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+
+.body1 {
+  opacity: 0.5;
+  position: relative;
+
+  animation-name: fadein;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+.body2 {
+  opacity: 0.5;
+  position: relative;
+
+  animation-name: fadein2;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+.containerInner {
+  background: var(--color-lightPurpleVerticalGradient);
+  border-radius: 24px;
+  padding: 64px 100px 0px 100px;
+  overflow: hidden;
+}
+
+.containerOuter {
+  margin-top: 80px;
+}
+
+.hide {
+  display: none;
+}
+
+.toggle {
+  margin: auto;
+  margin-top: 36px;
+  width: 310px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .containerInner {
+    padding: 50px 80px 0px 80px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .containerInner {
+    padding: 48px 32px 0px 32px;
+  }
+
+  .containerOuter {
+    margin-top: 60px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .containerInner {
+    padding: 48px 24px 0px 24px;
+  }
+
+  .toggle {
+    width: 250px;
+  }
+}

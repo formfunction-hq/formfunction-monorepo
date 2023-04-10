@@ -1,0 +1,55 @@
+table:
+  schema: public
+  name: UserFollows
+object_relationships:
+  - name: Followed
+    using:
+      foreign_key_constraint_on: followedId
+  - name: Follower
+    using:
+      foreign_key_constraint_on: followerId
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        followerId:
+          _eq: X-Hasura-User-Id
+      columns:
+        - followedId
+        - followerId
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - followedId
+        - followerId
+        - timeCreated
+        - id
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - followedId
+        - followerId
+        - timeCreated
+        - id
+      filter: {}
+      allow_aggregations: true
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        followerId:
+          _eq: X-Hasura-User-Id
+event_triggers:
+  - name: newFollower
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 0
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/newFollowerWebhook'

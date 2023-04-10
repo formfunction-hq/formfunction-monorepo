@@ -1,0 +1,43 @@
+/**
+ * IMPORTANT: must be kept in sync with IgnoreResponsivePageBody.module.css
+ */
+ .bottom {
+  padding-bottom: 100px;
+ }
+
+ .headerAndDescription {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-bottom: 48px;
+  max-width: 906px;
+  row-gap: 24px;
+ }
+
+.top {
+  padding-top: 60px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .bottom {
+    padding-bottom: 80px;
+  }
+}
+
+/* Header breakpoint */
+@media only screen and (max-width: 980px) {
+  .bottom {
+    padding-bottom: 60px;
+  }
+
+  .top {
+    padding-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .bottom {
+    padding-bottom: 50px;
+  }
+}

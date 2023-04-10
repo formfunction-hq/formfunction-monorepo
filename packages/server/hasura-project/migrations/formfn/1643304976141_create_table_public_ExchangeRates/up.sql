@@ -1,0 +1,1 @@
+CREATE TABLE "public"."ExchangeRates" ("name" text NOT NULL, "toUsdRate" Numeric NOT NULL, "timeCreated" timestamptz NOT NULL DEFAULT now(), "timeUpdated" timestamptz NOT NULL DEFAULT now(), PRIMARY KEY ("name") , UNIQUE ("name"));COMMENT ON TABLE "public"."ExchangeRates" IS E'For storing exchange rates of various currencies';

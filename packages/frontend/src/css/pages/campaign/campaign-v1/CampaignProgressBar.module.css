@@ -1,0 +1,20 @@
+.container {
+  border-radius: 100px;
+  height: 6px;
+  position: relative;
+  width: 100%;
+}
+
+.emoji {
+  /* For some reason, emojis are slightly transparent unless we do this */
+  color: black;
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+.progressBar {
+  border-radius: 100px;
+  height: 100%;
+  position: absolute;
+}

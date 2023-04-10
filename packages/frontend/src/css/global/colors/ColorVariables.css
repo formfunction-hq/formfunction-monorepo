@@ -1,0 +1,125 @@
+:root {
+  --color-artistPillShadow: rgba(255, 255, 255, 0.24);
+  --color-backgroundOverlay: rgba(0, 0, 0, 0.3);
+  --color-backgroundOverlayDark: rgba(0, 0, 0, 0.85);
+  --color-brightPurple: #8458ff;
+  --color-cardBackground: #fff;
+  --color-clickableAreaBackground: rgba(255, 255, 255, 0.28);
+  --color-darkCerulean: #004084;
+  --color-darkPurple: #3128a4;
+  --color-dimmer: rgba(0, 0, 0, 0.36);
+  --color-error: #ff7777;
+  --color-floatingElement: #fff;
+  --color-footer: linear-gradient(91.96deg, #4e48f2 17.52%, #8458ff 91.27%);
+  --color-green: #13bc68;
+  --color-ghost: #c6c6c6;
+  --color-lightBlue: #eaffff;
+  --color-lightPink: #ffdcdc;
+  --color-lightPurple: #d4d2ff;
+  --color-lightPurpleHover: #d8d6ff;
+  --color-linkWater: #caddd0;
+  --color-menuPopup: #fff;
+  --color-navy: #1d1989;
+  --color-navyHover: #080561;
+  --color-overlayButton: rgba(0, 0, 0, 0.58);
+  --color-pink: #ffc8c8;
+  --color-primary: #201f2a;
+  --color-progressBar: #eeedf4;
+  --color-purple: #3530bf;
+  --color-purpleGradientHover: #513ccf;
+  --color-red: #fd4646;
+  --color-redHover: #dd1111;
+  --color-secondary: #9796a5;
+  --color-shader: #f5f4fe;
+  --color-skeletonBase: #ebebeb;
+  --color-skeletonHighlight: #f5f5f5;
+  --color-spotlightOverlay: rgba(255, 255, 255, 0.8);
+  --color-transparent: transparent;
+  --color-tertiary: #dedde5;
+  --color-websiteBackground: #fff;
+  --color-white: #fff;
+  --color-yellow: #ffbb37;
+
+  --color-phantomPurple: #6c57eb;
+
+  --color-blueGradient: linear-gradient(
+    112.27deg,
+    #d8e0eb -3.54%,
+    #f2f7ff 93.45%
+  );
+  --color-greenGradient: linear-gradient(
+    91.96deg,
+    #55d779 17.52%,
+    #1cd592 91.27%
+  );
+  --color-lightPurpleGradient: linear-gradient(90deg, #f5e6ff 0%, #dfdcff 100%);
+  --color-lightPurpleVerticalGradient: linear-gradient(
+    180deg,
+    #e6e8ff 0%,
+    #efe6ff 100%
+  );
+  --color-pinkVerticalGradient: linear-gradient(
+    180deg,
+    #ffe6f8 0%,
+    #ffeded 100%
+  );
+  --color-purpleGradient: linear-gradient(
+    91.96deg,
+    #4e48f2 17.52%,
+    #8458ff 91.27%
+  );
+  --color-purpleGradientForText: linear-gradient(
+    91.96deg,
+    #4e48f2 17.52%,
+    #8458ff 91.27%
+  );
+  --color-redGradient: linear-gradient(
+    91.96deg,
+    #f34972 17.52%,
+    #ff3838 91.27%
+  );
+
+  /* Color schemes for creator stories */
+
+  --color-scheme11: #ccd2fd;
+  --color-scheme12: #2522b4;
+
+  --color-scheme21: #c0dcff;
+  --color-scheme22: #e14c2d;
+
+  --color-scheme31: #2c6955;
+  --color-scheme32: #f7ce4b;
+
+  --color-scheme41: #37575c;
+  --color-scheme42: #a4bae3;
+
+  --color-scheme51: #ffcbce;
+  --color-scheme52: #e85047;
+
+  --color-scheme61: #e7fded;
+  --color-scheme62: #18406b;
+
+  /* Colors for campaigns */
+  --color-brightGray: #edeef6;
+  --color-mediumBlue: #1410d1;
+
+  --color-aliceBlue: #eaf3ff;
+  --color-sinopia: #d72500;
+
+  --color-cultured: #f5f4f1;
+  --color-cadmiumGreen: #006b45;
+
+  --color-seashell: #fff1ea;
+  --color-maximumRed: #d81b1b;
+
+  --color-greenishGray: #eaf6ee;
+  --color-midnightBlue: #003f84;
+
+  --color-antiFlashWhite: #f1f1f1;
+  /* Note: same as primary */
+  --color-darkGunmetal: #201f2a;
+
+  /* Popheadz colors */
+  --color-popheadzDarkGray: #7d7d7d;
+  --color-popheadzLightGray: #f9f9f9;
+}

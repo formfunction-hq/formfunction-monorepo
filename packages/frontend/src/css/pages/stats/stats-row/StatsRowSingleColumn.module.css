@@ -1,0 +1,40 @@
+.container {
+  column-gap: 32px;
+}
+
+.count {
+  display: flex;
+  justify-content: flex-end;
+  width: 120px;
+  word-break: keep-all;
+}
+
+.count:first-child {
+  width: 32px;
+}
+
+.right {
+  align-items: center;
+  column-gap: 16px;
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  max-width: 460px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .count {
+    display: none;
+  }
+
+  .right {
+    justify-content: flex-end;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .container {
+    column-gap: 8px;
+    padding: 16px;
+  }
+}

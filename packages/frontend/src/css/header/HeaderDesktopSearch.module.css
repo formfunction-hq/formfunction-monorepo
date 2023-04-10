@@ -1,0 +1,52 @@
+.container {
+  align-items: center;
+  column-gap: 12px;
+  display: flex;
+  flex-grow: 1;
+  height: 26px;
+  margin-right: 24px;
+}
+
+.input {
+  background-color: transparent;
+  border-style: none;
+  flex-grow: 1;
+  outline: none;
+  height: 26px;
+}
+
+.inputNarrow {
+  max-width: 164px;
+}
+
+.popoverContent {
+  width: 500px;
+}
+
+.popoverContentInner {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
+.popoverSection {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.secondary {
+  color: var(--color-primary);
+}
+
+.secondary::placeholder {
+  color: var(--color-secondary);
+}
+
+.white {
+  color: var(--color-white);
+}
+
+.white::placeholder {
+  color: var(--color-white);
+}

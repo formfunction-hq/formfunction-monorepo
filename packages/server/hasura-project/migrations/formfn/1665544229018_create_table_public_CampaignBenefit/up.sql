@@ -1,0 +1,2 @@
+CREATE TABLE "public"."CampaignBenefit" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "campaignFundingTierId" uuid NOT NULL, "description" text NOT NULL, "status" text NOT NULL, "timeCreated" timestamptz NOT NULL DEFAULT now(), PRIMARY KEY ("id") , FOREIGN KEY ("campaignFundingTierId") REFERENCES "public"."CampaignFundingTier"("id") ON UPDATE restrict ON DELETE restrict, FOREIGN KEY ("status") REFERENCES "public"."CampaignBenefitStatus"("value") ON UPDATE restrict ON DELETE restrict, UNIQUE ("id"));
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

@@ -1,0 +1,58 @@
+.container {
+  margin-bottom: 50px;
+  margin-top: 72px;
+}
+
+.creatorCardContainer {
+  align-items: stretch;
+  align-self: stretch;
+  display: flex;
+  margin-left: 48px;
+  width: 600px;
+  /* Need padding so box shadow shows */
+  padding-bottom: 32px;
+  padding-top: 32px;
+}
+
+.gridContainer {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.loadingSpinner {
+  margin-top: 48px;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    margin-bottom: 30px;
+    margin-top: 60px;
+  }
+
+  .creatorCardContainer {
+    width: 500px;
+  }
+
+  .gridContainer {
+    margin-top: 4px;
+  }
+
+  .loadingSpinner {
+    margin-top: 36px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .container {
+    margin-bottom: 20px;
+    margin-top: 48px;
+  }
+
+  .creatorCardContainer {
+    width: 400px;
+  }
+
+  .loadingSpinner {
+    margin-top: 32px;
+  }
+}

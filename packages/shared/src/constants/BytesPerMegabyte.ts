@@ -1,0 +1,2 @@
+const BYTES_PER_MEGABYTE = 1e6;
+export default BYTES_PER_MEGABYTE;

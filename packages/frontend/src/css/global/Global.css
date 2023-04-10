@@ -1,0 +1,146 @@
+@keyframes makeVisible {
+  from {
+    visibility: hidden;
+  }
+
+  to {
+    visibility: visible;
+  }
+}
+
+body {
+  background-color: var(--color-websiteBackground);
+  height: 100%;
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+/* TODO: IDK what's inserting this random iframe... */
+body > iframe {
+  display: none;
+}
+
+.buttonPlain {
+  border-style: none;
+  outline: none;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.buttonPlain:hover {
+  cursor: pointer;
+}
+
+.delayedSpinner {
+  animation-delay: 0.25s;
+  animation-fill-mode: forwards;
+  animation-name: makeVisible;
+  visibility: hidden;
+}
+
+.gradientText {
+  background: var(--color-purpleGradientForText);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* See https://stackoverflow.com/questions/1833734/display-inline-block-extra-margin/8262649#8262649 */
+.hideText {
+  color: transparent;
+  display: block;
+  font-size: 0;
+  line-height: 0;
+}
+
+:root {
+  --padding-left-http: 54px;
+  --padding-left-instagram: 200px;
+  --padding-left-twitter: 171px;
+  --padding-left-username: 254px;
+
+  /* TODO: add responsive version */
+  --padding-left-solSymbol: 45px;
+
+  --display-onlyDesktop: block;
+  --display-onlyDesktopFlex: flex;
+  --display-onlyMobile: none;
+  --display-onlyMobileFlex: none;
+
+  --width-listingCardForCreate: 348px;
+}
+
+
+@media only screen and (max-width: 768px) {
+  :root {
+    --padding-left-http: 46px;
+    --padding-left-instagram: 170px;
+    --padding-left-twitter: 145px;
+    --padding-left-username: 216px;
+  }
+}
+
+/* Header breakpoint */
+@media only screen and (max-width: 980px) {
+  :root {
+    --display-onlyDesktop: none;
+    --display-onlyDesktopFlex: none;
+    --display-onlyMobile: block;
+    --display-onlyMobileFlex: flex;
+  }
+}
+
+.swiper.swiper-fade {
+  overflow: visible;
+}
+
+.cardAnimation {
+  transition: var(--transition-all-smoothly);
+}
+
+.cardAnimation:hover {
+  box-shadow: var(--box-shadow-button-hover);
+  transform: var(--shift-up);
+}
+
+.cardAnimationNoTransform {
+  transition: var(--transition-all-smoothly);
+}
+
+.cardAnimationNoTransform:hover {
+  box-shadow: var(--box-shadow-button-hover);
+}
+
+.thinScrollbar {
+  /* Foreground, Background */
+  scrollbar-color: var(--color-ghost) transparent;
+}
+.thinScrollbar::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+.thinScrollbar::-webkit-scrollbar-thumb { /* Foreground */
+  background: var(--color-ghost);
+}
+.thinScrollbar::-webkit-scrollbar-track { /* Background */
+  background: transparent;
+}
+
+/* From https://stackoverflow.com/a/49278385 */
+.hideScrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+.hideScrollbar::-webkit-scrollbar {
+  display: none;
+}

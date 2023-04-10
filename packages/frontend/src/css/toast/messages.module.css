@@ -1,0 +1,21 @@
+.message > div {
+  background-color: var(--color-floatingElement);
+  color: var(--color-primary);
+}
+
+.message span {
+  font-family: var(--font-family-body1);
+  font-size: var(--font-size-body1);
+  font-weight: 500;
+  letter-spacing: var(--letter-spacing-body1);
+  line-height: var(--line-height-body1);
+}
+
+.message :global(.anticon-info-circle) {
+  display: none;
+}
+
+.message :global(.ant-message-notice-content) {
+  border-radius: 12px;
+  padding: 20px 24px;
+}

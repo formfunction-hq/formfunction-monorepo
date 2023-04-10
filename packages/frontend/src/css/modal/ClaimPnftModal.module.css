@@ -1,0 +1,23 @@
+.hideOtherInfo {
+  height: 24px;
+}
+
+.image {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 28px auto;
+}
+
+.saveButton {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+.subtitle {
+  margin: auto;
+  max-width: 540px;
+  text-align: center;
+}

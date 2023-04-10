@@ -1,0 +1,23 @@
+.body {
+  text-align: center;
+}
+
+.errorBoundary {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.errorBoundaryImage {
+  width: 100%;
+  max-width: 350px;
+}
+
+.header {
+  margin-top: 36px;
+  margin-bottom: 12px;
+  text-align: center;
+}

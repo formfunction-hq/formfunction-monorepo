@@ -1,0 +1,30 @@
+/* KEEP BREAKPOINTS IN SYNC WITH Breakpoints.ts */
+
+.grid {
+  column-gap: 56px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  row-gap: 56px;
+}
+
+@media only screen and (max-width: 1600px) {
+  .grid {
+    column-gap: 44px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 44px;
+  }
+}
+
+@media only screen and (max-width: 1130px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .grid {
+    column-gap: 32px;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    row-gap: 32px;
+  }
+}

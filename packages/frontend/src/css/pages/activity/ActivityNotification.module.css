@@ -1,0 +1,20 @@
+.container {
+  border-radius: 16px;
+  box-shadow: var(--box-shadow-button);
+  overflow: hidden;
+  position: relative;
+}
+
+.unseenIndicatorContainer {
+  height: 100%;
+  left: 0px;
+  position: absolute;
+
+  transition-delay: 1s;
+  transition-duration: .2s;
+  transition-property: opacity;
+}
+
+.unseenIndicatorHidden {
+  opacity: 0;
+}

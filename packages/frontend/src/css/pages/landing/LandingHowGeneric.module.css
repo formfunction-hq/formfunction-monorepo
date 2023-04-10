@@ -1,0 +1,118 @@
+@keyframes fadein {
+  from {
+    opacity: .8;
+    top: 10px;
+  }
+
+  to {
+    opacity: 1;
+    top: 0px;
+  }
+}
+
+.body {
+  margin-top: 48px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.containerInner {
+  background: var(--color-pinkVerticalGradient);
+  border-radius: 24px;
+  position: relative;
+}
+
+.containerInnerAnim {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 80px;
+  padding-left: 128px;
+  padding-right: 128px;
+  position: relative;
+
+  opacity: 0.8;
+  animation-name: fadein;
+  animation-duration: 1.0s;
+  animation-fill-mode: forwards;
+}
+
+.header {
+  margin-top: 16px;
+}
+
+.hide {
+  display: none;
+}
+
+.nextButton {
+  right: 36px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prevButton {
+  left: 36px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.subheader {
+  margin-top: 24px;
+  max-width: 968px;
+}
+
+.title {
+  padding-top: 64px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .containerInnerAnim {
+    padding-bottom: 84px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  .title {
+    padding-top: 54px;
+  }
+}
+
+@media only screen and (max-width: 868px) {
+  .containerInnerAnim {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .nextButton {
+    bottom: 32px;
+    right: 24px;
+    top: auto;
+    transform: none;
+  }
+
+  .prevButton {
+    bottom: 32px;
+    left: 24px;
+    top: auto;
+    transform: none;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .body {
+    margin-top: 28px;
+  }
+
+  .containerInnerAnim {
+    padding-bottom: 80px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .title {
+    padding-top: 44px;
+  }
+}

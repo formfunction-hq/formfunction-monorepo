@@ -1,0 +1,47 @@
+.container {
+  gap: 48px;
+}
+
+.number {
+  font-size: 120px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 50px 100px;
+}
+
+@media only screen and (max-width: 980px) {
+  .stats h3 {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .stats {
+    text-align: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
+
+  .number {
+    font-size: 42px;
+    line-height: 42px;
+  }
+}
+
+@media only screen and (max-height: 740px) {
+  .stats {
+    gap: 24px;
+  }
+
+  .stats h3 {
+    font-size: 25px;
+  }
+
+  .stats h1 {
+    font-size: 38px;
+  }
+}

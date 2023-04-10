@@ -1,0 +1,15 @@
+import { GraphQLObjectType } from "graphql";
+import Typename from "src/types/enums/Typename";
+import gqlNonNullListOfNonNull from "src/utils/graphql/gqlNonNullListOfNonNull";
+import MetadataAccountGqlType from "src/schema/object/MetadataAccountGqlType";
+
+const PnftAuctionNftsResponseGqlType = new GraphQLObjectType({
+  fields: {
+    metadataAccounts: {
+      type: gqlNonNullListOfNonNull(MetadataAccountGqlType),
+    },
+  },
+  name: Typename.PnftAuctionNftsResponse,
+});
+
+export default PnftAuctionNftsResponseGqlType;

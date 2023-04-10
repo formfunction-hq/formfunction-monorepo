@@ -1,0 +1,11 @@
+.actionButton {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  row-gap: 10px;
+}
+
+.button {
+  width: 130px;
+}

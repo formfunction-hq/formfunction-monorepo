@@ -1,0 +1,28 @@
+.flexContainer {
+  column-gap: 80px;
+  display: flex;
+}
+
+.withDescriptionContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.withInfoIconContainer {
+  align-items: flex-start;
+  column-gap: 8px;
+  display: flex;
+}
+
+@media only screen and (max-width: 768px) {
+  .flexContainer {
+    column-gap: 60px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .flexContainer {
+    column-gap: 40px;
+  }
+}

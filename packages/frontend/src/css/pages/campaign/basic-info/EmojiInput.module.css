@@ -1,0 +1,14 @@
+.emojiContainer {
+  border-radius: 16px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.emojiPickerContainer {
+  border-radius: 6px;
+  margin-top: 16px;
+}

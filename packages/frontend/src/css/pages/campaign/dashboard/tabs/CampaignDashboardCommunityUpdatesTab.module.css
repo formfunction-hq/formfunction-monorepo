@@ -1,0 +1,39 @@
+.actionButton {
+  align-items: center;
+  background-color: var(--color-cardBackground);
+  border-radius: 20px;
+  box-shadow: var(--box-shadow-button);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 60px;
+  row-gap: 16px;
+  width: 240px;
+}
+
+.actionButtonContainer {
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  column-gap: 36px;
+}
+
+@media only screen and (max-width: 980px) {
+  .actionButton {
+    row-gap: 12px;
+    padding: 20px 40px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .actionButtonContainer {
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  .actionButton {
+    width: 100%;
+    flex-direction: row;
+    column-gap: 12px;
+    padding: 12px 20px;
+  }
+}

@@ -1,0 +1,1 @@
+INSERT INTO "public"."Currency"("id", "name", "decimals", "symbol", "shortSymbol", "iconSrc", "mint") VALUES (E'43a5df6d-5615-417f-a07f-0849ec2c1abc', E'UsdCoin', 6, E'USDC', null, E'https://formfunction.imgix.net/currency/usdcoin/logo.png', E'Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr');

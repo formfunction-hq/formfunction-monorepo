@@ -1,0 +1,49 @@
+.selected {
+  background-color: var(--color-lightPurple);
+  color: var(--color-primary);
+}
+
+.selected:hover {
+  background-color: var(--color-lightPurple);
+  color: var(--color-primary);
+}
+
+.timezoneRow {
+  column-gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 16px;
+}
+
+.timezoneRow:hover {
+  background-color: var(--color-tertiary);
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.timezoneRowButton {
+  text-align: left;
+  width: 100%;
+}
+
+.timezoneRows {
+  margin-top: 6px;
+}
+
+.timezones {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  margin-top: 16px;
+  overflow: auto;
+  padding-bottom: 24px;
+  row-gap: 12px;
+}
+
+/* Header breakpoint */
+@media only screen and (max-width: 980px) {
+  .timezoneRow {
+    padding-bottom: 4px;
+    padding-top: 4px;
+  }
+}

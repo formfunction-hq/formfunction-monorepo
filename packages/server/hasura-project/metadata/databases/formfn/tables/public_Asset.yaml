@@ -1,0 +1,64 @@
+table:
+  schema: public
+  name: Asset
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        userId:
+          _eq: X-Hasura-User-Id
+      columns:
+        - artistSubmissionId
+        - contentType
+        - downloadUrl
+        - downloadUrlDarkMode
+        - height
+        - path
+        - pathDarkMode
+        - userId
+        - width
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - artistSubmissionId
+        - contentType
+        - downloadUrl
+        - downloadUrlDarkMode
+        - height
+        - id
+        - path
+        - pathDarkMode
+        - userId
+        - videoPlaybackId
+        - width
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - artistSubmissionId
+        - contentType
+        - downloadUrl
+        - downloadUrlDarkMode
+        - height
+        - id
+        - path
+        - pathDarkMode
+        - userId
+        - videoPlaybackId
+        - width
+      filter: {}
+event_triggers:
+  - name: uploadArweaveAsset
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+      update:
+        columns:
+          - arweaveTxid
+    retry_conf:
+      num_retries: 6
+      interval_sec: 60
+      timeout_sec: 300
+    webhook: '{{EVENT_BASE_URL}}/hasura/uploadArweaveAssetWebhook'

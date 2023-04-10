@@ -1,0 +1,85 @@
+.connectTwitterButton {
+  width: 240px;
+}
+
+.emailInput {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 640px;
+  row-gap: 52px;
+}
+
+.instagramInput {
+  padding-left: var(--padding-left-instagram);
+}
+
+.joinDiscordButton {
+  margin-left: 16px;
+}
+
+.photoInput {
+  align-items: flex-start;
+  column-gap: 48px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.saveButton {
+  align-self: center;
+  width: 173px;
+}
+
+.socialLinkWithConnect {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.socialLinks {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+  row-gap: 24px;
+}
+
+.twitterInput {
+  padding-left: var(--padding-left-twitter);
+}
+
+.usernameInput {
+  padding-left: var(--padding-left-username);
+}
+
+.websiteInput {
+  padding-left: var(--padding-left-http);
+}
+
+.notifications {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .form {
+    row-gap: 40px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .connectTwitterButton {
+    width: 200px;
+  }
+
+  .form {
+    row-gap: 30px;
+  }
+}

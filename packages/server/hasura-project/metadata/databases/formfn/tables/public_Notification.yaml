@@ -1,0 +1,24 @@
+table:
+  schema: public
+  name: Notification
+event_triggers:
+  - name: insertActivityNotification
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 3
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/insertActivityNotificationWebhook'
+  - name: sendEmailNotification
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 6
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/sendEmailNotificationWebhook'

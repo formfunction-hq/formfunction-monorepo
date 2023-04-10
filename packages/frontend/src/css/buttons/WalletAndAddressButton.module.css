@@ -1,0 +1,14 @@
+.button {
+  align-items: center;
+  background-color: var(--color-cardBackground);
+  border-radius: 100px;
+  box-shadow: var(--box-shadow-button);
+  column-gap: 12px;
+  display: flex;
+  padding: 12px 16px;
+}
+
+.icon {
+  height: 24px;
+  width: 24px;
+}

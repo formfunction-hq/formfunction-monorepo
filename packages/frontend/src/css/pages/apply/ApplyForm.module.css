@@ -1,0 +1,63 @@
+.discordSection {
+  column-gap: 24px;
+  display: flex;
+  flex-direction: row;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 640px;
+  row-gap: 48px;
+}
+
+.image {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.instagram {
+  padding-left: calc(var(--padding-left-instagram) + 20px);
+}
+
+.mediaInput {
+  align-items: center;
+  border: 1px solid var(--color-tertiary);
+  border-radius: 16px;
+  display: flex;
+  height: 120px;
+  justify-content: center;
+  overflow: hidden;
+  width: 120px;
+}
+
+.mediaInput:hover {
+  cursor: pointer;
+}
+
+.mediaInputDisabled {
+  background-color: var(--color-tertiary);
+}
+
+.mediaInputError {
+  border: 1px solid var(--color-error);
+}
+
+.mediaInputs {
+  column-gap: 24px;
+  display: flex;
+}
+
+.submitButton {
+  align-self: center;
+  width: 200px;
+}
+
+@media only screen and (max-width: 640px) {
+  .mediaInput {
+    height: 80px;
+    width: 80px;
+  }
+}

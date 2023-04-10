@@ -1,0 +1,29 @@
+.header {
+  align-items: center;
+  border-bottom: 1px solid var(--color-tertiary);
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  padding-top: 24px;
+}
+
+.logo {
+  align-items: center;
+  column-gap: 18px;
+  display: flex;
+  text-decoration: none;
+}
+
+.logoText {
+  color: var(--color-primary);
+  font-family: "TanNimbus", serif;
+  font-size: 32px;
+  margin: 0px;
+  text-decoration: none;
+}
+
+.right {
+  align-items: center;
+  column-gap: 48px;
+  display: flex;
+}

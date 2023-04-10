@@ -1,0 +1,41 @@
+table:
+  schema: public
+  name: NftTransactionRaw
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - extraData
+        - mint
+        - txid
+        - type
+      backend_only: false
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - extraData
+        - mint
+        - txid
+        - type
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - mint
+        - timeCreated
+        - txid
+        - type
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - extraData
+        - id
+        - mint
+        - timeCreated
+        - txid
+        - type
+      filter: {}

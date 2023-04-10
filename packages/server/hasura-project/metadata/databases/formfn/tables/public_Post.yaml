@@ -1,0 +1,14 @@
+table:
+  schema: public
+  name: Post
+event_triggers:
+  - name: notifyCommunityNewUpdateSharedWebhook
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 3
+      interval_sec: 10
+      timeout_sec: 120
+    webhook: '{{EVENT_BASE_URL}}/hasura/notifyCampaignCommunityNewUpdateSharedWebhook'

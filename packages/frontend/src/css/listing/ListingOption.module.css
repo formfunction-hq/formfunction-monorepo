@@ -1,0 +1,12 @@
+.icon {
+  margin-right: 16px;
+}
+
+.listingOption {
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  row-gap: 4px;
+  padding: 24px 0;
+}

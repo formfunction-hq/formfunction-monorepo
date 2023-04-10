@@ -1,0 +1,15 @@
+.container {
+  align-items: center;
+  column-gap: 12px;
+  display: flex;
+}
+
+.timezoneListContainer {
+  width: 600px;
+}
+
+@media only screen and (max-width: 640px) {
+  .timezoneListContainer {
+    width: 330px;
+  }
+}

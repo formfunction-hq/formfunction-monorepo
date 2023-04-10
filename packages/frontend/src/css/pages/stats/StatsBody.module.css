@@ -1,0 +1,36 @@
+.controlBar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-tertiary);
+}
+
+.stats {
+  margin-top: 48px;
+}
+
+.tabs {
+  align-self: flex-end;
+  column-gap: 36px;
+  display: flex;
+}
+
+@media only screen and (max-width: 980px) {
+  .tabs {
+    column-gap: 12px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .controlBar {
+    flex-direction: column;
+  }
+
+  .stats {
+    margin-top: 32px;
+  }
+
+  .tabs {
+    align-self: flex-start;
+    margin-bottom: 16px;
+  }
+}

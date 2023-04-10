@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch via Yarn",
+      "runtimeExecutable": "yarn",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "API PreLaunch",
+      "runtimeArgs": ["nodemon", "dist/src/index.js"],
+      "env": { "LOG_ERRORS_TO_CONSOLE": "true" }
+    }
+  ]
+}

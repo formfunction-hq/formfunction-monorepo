@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.label {
+  margin-left: 12px;
+  text-align: left;
+}
+
+.toggles {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+
+.toggles > label {
+  margin-right: 35px;
+}
+
+@media only screen and (max-width: 640px) {
+  .label {
+    margin-left: 0;
+  }
+
+  .toggles > label {
+    margin-right: 15px;
+  }
+}

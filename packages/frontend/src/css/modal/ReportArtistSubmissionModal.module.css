@@ -1,0 +1,42 @@
+.body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+}
+
+.buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkboxes {
+  align-items: flex-start;
+  display: flex;
+  margin-top: 12px;
+  flex-direction: column;
+  margin-top: 24px;
+  row-gap: 24px;
+  width: 100%;
+}
+
+.checkboxHeader {
+  margin-top: 48px;
+  width: 100%;
+}
+
+.otherReasonInput {
+  width: 100%;
+}
+
+.submitButton {
+  margin-top: 36px;
+  width: 200px;
+}
+
+@media only screen and (max-width: 640px) {
+  .submitButton {
+    margin-top: 36px;
+  }
+}

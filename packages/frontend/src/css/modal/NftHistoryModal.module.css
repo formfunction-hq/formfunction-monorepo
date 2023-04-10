@@ -1,0 +1,11 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
+.transactions {
+  max-width: 100%;
+  width: 500px;
+}

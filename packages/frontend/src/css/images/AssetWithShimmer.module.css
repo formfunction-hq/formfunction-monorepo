@@ -1,0 +1,20 @@
+@keyframes shimmer {
+  from {
+    background-color: var(--color-menuPopup);
+  }
+
+  to {
+    background-color: var(--color-lightPurple);
+  }
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+
+  animation-duration: 1.3s;
+  animation-name: shimmer;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}

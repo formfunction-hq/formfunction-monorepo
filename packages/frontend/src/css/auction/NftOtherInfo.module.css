@@ -1,0 +1,33 @@
+.auction {
+  margin-top: 20px;
+  padding: 20px 24px 24px;
+}
+
+.auctionCountdown {
+  width: 130px;
+}
+
+.auctionGradient {
+  background: var(--color-purpleGradient);
+}
+
+.auctionSolid {
+  background-color: var(--color-darkPurple);
+}
+
+.flexRow {
+  column-gap: 36px;
+  display: flex;
+}
+
+.lightPurpleGradient {
+  background: var(--color-lightPurpleGradient);
+  margin-top: 20px;
+  padding: 20px 24px 24px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .flexRow {
+    column-gap: 24px;
+  }
+}

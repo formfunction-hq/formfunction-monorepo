@@ -1,0 +1,2 @@
+CREATE TABLE "public"."Comment" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "comment" text NOT NULL, "timeCreated" timestamptz NOT NULL DEFAULT now(), "commenterId" text NOT NULL, "postId" uuid NOT NULL, "parentCommentId" uuid, PRIMARY KEY ("id") , FOREIGN KEY ("commenterId") REFERENCES "public"."User"("id") ON UPDATE cascade ON DELETE cascade, FOREIGN KEY ("postId") REFERENCES "public"."Post"("id") ON UPDATE cascade ON DELETE cascade, UNIQUE ("id"));
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

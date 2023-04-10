@@ -1,0 +1,4 @@
+:root {
+  --shift-up: translateY(-4px);
+  --transition-all-smoothly: all 300ms;
+}

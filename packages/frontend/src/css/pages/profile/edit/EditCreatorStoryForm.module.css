@@ -1,0 +1,26 @@
+.buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 36px;
+}
+
+.colorSchemes {
+  column-gap: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 18px;
+}
+
+.form {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 700px;
+  row-gap: 48px;
+}
+
+.saveButton {
+  width: 250px;
+}

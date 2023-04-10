@@ -1,0 +1,7 @@
+.container {
+  border-radius: 12px;
+  max-height: 500px;
+  overflow-y: scroll;
+  /* So there's space between the transactions and the scrollbar */
+  padding-right: 24px;
+}

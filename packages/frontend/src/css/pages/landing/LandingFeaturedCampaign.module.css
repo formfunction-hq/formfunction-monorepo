@@ -1,0 +1,31 @@
+.container, .containerResponsive {
+  height: 637px;
+}
+
+.container {
+  background-position: center;
+  background-size: cover;
+}
+
+.containerInner {
+  position: absolute;
+  top: 50%;
+}
+
+.containerResponsive {
+  position: relative;
+}
+
+.pillButton {
+  margin-top: 24px;
+}
+
+.shadow {
+  filter: var(--drop-shadow-button)
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}

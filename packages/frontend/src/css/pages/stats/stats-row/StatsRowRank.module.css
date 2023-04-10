@@ -1,0 +1,11 @@
+.rank {
+  flex-shrink: 0;
+  width: 54px;
+}
+
+@media only screen and (max-width: 640px) {
+  .rank {
+    width: 36px;
+  }
+}
+

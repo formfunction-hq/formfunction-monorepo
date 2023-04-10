@@ -1,0 +1,63 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  row-gap: 36px;
+  margin: 0 24px;
+}
+
+.saveButton {
+  width: 200px;
+}
+
+.saveButtonContainer {
+  align-self: center;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggleOptionsHeader {
+  display: flex;
+  flex-direction: row;
+  gap: 35px;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+.toggleOptionsHeader > div {
+  word-break: normal;
+}
+
+@media only screen and (max-width: 768px) {
+  .toggleOptionsHeader {
+    margin-right: 30px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .sectionHeader {
+    flex-wrap: wrap;
+  }
+
+  .sectionHeader > div {
+    width: 100%;
+    text-align: center;
+  }
+
+  .toggleOptionsHeader {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5px;
+    gap: 20px;
+  }
+}

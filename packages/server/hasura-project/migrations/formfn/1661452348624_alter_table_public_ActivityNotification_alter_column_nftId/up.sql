@@ -1,0 +1,1 @@
+comment on column "public"."ActivityNotification"."nftId" is E'This foreign key is a special case to improve performance, since many notifications need to query for the associated NFT. Other one-off data should remain in Notification.data';

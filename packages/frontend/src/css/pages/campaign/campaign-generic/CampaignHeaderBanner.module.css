@@ -1,0 +1,10 @@
+.headerBanner {
+  background-color: var(--color-shader);
+  height: 72px;
+}
+
+.childrenContainer {
+  align-items: center;
+  display: flex;
+  height: 100%;
+}

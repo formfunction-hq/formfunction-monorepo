@@ -1,0 +1,4 @@
+.loadMoreButton {
+  /* Not sure why, but without this, the posts scroll bar always shows up, even when not necessary */
+  height: 25px;
+}

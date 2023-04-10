@@ -1,0 +1,14 @@
+.container {
+  align-items: center;
+  column-gap: 24px;
+  display: flex;
+  flex-direction: row;
+  height: 48px;
+  justify-content: center;
+}
+
+.pageButton {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

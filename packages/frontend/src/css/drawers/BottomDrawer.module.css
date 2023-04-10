@@ -1,0 +1,31 @@
+.body {
+  background-color: var(--color-floatingElement);
+  overflow-y: auto;
+  padding-bottom: 32px;
+  padding-top: 28px;
+}
+
+.description {
+  margin-bottom: 32px;
+}
+
+.header {
+  background-color: var(--color-floatingElement);
+}
+
+.separator {
+  border-bottom: 1px solid var(--color-tertiary);
+  width: 100%;
+}
+
+.titleRow {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  /* NOTE: keep in sync with DEFAULT_TITLE_ROW_HEIGHT */
+  padding-bottom: 16px;
+  padding-top: 24px;
+
+  text-align: center;
+}

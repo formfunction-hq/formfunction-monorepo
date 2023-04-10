@@ -1,0 +1,12 @@
+.imageContainer {
+  align-items: center;
+  display: flex;
+  column-gap: 8px;
+  flex-direction: row;
+}
+
+.profileLink {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

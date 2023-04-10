@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: RequestStatus
+is_enum: true

@@ -1,0 +1,65 @@
+version: "3.6"
+services:
+  postgres:
+    container_name: formfn-postgres
+    image: postgres:12
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/formfndata
+    environment:
+      POSTGRES_DB: formfn
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_USER: postgres
+    ports:
+      - 6432:5432
+  api:
+    image: formfn-api
+    container_name: formfn-api
+    ports:
+      - 4000:4000
+    environment:
+      DATABASE_URL: postgresql://postgres:postgrespassword@postgres:5432/formfn?connect_timeout=30
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    volumes:
+      # Load compiled server/ and shared/ code as live volumes for auto reload
+      - ../../packages/server/dist:/usr/src/app/packages/server/dist
+      - ../../packages/shared/dist:/usr/src/app/packages/shared/dist
+      # Also mount @prisma so Prisma client changes get reloaded upon change
+      - ../../node_modules/@prisma:/usr/src/app/node_modules/@prisma
+      - ../../node_modules/.prisma:/usr/src/app/node_modules/.prisma
+  graphql-engine:
+    image: hasura/graphql-engine:v2.7.0
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - api
+    restart: always
+    command: sh -c "
+      echo 'waiting for 10s for server to start' &&
+      sleep 10 &&
+      echo 'delay over, starting graphql engine' &&
+      graphql-engine serve"
+    environment:
+      # Needed so that when the JWT token is not set yet, Hasura auto-defaults to anonymous
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: "anonymous"
+      HASURA_GRAPHQL_JWT_SECRET: '{"type":"HS512","key":"O3yJjxlFseoo6RSStaoyPX1wjpK0UurCA8pm1tZKvoM/G55UqOQeWEc0PzSzARkWTfTchnoff20s/ombRyRsbQosnQNdrA+VDyfxCL5eQnNM6LajijLVUNsbAx9zRfljKiVFRxn2bHUq/YxdsWdym7aGekwkf54T6MW1/7JPnTBTsKjVSTy6X3D9lFa1PJ111SHv4EdJ+7bhpPBL1feKhEQEa2Cowfj8P8HD1A==","header":{"type":"Cookie","name":"hasura_auth_token_local"}}'
+      # This needs to be changed for prod
+      # See https://github.com/hasura/graphql-engine/issues/4340 for running in dev
+      # HASURA_GRAPHQL_AUTH_HOOK: http://host.docker.internal:4000/hasuraWebhook
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
+      ## enable the console served by server
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "false" # set to "false" to disable console
+      ## enable debugging mode. It is recommended to disable this in production
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_LOG_LEVEL: error
+      HASURA_GRAPHQL_ADMIN_SECRET: 771043a6-2176-4cd6-9831-591ceca0ad5z
+      REMOTE_SCHEMA: http://host.docker.internal:4000/graphql
+      EVENT_BASE_URL: http://host.docker.internal:4000
+      DATABASE_URL: postgresql://postgres:postgrespassword@host.docker.internal:6432/formfn
+volumes:
+  db_data:

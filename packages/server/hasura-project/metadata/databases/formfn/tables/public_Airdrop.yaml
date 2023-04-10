@@ -1,0 +1,28 @@
+table:
+  schema: public
+  name: Airdrop
+object_relationships:
+  - name: MasterEditionNft
+    using:
+      foreign_key_constraint_on: masterEditionMint
+event_triggers:
+  - name: airdropSendEventToMixpanel
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 0
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/airdropSendEventToMixpanel'
+  - name: processAirdrop
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 10
+      interval_sec: 30
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/processAirdropWebhook'

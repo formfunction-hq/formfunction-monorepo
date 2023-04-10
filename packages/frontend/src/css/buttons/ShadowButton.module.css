@@ -1,0 +1,9 @@
+/* TODO: hover */
+.button {
+  align-items: center;
+  background-color: var(--color-floatingElement);
+  border-radius: 100px;
+  box-shadow: var(--box-shadow-button);
+  display: flex;
+  justify-content: center;
+}

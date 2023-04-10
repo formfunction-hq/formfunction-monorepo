@@ -1,0 +1,34 @@
+.emphasize {
+  color: var(--color-brightPurple);
+  font-weight: bold;
+}
+
+.note {
+  font-style: italic;
+}
+
+.section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  text-align: center;
+}
+
+.sections {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  row-gap: 48px;
+}
+
+@media only screen and (max-width: 768px) {
+  .section {
+    row-gap: 12px;
+  }
+
+  .sections {
+    row-gap: 32px;
+  }
+}

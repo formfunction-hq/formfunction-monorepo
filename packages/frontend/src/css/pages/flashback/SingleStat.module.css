@@ -1,0 +1,28 @@
+.container {
+    gap: 30px;
+}
+
+.header1 {
+    font-size: 130px;
+    line-height: 1.5;
+}
+
+@media only screen and (max-width: 1400px) {
+    .header1 {
+        font-size: 100px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .header1 {
+        font-size: 80px;
+    }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .header1 {
+        font-size: 64px;
+    }
+}

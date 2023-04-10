@@ -1,0 +1,13 @@
+.body {
+  max-width: 730px;
+}
+
+.priceInput {
+  padding-left: var(--padding-left-solSymbol);
+}
+
+@media only screen and (max-width: 980px) {
+  .body {
+    max-width: 100%;
+  }
+}

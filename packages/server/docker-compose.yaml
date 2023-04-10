@@ -1,0 +1,84 @@
+version: "3.6"
+services:
+  api:
+    image: formfn-api:${TAG}
+    ports:
+      - 4000:4000
+    environment:
+      # Needed for schema.prisma to pick this up when running on the droplet.
+      DATABASE_URL: ${DATABASE_URL}
+    env_file:
+      - .env
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "20"
+        max-size: "10m"
+
+  # Fallback
+  apifallback:
+    image: formfn-api:${TAG}
+    ports:
+      - 4003:4003
+    environment:
+      # Needed for schema.prisma to pick this up when running on the droplet.
+      DATABASE_URL: ${DATABASE_URL}
+    env_file:
+      - .envfallback
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "20"
+        max-size: "10m"
+
+  # ====================
+  # DEV
+  # ====================
+  apidev:
+    image: formfn-api:${TAG}
+    ports:
+      - 4001:4001
+    environment:
+      # Needed for schema.prisma to pick this up when running on the droplet.
+      DATABASE_URL: ${DATABASE_URL}
+    env_file:
+      - .envdev
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "20"
+        max-size: "10m"
+
+  # Fallback
+  apidevfallback:
+    image: formfn-api:${TAG}
+    ports:
+      - 4002:4002
+    environment:
+      # Needed for schema.prisma to pick this up when running on the droplet.
+      DATABASE_URL: ${DATABASE_URL}
+    env_file:
+      - .envdevfallback
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "20"
+        max-size: "10m"
+
+  # ====================
+  # TEST
+  # ====================
+  apitest:
+    image: formfn-api:${TAG}
+    ports:
+      - 4004:4004
+    environment:
+      # Needed for schema.prisma to pick this up when running on the droplet.
+      DATABASE_URL: ${DATABASE_URL}
+    env_file:
+      - .envtest
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "20"
+        max-size: "10m"

@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 640px;
+  row-gap: 32px;
+  width: 100%;
+}
+
+.submitButton {
+  margin: 0 auto;
+  width: 200px;
+}
+
+.youtubeVideoHrefInput {
+  width: 100%;
+}

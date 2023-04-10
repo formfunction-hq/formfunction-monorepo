@@ -1,0 +1,42 @@
+.button {
+  width: 160px;
+}
+
+.container {
+  align-items: center;
+  background-color: var(--color-floatingElement);
+  border-radius: 16px;
+  box-shadow: var(--box-shadow-button);
+  column-gap: 24px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 48px;
+  max-width: 948px;
+  padding: 24px;
+}
+
+.creatorShares {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.left {
+  align-items: center;
+  column-gap: 24px;
+  display: flex;
+}
+
+@media only screen and (max-width: 640px) {
+  .container {
+    flex-direction: column;
+    row-gap: 24px;
+  }
+}

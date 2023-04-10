@@ -1,0 +1,55 @@
+table:
+  schema: public
+  name: Vote
+object_relationships:
+  - name: ArtistSubmission
+    using:
+      foreign_key_constraint_on: artistSubmissionId
+  - name: User
+    using:
+      foreign_key_constraint_on: userId
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        User:
+          _and:
+            - id:
+                _eq: X-Hasura-User-Id
+            - _or:
+                - isWhitelisted:
+                    _eq: true
+                - isCollector:
+                    _eq: "true"
+                - isCollector2:
+                    _eq: true
+      columns:
+        - artistSubmissionId
+        - reason
+        - reportReasons
+        - userId
+        - voteType
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - artistSubmissionId
+        - id
+        - reason
+        - reportReasons
+        - timeCreated
+        - userId
+        - voteType
+      filter: {}
+      allow_aggregations: true
+event_triggers:
+  - name: newVote
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 0
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: '{{EVENT_BASE_URL}}/hasura/newVote'

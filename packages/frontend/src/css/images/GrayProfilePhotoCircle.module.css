@@ -1,0 +1,6 @@
+.profilePhoto {
+    border-radius: 50%;
+    filter: grayscale(80%);
+    object-fit: cover;
+    opacity: 0.23;
+  }

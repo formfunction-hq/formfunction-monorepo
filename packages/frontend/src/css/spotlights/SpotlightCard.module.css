@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  margin-bottom: 16px;
+}
+
+.labelAndStatus {
+  display: flex;
+  column-gap: 4px;
+}
+
+.spotlightInfo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}

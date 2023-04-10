@@ -1,0 +1,32 @@
+.divider {
+  /* For some reason doing 1px with border shows a small gap */
+  border-bottom: 2px solid var(--color-tertiary);
+  width: 100%;
+  margin: 40px 0;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.sectionHeaderName {
+  text-align: left;
+}
+
+@media only screen and (max-width: 640px) {
+  .divider {
+    margin: 32px 0;
+  }
+
+  .section {
+    padding: 0 8px;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    row-gap: 12px;
+    margin-bottom: 28px;
+  }
+}

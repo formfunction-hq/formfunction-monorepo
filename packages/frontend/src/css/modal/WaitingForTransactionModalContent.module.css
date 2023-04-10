@@ -1,0 +1,11 @@
+.waitingForTransaction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+}
+
+.waitingForTransactionLoadingSpinner {
+  margin-top: 12px;
+}

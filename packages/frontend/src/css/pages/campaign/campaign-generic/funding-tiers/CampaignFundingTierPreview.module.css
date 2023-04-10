@@ -1,0 +1,41 @@
+.button {
+  background-color: var(--color-cardBackground);
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  width: 100%;
+}
+
+.container {
+  align-items: flex-start;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow-button);
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  row-gap: 24px;
+  justify-content: space-between;
+}
+
+.description {
+  width: 100%;
+}
+
+.seePieces {
+  align-items: center;
+  column-gap: 8px;
+  display: flex;
+}
+
+.text {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.title {
+  width: 100%;
+}

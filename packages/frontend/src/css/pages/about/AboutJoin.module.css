@@ -1,0 +1,65 @@
+.button {
+  text-align: center;
+}
+
+.container {
+  gap: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.joinContainer {
+  padding: 39.5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 24px;
+  gap: 24px;
+  border-radius: 16px;
+  max-width: none;
+}
+
+.verticalCards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  width: 380px;
+}
+
+.verticalCards img {
+  border-radius: 16px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 1024px) {
+  .verticalCards {
+    gap: 0px;
+    width: 100%;
+  }
+
+  .verticalCards img {
+    border-radius: 0px;
+  }
+
+  .offsetCard {
+    --offset: 90px;
+    bottom: var(--offset);
+    margin-bottom: calc(var(--offset) * -1);
+    position: relative;
+  }
+
+  .joinContainer {
+    max-width: 580px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .joinContainer {
+    max-width: 380px;
+  }
+}

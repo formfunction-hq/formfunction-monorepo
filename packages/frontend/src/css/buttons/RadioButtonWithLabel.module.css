@@ -1,0 +1,23 @@
+.container {
+  align-items: center;
+  border-radius: 16px;
+  column-gap: 16px;
+  display: flex;
+}
+
+.containerNoBorder {
+  border: none;
+}
+
+.textContainer {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    padding: 12px
+  }
+}

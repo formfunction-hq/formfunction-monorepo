@@ -1,0 +1,10 @@
+.button {
+  max-width: 180px;
+  align-self: center;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  row-gap: 36px;
+}

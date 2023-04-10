@@ -1,0 +1,4 @@
+src/__generated__
+src/scripts
+.eslintrc.js
+jest.config.ts

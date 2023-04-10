@@ -1,0 +1,33 @@
+.actionButton {
+  margin-top: 12px;
+}
+
+.container {
+  align-items: flex-start;
+  column-gap: 24px;
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  display: grid;
+  row-gap: 8px;
+}
+
+.imageContainer {
+  background-color: var(--color-floatingElement);
+  border-radius: 14px;
+  box-shadow: var(--box-shadow-button);
+  padding: 4px;
+}
+
+.row {
+  align-items: center;
+  column-gap: 4px;
+  display: flex;
+  text-align: left;
+}
+
+.secondaryTitle {
+  margin-top: 8px;
+}

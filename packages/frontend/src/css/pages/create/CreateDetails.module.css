@@ -1,0 +1,54 @@
+.container {
+  align-items: flex-start;
+  column-gap: 64px;
+  display: flex;
+  justify-content: center;
+}
+
+.description {
+  margin-top: 12px;
+}
+
+.editionSupplyInput {
+  margin-left: 34px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+  row-gap: 32px;
+}
+
+.inputsAndTitle {
+  display: flex;
+  flex-direction: column;
+  max-width: 640px;
+}
+
+.nextButton {
+  align-self: flex-end;
+  margin-top: 42px;
+}
+
+.preview {
+  flex-shrink: 0;
+  width: var(--width-listingCardForCreate);
+}
+
+/* Header breakpoint */
+@media only screen and (max-width: 980px) {
+  .container {
+    align-items: center;
+    flex-direction: column;
+    row-gap: 32px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .preview {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}

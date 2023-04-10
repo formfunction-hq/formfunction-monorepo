@@ -1,0 +1,23 @@
+.container {
+  align-items: center;
+  background-color: var(--color-clickableAreaBackground);
+  border: 2px dashed var(--color-darkCerulean);
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  padding: 32px;
+}
+
+.disabled {
+  cursor: default;
+}
+
+
+@media only screen and (max-width: 640px) {
+  .container {
+    padding: 24px;
+  }
+}

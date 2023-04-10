@@ -1,0 +1,27 @@
+.closeButton {
+  margin-left: 16px;
+}
+
+.input {
+  background-color: transparent;
+  border-style: none;
+  color: var(--color-primary);
+  flex-grow: 1;
+  margin-left: 8px;
+  outline: none;
+}
+
+.inputContainer {
+  align-items: center;
+  background: var(--color-floatingElement);
+  border-radius: 100px;
+  box-shadow: var(--box-shadow-button);
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  padding: 8px 8px 8px 12px;
+}
+
+.input::placeholder {
+  color: var(--color-ghost);
+}

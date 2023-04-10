@@ -1,0 +1,13 @@
+.inputs {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 660px;
+  row-gap: 36px;
+}
+
+@media only screen and (max-width: 640px) {
+  .inputs {
+    row-gap: 16px;
+  }
+}

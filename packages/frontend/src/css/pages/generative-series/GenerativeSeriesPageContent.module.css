@@ -1,0 +1,55 @@
+.filterAndSortButton {
+  column-gap: 36px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 32px;
+}
+
+.filters {
+  --top-filtersStickyTop: 20px;
+
+  max-height: calc(100vh - var(--top-filtersStickyTop));
+  overflow-y: auto;
+  padding-bottom: var(--top-filtersStickyTop);
+  position: sticky;
+  top: var(--top-filtersStickyTop);
+  width: 310px;
+}
+
+.gridAndFilters {
+  column-gap: 80px;
+  display: flex;
+  margin-top: 40px;
+}
+
+.gridContainer {
+  flex-grow: 1;
+}
+
+.separator {
+  background-color: var(--color-tertiary);
+  height: 1px;
+  margin-top: 24px;
+  width: 100%;
+}
+
+.titleAndDescription {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+@media only screen and (max-width: 640px) {
+  .filterAndSortButton {
+    column-gap: 24px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .filterAndSortButton {
+    column-gap: 12px;
+    flex-wrap: wrap-reverse;
+    row-gap: 12px;
+  }
+}

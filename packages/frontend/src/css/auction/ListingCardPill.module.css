@@ -1,0 +1,13 @@
+.pill {
+  align-items: center;
+  background-color: var(--color-floatingElement);
+  border-radius: 100px;
+  box-shadow: var(--box-shadow-button);
+  column-gap: 12px;
+  display: flex;
+  padding: 12px 16px;
+}
+
+.pillCompressed {
+  padding: 12px;
+}

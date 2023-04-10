@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: CampaignStatus
+is_enum: true

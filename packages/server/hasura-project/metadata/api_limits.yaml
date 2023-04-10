@@ -1,0 +1,16 @@
+depth_limit:
+  per_role: {}
+  global: 20
+disabled: false
+rate_limit:
+  per_role:
+    user:
+      unique_params:
+        - x-hasura-user-id
+      max_reqs_per_min: 1000
+  global:
+    unique_params: IP
+    max_reqs_per_min: 10000
+node_limit:
+  per_role: {}
+  global: 700

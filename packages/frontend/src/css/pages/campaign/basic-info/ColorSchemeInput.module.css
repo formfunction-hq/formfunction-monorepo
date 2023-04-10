@@ -1,0 +1,6 @@
+.colorSchemes {
+  column-gap: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 18px;
+}

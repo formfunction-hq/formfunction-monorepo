@@ -1,0 +1,15 @@
+.artistPills {
+  margin-bottom: 32px;
+}
+
+.content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  margin-bottom: 16px;
+}
+
+.description {
+  max-width: 500px;
+}

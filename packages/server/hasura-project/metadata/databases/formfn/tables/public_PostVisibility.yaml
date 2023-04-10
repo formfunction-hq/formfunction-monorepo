@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: PostVisibility
+is_enum: true

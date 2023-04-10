@@ -1,0 +1,60 @@
+.buttons {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.collaborators {
+  column-gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 12px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 48px;
+}
+
+.creatorAndOwner {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
+.description {
+  white-space: pre-line;
+}
+
+.ellipsisButton {
+  flex-shrink: 0;
+}
+
+.nameAndButton {
+  align-items: flex-start;
+  column-gap: 32px;
+  display: flex;
+  justify-content: space-between;
+  word-break: break-word;
+}
+
+.spinner {
+  height: 28px;
+  width: 28px;
+  display: inline-block;
+  margin-top: 16px;
+}
+
+.typeLabel {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 12px;
+}
+
+/* Keep in sync with NftPage */
+@media only screen and (max-width: 980px) {
+  .container {
+    row-gap: 36px;
+  }
+}

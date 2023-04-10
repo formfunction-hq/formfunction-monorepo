@@ -1,0 +1,7 @@
+table:
+  schema: public
+  name: UnlockableWinner
+object_relationships:
+  - name: Unlockable
+    using:
+      foreign_key_constraint_on: unlockableId

@@ -1,0 +1,1 @@
+INSERT INTO "public"."Currency"("id", "name", "decimals", "symbol", "shortSymbol", "iconSrc", "mint", "usdRate", "solRate") VALUES (E'b433bc1c-ffa7-45bf-9bc3-1b408fcf605f', E'SkeletonCrew', 0, E'SKULL', null, E'https://formfunction.imgix.net/currency/skeletoncrew/logo.png', E'SKu11EypaFU3gvr8VSAbi13zEC2CPvqbz9s83N3tWHM', null, null);

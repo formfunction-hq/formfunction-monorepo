@@ -1,0 +1,69 @@
+.container {
+  column-gap: 32px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+.count {
+  display: flex;
+  justify-content: flex-end;
+  white-space: nowrap;
+  width: 120px;
+}
+
+.count:first-child {
+  width: 32px;
+}
+
+.left {
+  width: 440px;
+}
+
+.name {
+  /* See StatsRow + StatsRowRankAndUserInfo for reason behind calculation */
+  padding-left: calc(54px + 8px);
+}
+
+.right {
+  column-gap: 16px;
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  max-width: 460px;
+}
+
+.salesInfo {
+  display: flex;
+  justify-content: flex-end;
+  width: 120px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .count {
+    display: none;
+  }
+
+  .right {
+    justify-content: flex-end;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .left {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .name {
+    /* See StatsRow + StatsRowRankAndUserInfo for reason behind calculation */
+    padding-left: calc(36px + 4px);
+  }
+}

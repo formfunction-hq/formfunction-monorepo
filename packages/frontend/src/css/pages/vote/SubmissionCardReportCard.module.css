@@ -1,0 +1,35 @@
+.body {
+  border: 1px solid var(--color-red);
+  border-radius: 24px;
+  max-width: 600px;
+  padding: 16px 24px;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.header {
+  display: flex;
+  column-gap: 8px;
+}
+
+.list {
+  list-style: none;
+  margin-bottom: -4px;
+}
+
+.list li::before {
+  color: var(--color-red);
+  content: "\2022";
+  display: inline-block;
+  margin-left: -1em;
+  width: 1em;
+}
+
+.list li {
+  margin-top: 4px;
+}

@@ -1,0 +1,158 @@
+.body {
+  column-gap: 148px;
+  display: flex;
+}
+
+.bottom {
+  border-top: 1px solid var(--color-tertiary);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 36px;
+  padding-top: 24px;
+  width: 100%;
+}
+
+.container {
+  padding-bottom: 36px;
+  padding-top: 60px;
+}
+
+.containerOuter {
+  background: var(--color-footer);
+  position: relative;
+  width: 100%;
+}
+
+.hasBottomTabs {
+  padding-bottom: 92px;
+}
+
+.icons {
+  align-items: center;
+  column-gap: 32px;
+  display: flex;
+}
+
+.links {
+  column-gap: 70px;
+  display: flex;
+}
+
+.linksSection {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.logo {
+  align-items: center;
+  column-gap: 18px;
+  display: flex;
+  text-decoration: none;
+}
+
+.logoSection {
+  display: flex;
+  flex-direction: column;
+  max-width: 308px;
+  row-gap: 16px;
+}
+
+.logoText {
+  color: var(--color-white);
+  font-family: "TanNimbus", serif;
+  font-size: 32px;
+  margin: 0px;
+}
+
+.partiallyTransparent {
+  opacity: 0.48;
+}
+
+.termsSection {
+  align-items: center;
+  column-gap: 8px;
+  display: flex;
+}
+
+@media only screen and (max-width: 1280px) {
+  .body {
+    column-gap: 110px;
+  }
+
+  .links {
+    column-gap: 60px;
+  }
+}
+
+@media only screen and (max-width: 1060px) {
+  .body {
+    column-gap: 80px;
+  }
+
+  .links {
+    column-gap: 40px;
+  }
+
+  .logoImage {
+    height: 40px;
+    width: 40px;
+  }
+
+  .logoSection {
+    max-width: 260px;
+  }
+
+  .logoText {
+    font-size: 28px;
+  }
+}
+
+@media only screen and (max-width: 870px) {
+  .body {
+    align-items: center;
+    flex-direction: column;
+    row-gap: 24px;
+    text-align: center;
+  }
+
+  .container {
+    padding-bottom: 36px;
+    padding-top: 36px;
+  }
+
+  .icons {
+    column-gap: 24px;
+  }
+
+  .links {
+    align-items: center;
+    flex-direction: column;
+    row-gap: 32px;
+    text-align: center;
+  }
+
+  .linksSection {
+    align-items: center;
+    row-gap: 12px;
+  }
+
+  .logoImage {
+    height: 36px;
+    width: 36px;
+  }
+
+  .logoSection {
+    align-items: center;
+  }
+
+  .logoText {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .hasBottomTabs {
+    padding-bottom: 82px;
+  }
+}

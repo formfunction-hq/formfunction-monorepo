@@ -1,0 +1,41 @@
+.content {
+  margin-top: 48px;
+}
+
+
+.tabs {
+  border-bottom: 1px solid var(--color-tertiary);
+  column-gap: 48px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1024px) {
+  .content {
+    margin-top: 40px;
+  }
+
+  .tabs {
+    margin-bottom: 36px;
+  }
+}
+
+/* Header breakpoint */
+@media only screen and (max-width: 980px) {
+  .tabs {
+    border-bottom: none;
+    box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.06);
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .content {
+    margin-top: 32px;
+  }
+
+  .tabs {
+    margin-bottom: 32px;
+  }
+}

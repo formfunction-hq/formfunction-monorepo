@@ -1,0 +1,15 @@
+.body {
+  margin-top: 64px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .body {
+    margin-top: 48px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .body {
+    margin-top: 32px;
+  }
+}

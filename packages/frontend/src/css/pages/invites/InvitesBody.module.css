@@ -1,0 +1,57 @@
+.backButton {
+  position: relative;
+  top: 0;
+  left: 0;
+  float: left;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 48px;
+}
+
+.divider {
+  width: 100%;
+}
+
+.image {
+  max-width: 80%;
+}
+
+.inviteModeSelect {
+  align-items: center;
+  display: flex;
+  column-gap: 48px;
+}
+
+.inviteModeSelectButton {
+  background-color: var(--color-cardBackground);
+  border-radius: 24px;
+  box-shadow: var(--box-shadow-button);
+  width: 324px;
+  height: 120px;
+}
+
+.noInvites {
+  display: flex;
+  justify-content: center;
+}
+
+.selectInviteModeBody {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+@media only screen and (max-width: 768px) {
+  .inviteModeSelect {
+    flex-direction: column;
+    row-gap: 48px;
+  }
+
+  .numInvites {
+    margin-top: 16px;
+  }
+}

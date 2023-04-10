@@ -1,0 +1,48 @@
+table:
+  schema: public
+  name: NftToTag
+object_relationships:
+  - name: Nft
+    using:
+      foreign_key_constraint_on: nftId
+  - name: Tag
+    using:
+      foreign_key_constraint_on: tagId
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        Nft:
+          _or:
+            - creatorId:
+                _eq: X-Hasura-User-Id
+            - ownerId:
+                _eq: X-Hasura-User-Id
+      columns:
+        - nftId
+        - tagId
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - nftId
+        - tagId
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+        - nftId
+        - tagId
+      filter: {}
+      allow_aggregations: true
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        Nft:
+          _or:
+            - creatorId:
+                _eq: X-Hasura-User-Id
+            - ownerId:
+                _eq: X-Hasura-User-Id

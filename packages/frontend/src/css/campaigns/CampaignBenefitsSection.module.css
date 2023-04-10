@@ -1,0 +1,13 @@
+.container {
+  background-color: var(--color-cardBackground);
+  border-radius: 16px;
+  padding: 24px;
+  filter: var(--drop-shadow-button);
+  margin-top: 48px;
+}
+
+@media only screen and (max-width: 980px) {
+  .container {
+    margin-top: 28px;
+  }
+}

@@ -1,0 +1,24 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 680px;
+  row-gap: 32px;
+}
+
+.previewImageInput {
+  margin-top: 16px;
+}
+
+.saveButton {
+  margin: 0 auto;
+  min-width: 260px;
+}
+
+.subtitle {
+  margin-top: 12px;
+}
+
+.urlPreview {
+  margin-top: -16px;
+}

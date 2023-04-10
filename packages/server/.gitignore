@@ -1,0 +1,12 @@
+dist
+node_modules
+
+.env
+.envdev
+.eslintcache
+
+.scratch
+src/scripts/sandbox.ts
+src/scripts/sandbox*.ts
+
+coverage

@@ -1,0 +1,14 @@
+.markdown h2 {
+  margin-bottom: 0px;
+}
+
+.markdown p {
+  margin: 0px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0px;
+  row-gap: 4px;
+}

@@ -1,0 +1,81 @@
+.container {
+  column-gap: 12px;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  padding-left: 23px;
+  height: 56px;
+  border: 1px solid var(--color-ghost);
+  box-sizing: border-box;
+  border-radius: 16px;
+}
+
+.input {
+  background-color: transparent;
+  border-style: none;
+  flex-grow: 1;
+  outline: none;
+}
+
+.loadingState {
+  padding: 16px 0;
+}
+
+.popoverContent {
+  /* Needed to negate padding set by library component */
+  margin: -24px;
+  /* The janky width calculation here is needed to ensure that the
+   * search bar popover for managing series NFTs matches the width
+   * of the search bar. This is tricky since the popover is not
+   * part of the modal's component tree in the actual DOM.
+   */
+  width: calc(100vw - 34px);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.popoverContentInner {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+  max-height: 296px;
+  overflow: scroll;
+  padding: 24px;
+  overflow-x: hidden;
+  border-radius: 16px;
+}
+
+.popoverSection {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.popoverNftPhoto {
+  border: 4px solid #ffffff;
+  box-sizing: border-box;
+  filter: var(--drop-shadow-button);
+  border-radius: 12px;
+  margin-right: 14px;
+}
+
+.placeholder::placeholder {
+  font-family: var(--font-family-body1);
+  font-size: var(--font-size-body1);
+  font-weight: var(--font-weight-body1);
+  letter-spacing: var(--letter-spacing-body1);
+  line-height: var(--line-height-body1);
+  color: var(--color-ghost);
+}
+
+@media only screen and (min-width: 768px) {
+  .popoverContent {
+    width: calc(100vw - 98px);
+  }
+}
+
+@media only screen and (min-width: 980px) {
+  .popoverContent {
+    width: 729px;
+  }
+}

@@ -1,0 +1,4 @@
+table:
+  schema: public
+  name: NotificationChannel
+is_enum: true
